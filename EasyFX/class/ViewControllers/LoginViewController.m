@@ -52,6 +52,10 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -61,11 +65,11 @@
 -(IBAction)loginOnClick:(id)sender{
     WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
     [wsFactory logInWithUser:[txtUsername text] password:[txtPassword text] clientId:[txtCliendId text]];
-//    [wsFactory getDealCurrencies];
     
     if ([[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] success] isEqualToString:@"true"]) {
         CurrencyViewController *viewController = [[CurrencyViewController alloc] init];
         [self.navigationController pushViewController:viewController animated:YES];
+        [self.navigationController setNavigationBarHidden:NO];
         [viewController release];
     }
         

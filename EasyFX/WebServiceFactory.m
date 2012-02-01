@@ -91,8 +91,8 @@
 		[request setHTTPMethod:@"POST"]; 
 		[request setHTTPBody:[requestString dataUsingEncoding:NSUTF8StringEncoding]]; 
         if (!isLogin) {
-            NSString *sessionCookie = @"ASP.NET_SessionId=l2ti3yuco1af4kqpjlpj0syi; path=/; HttpOnly";
-//            NSString *sessionCookie = [delegate sessionCookie];
+//            NSString *sessionCookie = @"ASP.NET_SessionId=l2ti3yuco1af4kqpjlpj0syi; path=/; HttpOnly";
+            NSString *sessionCookie = [delegate sessionCookie];
             
             [request setValue:sessionCookie forHTTPHeaderField:@"Cookie"];
         }
@@ -178,12 +178,59 @@
 		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES] fromURI:@"LogInResult" toObject:@"LogInResult" parseError:nil];
         
 //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES];
-        
 //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
 
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		[sRequest release];
+		[xmlParser release];
+	}
+}
+
+- (void)getDealCurrencies
+{
+	if ([self isConnectedToInternet:HOST]) {
+		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+		// Create the SOAP body 
+		[sRequest appendFormat:[self getStartHeader]];
+		[sRequest appendString:@"<sch:GetCurrencyList/>"];
+		[sRequest appendString:[self getEndHeader]];
+		
+		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+		XmlParser *xmlParser = [[XmlParser alloc] init];
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO] fromURI:@"PriceRec" toObject:@"PriceRec" parseError:nil];
+        
+        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+        
+		[self.wsResponse release];
+		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+		
+		[sRequest release];	
+		[xmlParser release];
+	}
+}
+
+- (void)logOut
+{
+	if ([self isConnectedToInternet:HOST]) {
+		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+		// Create the SOAP body 
+		[sRequest appendFormat:[self getStartHeader]];
+		[sRequest appendString:@"<sch:LogOut/>"];
+		[sRequest appendString:[self getEndHeader]];
+		
+		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+		XmlParser *xmlParser = [[XmlParser alloc] init];
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogOut" isLogin:NO] fromURI:@"nil" toObject:@"" parseError:nil];
+        
+        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+        
+		[self.wsResponse release];
+		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+		
+		[sRequest release];	
 		[xmlParser release];
 	}
 }
@@ -239,30 +286,6 @@
 	}
 }
 
-- (void)getDealCurrencies
-{
-	if ([self isConnectedToInternet:HOST]) {
-		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
-		// Create the SOAP body 
-		[sRequest appendFormat:[self getStartHeader]];
-		[sRequest appendString:@"<sch:GetCurrencyList/>"];
-		[sRequest appendString:[self getEndHeader]];
-		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
-//		XmlParser *xmlParser = [[XmlParser alloc] init];
-//		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
-		 
-        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        
-        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
-
-//		[self.wsResponse release];
-//		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
-		
-		[sRequest release];	
-//		[xmlParser release];
-	}
-}
 
 - (void)makeDeal:(NSString*)contactId 
 		strVendorTxCode:(NSString*)vendorTxCode

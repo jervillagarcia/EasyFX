@@ -10,9 +10,15 @@
 
 @interface CurrencyViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *table;
-    
+    NSArray *currencyList;
 }
 
-
 @property (nonatomic, retain) UITableView *table;
+@property (nonatomic, retain) NSArray *currencyList;
+
+
+-(void)fetchCurrencies;
+
+-(IBAction) backAction:(id)sender;
+
 @end

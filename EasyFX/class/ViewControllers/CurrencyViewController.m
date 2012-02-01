@@ -7,16 +7,18 @@
 //
 
 #import "CurrencyViewController.h"
+#import "WebServiceFactory.h"
+#import "CurrencyTableViewCell.h"
 
 @implementation CurrencyViewController
 
 @synthesize table;
+@synthesize currencyList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -35,7 +37,8 @@
 {
     [super viewDidLoad];
 
-    [self.navigationController setNavigationBarHidden:NO];
+    [self performSelector:@selector(fetchCurrencies)];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -44,6 +47,34 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+
+    UIImage  *buttonImage = [UIImage imageNamed:@"back_button.png"];
+    UIImage  *editImage = [UIImage imageNamed:@"edit_currency_icon.png"];
+    
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button1 setImage:buttonImage forState:UIControlStateNormal];
+    [button1 addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [button1 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
+    
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button2 setImage:editImage forState:UIControlStateNormal];
+    [button2 addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
+    [button2 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
+
+    //Logout Button
+    UIBarButtonItem *backItem1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
+    [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:backItem1];
+
+    UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
+    [self.navigationController.navigationBar.topItem     setRightBarButtonItem:backItem2];
+    
+    self.navigationController.navigationBar.topItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]] autorelease];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -57,30 +88,42 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [currencyList count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"CurrencyCell";
+    NSString *nibName = @"CurrencyTableViewCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    CurrencyTableViewCell *cell = (CurrencyTableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil){
+        NSLog(@"New Cell Made");
+        
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
+        
+        for(id currentObject in topLevelObjects)
+        {
+            if([currentObject isKindOfClass:[CurrencyTableViewCell class]])
+            {
+                cell = (CurrencyTableViewCell *)currentObject;
+                break;
+            }
+        }
     }
-    
-    // Configure the cell...
-    
-    return cell;
+    [cell setCurrencyPair:(PriceRec *)[currencyList objectAtIndex:indexPath.row]];
+    return cell;		
 }
 
 /*
@@ -134,6 +177,84 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+
+-(void)fetchCurrencies {
+//    [NSThread detachNewThreadSelector:@selector(showActivity) toTarget:self withObject:nil];
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+    
+    [ws getDealCurrencies];
+    
+    [currencyList release];
+    currencyList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+	
+//    if([ws.wsResponse count] > 0) { 
+//        if (([ws.wsResponse count] == 1) && [[ws.wsResponse objectAtIndex:0] isKindOfClass:[Fault class]]) {
+//            [ws release];
+//            [pool release];
+//            
+//            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:[(Fault*)[ws.wsResponse objectAtIndex:0] faultstring] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//            [alert show];
+//            [alert release];
+//        } else if (([ws.wsResponse count] == 1) && [[ws.wsResponse objectAtIndex:0] isKindOfClass:[Error class]]) {
+//            [ws release];
+//            [pool release];
+//            
+//            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[(Error*)[ws.wsResponse objectAtIndex:0] CODE] message:[(Error*)[ws.wsResponse objectAtIndex:0] DESCRIPTION] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//            [alert show];
+//            [alert release];
+//        } else {
+//            [arr release];
+//            arr = [ws.wsResponse retain];
+//            
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Validated OK." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Details", nil];
+//            [alert show];
+//            [alert release];
+//            
+//            [ws release];
+//            [pool release];
+//            
+//            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
+//        }
+//    } else {
+//        
+//        [ws release];
+//        [pool release];
+//        
+//        [processActivity dismissWithClickedButtonIndex:0 animated:YES];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"No results found." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        [alert release];
+//        
+//    }
+
+    [ws release];
+    [pool release];
+
+}
+
+#pragma mark Actions (Button)
+-(IBAction) backAction:(id)sender {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+    
+    [ws logOut];
+
+    [ws release];
+    [pool release];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+
+
+}
+
+-(IBAction) editAction:(id)sender {
+    [table setEditing:YES animated:YES];
+    
 }
 
 @end

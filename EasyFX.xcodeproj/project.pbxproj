@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D514A31614D8F8EE00E1BEFE /* CurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */; };
+		D514A32B14D90DB600E1BEFE /* PriceRec.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A32A14D90DB600E1BEFE /* PriceRec.m */; };
+		D514A33814D9148E00E1BEFE /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A33714D9148E00E1BEFE /* CurrencyTableViewCell.m */; };
+		D514A34014D91BEC00E1BEFE /* EasyFXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A33F14D91BEB00E1BEFE /* EasyFXNavigationController.m */; };
+		D514A34714D91DD000E1BEFE /* EasyFXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A34614D91DD000E1BEFE /* EasyFXNavigationBar.m */; };
 		D51AD05D14D78D3F000EB3BF /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD05C14D78D3F000EB3BF /* Utils.m */; };
 		D51AD06014D78E9B000EB3BF /* EasyFXWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD05F14D78E9A000EB3BF /* EasyFXWindow.m */; };
 		D51AD06B14D79808000EB3BF /* WebServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD06814D79807000EB3BF /* WebServiceFactory.m */; };
@@ -418,6 +422,14 @@
 /* Begin PBXFileReference section */
 		D514A31314D8F8EE00E1BEFE /* CurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyViewController.h; path = class/ViewControllers/CurrencyViewController.h; sourceTree = "<group>"; };
 		D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyViewController.m; path = class/ViewControllers/CurrencyViewController.m; sourceTree = "<group>"; };
+		D514A32914D90DB600E1BEFE /* PriceRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PriceRec.h; path = model_objects/PriceRec.h; sourceTree = "<group>"; };
+		D514A32A14D90DB600E1BEFE /* PriceRec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PriceRec.m; path = model_objects/PriceRec.m; sourceTree = "<group>"; };
+		D514A33614D9148E00E1BEFE /* CurrencyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyTableViewCell.h; path = CustomCell/CurrencyTableViewCell.h; sourceTree = "<group>"; };
+		D514A33714D9148E00E1BEFE /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyTableViewCell.m; path = CustomCell/CurrencyTableViewCell.m; sourceTree = "<group>"; };
+		D514A33E14D91BEB00E1BEFE /* EasyFXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyFXNavigationController.h; path = CustomObjects/EasyFXNavigationController.h; sourceTree = "<group>"; };
+		D514A33F14D91BEB00E1BEFE /* EasyFXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyFXNavigationController.m; path = CustomObjects/EasyFXNavigationController.m; sourceTree = "<group>"; };
+		D514A34514D91DD000E1BEFE /* EasyFXNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; name = EasyFXNavigationBar.h; path = CustomObjects/EasyFXNavigationBar.h; sourceTree = "<group>"; };
+		D514A34614D91DD000E1BEFE /* EasyFXNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyFXNavigationBar.m; path = CustomObjects/EasyFXNavigationBar.m; sourceTree = "<group>"; };
 		D51AD05A14D78D3F000EB3BF /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D51AD05B14D78D3F000EB3BF /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		D51AD05C14D78D3F000EB3BF /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
@@ -857,11 +869,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D514A33514D9145C00E1BEFE /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				D514A33614D9148E00E1BEFE /* CurrencyTableViewCell.h */,
+				D514A33714D9148E00E1BEFE /* CurrencyTableViewCell.m */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
 		D51AD08714D7A7A0000EB3BF /* model objects */ = {
 			isa = PBXGroup;
 			children = (
 				D51AD08B14D7A824000EB3BF /* LogInResult.h */,
 				D51AD08C14D7A824000EB3BF /* LogInResult.m */,
+				D514A32914D90DB600E1BEFE /* PriceRec.h */,
+				D514A32A14D90DB600E1BEFE /* PriceRec.m */,
 			);
 			name = "model objects";
 			sourceTree = "<group>";
@@ -1349,6 +1372,7 @@
 		D59F15B0147355DB006946EE /* viewcontrollers */ = {
 			isa = PBXGroup;
 			children = (
+				D514A33514D9145C00E1BEFE /* CustomCell */,
 				D59F15B21473567B006946EE /* LoginViewController.h */,
 				D59F15B31473567B006946EE /* LoginViewController.m */,
 				D59F1584147353B3006946EE /* RootViewController.h */,
@@ -1402,6 +1426,8 @@
 		D59F15BF14735D11006946EE /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				D514A34514D91DD000E1BEFE /* EasyFXNavigationBar.h */,
+				D514A34614D91DD000E1BEFE /* EasyFXNavigationBar.m */,
 				D51AD07414D79952000EB3BF /* Reachability.h */,
 				D51AD07514D79952000EB3BF /* Reachability.m */,
 				D51AD06714D79807000EB3BF /* WebServiceFactory.h */,
@@ -1417,6 +1443,8 @@
 				D59F15C414735D94006946EE /* UIViewControllerTextDelegate.m */,
 				D51AD08E14D7AB20000EB3BF /* LoginParser.h */,
 				D51AD08F14D7AB20000EB3BF /* LoginParser.m */,
+				D514A33E14D91BEB00E1BEFE /* EasyFXNavigationController.h */,
+				D514A33F14D91BEB00E1BEFE /* EasyFXNavigationController.m */,
 			);
 			name = utility;
 			sourceTree = "<group>";
@@ -1910,6 +1938,10 @@
 				D51AD08D14D7A824000EB3BF /* LogInResult.m in Sources */,
 				D51AD09014D7AB21000EB3BF /* LoginParser.m in Sources */,
 				D514A31614D8F8EE00E1BEFE /* CurrencyViewController.m in Sources */,
+				D514A32B14D90DB600E1BEFE /* PriceRec.m in Sources */,
+				D514A33814D9148E00E1BEFE /* CurrencyTableViewCell.m in Sources */,
+				D514A34014D91BEC00E1BEFE /* EasyFXNavigationController.m in Sources */,
+				D514A34714D91DD000E1BEFE /* EasyFXNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

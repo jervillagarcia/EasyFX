@@ -18,9 +18,10 @@
 @property(nonatomic,retain) NSArray* wsResponse;
 
 - (void)logInWithUser:(NSString*)m_user password:(NSString*)m_password clientId:(NSString*)m_clientId;
+- (void)getDealCurrencies;
+- (void)logOut;
 - (void)getBeneficiaries:(NSString*)contactId;
 - (void)getBeneficiaryDetails:(NSString*)beneficiaryId;
-- (void)getDealCurrencies;
 - (void)makeDeal:(NSString*)contactId 
  strVendorTxCode:(NSString*)vendorTxCode
 paymentDetailsId:(NSString*)paymentDetailsId
