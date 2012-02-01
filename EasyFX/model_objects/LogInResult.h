@@ -10,21 +10,21 @@
 
 @interface LogInResult : NSObject {
     NSString *success;
-    NSString *errorId;
+    NSString *errorID;
     NSString *errorMsg;
     NSString *limit;
     NSString *fee;
     NSString *count;
-    NSArray *ccyPairs;
+    NSArray *cCYPairs;
 }
 
 
 @property(nonatomic, retain) NSString *success;
-@property(nonatomic, retain) NSString *errorId;
+@property(nonatomic, retain) NSString *errorID;
 @property(nonatomic, retain) NSString *errorMsg;
 @property(nonatomic, retain) NSString *limit;
 @property(nonatomic, retain) NSString *fee;
 @property(nonatomic, retain) NSString *count;
-@property(nonatomic, retain) NSArray *ccyPairs;
+@property(nonatomic, retain) NSArray *cCYPairs;
 
 @end

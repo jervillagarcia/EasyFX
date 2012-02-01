@@ -10,10 +10,10 @@
 
 @implementation LogInResult
     @synthesize success;
-    @synthesize errorId;
+    @synthesize errorID;
     @synthesize errorMsg;
     @synthesize limit;
     @synthesize fee;
     @synthesize count;
-    @synthesize ccyPairs;
+    @synthesize cCYPairs;
 @end

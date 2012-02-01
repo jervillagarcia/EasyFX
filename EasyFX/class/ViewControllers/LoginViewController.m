@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "WebServiceFactory.h"
+#import "LogInResult.h"
+#import "CurrencyViewController.h"
 
 @implementation LoginViewController
 
@@ -58,8 +60,16 @@
 
 -(IBAction)loginOnClick:(id)sender{
     WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
-//    [wsFactory logInWithUser:[txtUsername text] password:[txtPassword text] clientId:[txtCliendId text]];
-    [wsFactory getDealCurrencies];
+    [wsFactory logInWithUser:[txtUsername text] password:[txtPassword text] clientId:[txtCliendId text]];
+//    [wsFactory getDealCurrencies];
+    
+    if ([[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] success] isEqualToString:@"true"]) {
+        CurrencyViewController *viewController = [[CurrencyViewController alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+        [viewController release];
+    }
+        
+    
     [wsFactory release];
 }
 -(void)callHelpdesk:(id)sender{}

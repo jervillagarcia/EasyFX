@@ -10,12 +10,14 @@
 
 @interface LoginParser : NSObject<NSXMLParserDelegate> {
 
-NSString *className;
-NSString *uri;
-NSMutableArray *items;
-NSObject *item;
-NSString *currentNodeName;
-NSMutableString *currentNodeContent;
+    NSString *className;
+    NSString *uri;
+    NSMutableArray *items;
+    NSObject *item;
+    NSString *currentNodeName;
+    NSMutableString *currentNodeContent;
+    NSMutableArray *arr;
+    BOOL isCCYPair;
 }
 
 @property (retain) NSString *className;
@@ -24,6 +26,7 @@ NSMutableString *currentNodeContent;
 @property (retain) NSObject *item;
 @property (retain) NSString *currentNodeName;
 @property (retain) NSMutableString *currentNodeContent;
+@property (retain) NSMutableArray *arr;
 
 - (NSArray *)getItems;
 //- (id)parseXMLData:(NSData *)data toObject:(NSString *)aClassName parseError:(NSError **)error;

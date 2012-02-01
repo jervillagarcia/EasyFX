@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewControllerTextDelegate.h"
 
-
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : UIViewControllerTextDelegate {
     IBOutlet UITextField        *txtCliendId;
     IBOutlet UITextField        *txtUsername;
     IBOutlet UITextField        *txtPassword;

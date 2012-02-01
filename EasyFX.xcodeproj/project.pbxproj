@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D514A31614D8F8EE00E1BEFE /* CurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */; };
 		D51AD05D14D78D3F000EB3BF /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD05C14D78D3F000EB3BF /* Utils.m */; };
 		D51AD06014D78E9B000EB3BF /* EasyFXWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD05F14D78E9A000EB3BF /* EasyFXWindow.m */; };
 		D51AD06B14D79808000EB3BF /* WebServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD06814D79807000EB3BF /* WebServiceFactory.m */; };
@@ -415,6 +416,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D514A31314D8F8EE00E1BEFE /* CurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyViewController.h; path = class/ViewControllers/CurrencyViewController.h; sourceTree = "<group>"; };
+		D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyViewController.m; path = class/ViewControllers/CurrencyViewController.m; sourceTree = "<group>"; };
 		D51AD05A14D78D3F000EB3BF /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D51AD05B14D78D3F000EB3BF /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		D51AD05C14D78D3F000EB3BF /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
@@ -1350,6 +1353,8 @@
 				D59F15B31473567B006946EE /* LoginViewController.m */,
 				D59F1584147353B3006946EE /* RootViewController.h */,
 				D59F1585147353B3006946EE /* RootViewController.m */,
+				D514A31314D8F8EE00E1BEFE /* CurrencyViewController.h */,
+				D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -1904,6 +1909,7 @@
 				D51AD07614D79952000EB3BF /* Reachability.m in Sources */,
 				D51AD08D14D7A824000EB3BF /* LogInResult.m in Sources */,
 				D51AD09014D7AB21000EB3BF /* LoginParser.m in Sources */,
+				D514A31614D8F8EE00E1BEFE /* CurrencyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

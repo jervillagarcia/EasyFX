@@ -10,6 +10,7 @@
 #import "EasyFXAppDelegate.h"
 #import "XmlParser.h"
 #import "Reachability.h"
+#import "LoginParser.h"
 
 @interface WebServiceFactory (Private)
 - (NSData*)giveErrorDomainNotFound;
@@ -173,18 +174,17 @@
 		NSLog(@"Request: %@", sRequest);
 		
 		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"ValidateUser"] fromURI:@"Table" toObject:@"UserDetail" parseError:nil];
-//		XmlParser *xmlParser = [[XmlParser alloc] init];
-//		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogIn"] fromURI:@"Table" toObject:@"UserDetail" parseError:nil];
+		LoginParser *xmlParser = [[LoginParser alloc] init];
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES] fromURI:@"LogInResult" toObject:@"LogInResult" parseError:nil];
         
-        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES];
+//        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES];
         
-        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+//        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
 
-//		[self.wsResponse release];
-//		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
-//		
-//		[sRequest release];
-//		[xmlParser release];
+		[self.wsResponse release];
+		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+		[sRequest release];
+		[xmlParser release];
 	}
 }
 

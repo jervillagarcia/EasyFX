@@ -7,7 +7,7 @@
 //
 
 #import "LoginParser.h"
-
+#import "LogInResult.h"
 @implementation LoginParser
 
 @synthesize className;
@@ -16,6 +16,7 @@
 @synthesize item;
 @synthesize currentNodeName;
 @synthesize currentNodeContent;
+@synthesize arr;
 
 - (NSArray *)getItems
 {
@@ -49,6 +50,9 @@
 	
 	[items release];
 	items = [[NSMutableArray alloc] init];
+
+	[arr release];
+	arr = [[NSMutableArray alloc] init];
 	
 	[className release];
 	className = [aClassName copy];//[[NSString alloc] initWithString:aClassName];
@@ -76,7 +80,12 @@
 {
 	if([elementName isEqualToString:uri] || [elementName isEqualToString:@"Fault"]) {
 		item = [[NSClassFromString([elementName isEqualToString:uri]?className:@"Fault") alloc] init];
-	}else if ([elementName isEqualToString:@"CCYPairs) {
+        isCCYPair = NO;
+	}else if ([elementName isEqualToString:@"CCYPairs"]) {
+        //SKIP
+        isCCYPair = YES;
+//        [(LogInResult*)item ccyPairs] = [[NSMutableArray alloc] init];
+//        currentNodeContent = [[NSMutableString alloc] init];
     }else {
 		if (![elementName isEqualToString:@"NULL"]){
 			currentNodeName = [elementName copy];
@@ -87,24 +96,36 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-	if([elementName isEqualToString:uri] || [elementName isEqualToString:@"Fault"]) {
-		
-		[items addObject:item];
-		[item release];
-		item = nil;
-	}
-	else if([elementName isEqualToString:currentNodeName] && [elementName isEqualToString:@"Header"] == NO) {
-		
-		if (![elementName isEqualToString:@"NULL"]){
-			[item setValue:currentNodeContent forKey:elementName];
-			
-			[currentNodeContent release];
-			currentNodeContent = nil;
-			
-			[currentNodeName release];
-			currentNodeName = nil;
-		}
-	}
+    if ([elementName isEqualToString:@"CCYPairs"]) {
+        //SKIP
+        isCCYPair = NO;
+        [(LogInResult*)item setCCYPairs:arr];
+    }
+    
+    if (isCCYPair) {
+        [arr addObject:currentNodeContent];
+
+        [currentNodeContent release];
+        currentNodeContent = nil;
+    }else {
+        if([elementName isEqualToString:uri] || [elementName isEqualToString:@"Fault"]) {
+            
+            [items addObject:item];
+            [item release];
+            item = nil;
+        }else if([elementName isEqualToString:currentNodeName] && [elementName isEqualToString:@"Header"] == NO) {
+            
+            if (![elementName isEqualToString:@"NULL"]){
+                [item setValue:currentNodeContent forKey:elementName];
+                
+                [currentNodeContent release];
+                currentNodeContent = nil;
+                
+                [currentNodeName release];
+                currentNodeName = nil;
+            }
+        }
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
