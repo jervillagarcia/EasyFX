@@ -235,24 +235,21 @@
 	}
 }
 
-- (void)getBeneficiaries:(NSString*)contactId{
-	if ([self isConnectedToInternet:URL_STRING]) {
+- (void)getBeneficiaries{
+	if ([self isConnectedToInternet:HOST]) {
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
 		// Create the SOAP body 
 		[sRequest appendFormat:[self getStartHeader]];
-		[sRequest appendString:@"<sch:GetBeneficiaries>"];
-		[sRequest appendString:@"<sch:Contact_ID>"];
-		[sRequest appendString:contactId];
-		[sRequest appendString:@"</sch:Contact_ID>"];
-		[sRequest appendString:@"</sch:GetBeneficiaries>"];
-		[sRequest appendFormat:[self getEndHeader]];
+		[sRequest appendString:@"<sch:GetBeneficiaryList/>"];
+		[sRequest appendString:[self getEndHeader]];
 		
-		NSLog(@"Request: %@", sRequest);
-		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaries"] fromURI:@"Table" toObject:@"Beneficiary" parseError:nil];
+		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaries" isLogin:NO] fromURI:@"Table" toObject:@"Beneficiary" parseError:nil];
-		
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaryList" isLogin:NO] fromURI:@"BeneficiaryRec" toObject:@"BeneficiaryRec" parseError:nil];
+        
+        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+        
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		

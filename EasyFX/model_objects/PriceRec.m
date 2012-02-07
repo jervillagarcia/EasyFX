@@ -21,4 +21,13 @@
 @synthesize openPrice;
     
 
+- (NSString*)getCurrencyYouBuy{
+	return [pair substringWithRange:NSMakeRange(0,3)];
+}
+
+- (NSString*)getCurrencyYouSell{
+	return [pair substringWithRange:NSMakeRange(3,3)];
+}
+
+
 @end

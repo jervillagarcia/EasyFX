@@ -407,6 +407,11 @@
 		D59F15B51473567B006946EE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F15B31473567B006946EE /* LoginViewController.m */; };
 		D59F15BC14735B58006946EE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D59F15BA14735B58006946EE /* LoginViewController.xib */; };
 		D59F15C514735D94006946EE /* UIViewControllerTextDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F15C414735D94006946EE /* UIViewControllerTextDelegate.m */; };
+		D5D4BE3114E0A2DD00C20A97 /* TransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */; };
+		D5D4BE3514E0A30300C20A97 /* TransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */; };
+		D5D4BE4214E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4114E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m */; };
+		D5D4BE4514E0B71F00C20A97 /* BeneficiaryRec.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4414E0B71F00C20A97 /* BeneficiaryRec.m */; };
+		D5D4BE4814E0B92600C20A97 /* StoredBeneficiaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4714E0B92600C20A97 /* StoredBeneficiaryTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -428,7 +433,7 @@
 		D514A33714D9148E00E1BEFE /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyTableViewCell.m; path = CustomCell/CurrencyTableViewCell.m; sourceTree = "<group>"; };
 		D514A33E14D91BEB00E1BEFE /* EasyFXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyFXNavigationController.h; path = CustomObjects/EasyFXNavigationController.h; sourceTree = "<group>"; };
 		D514A33F14D91BEB00E1BEFE /* EasyFXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyFXNavigationController.m; path = CustomObjects/EasyFXNavigationController.m; sourceTree = "<group>"; };
-		D514A34514D91DD000E1BEFE /* EasyFXNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; name = EasyFXNavigationBar.h; path = CustomObjects/EasyFXNavigationBar.h; sourceTree = "<group>"; };
+		D514A34514D91DD000E1BEFE /* EasyFXNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyFXNavigationBar.h; path = CustomObjects/EasyFXNavigationBar.h; sourceTree = "<group>"; };
 		D514A34614D91DD000E1BEFE /* EasyFXNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyFXNavigationBar.m; path = CustomObjects/EasyFXNavigationBar.m; sourceTree = "<group>"; };
 		D51AD05A14D78D3F000EB3BF /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		D51AD05B14D78D3F000EB3BF /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -840,6 +845,15 @@
 		D59F15BB14735B58006946EE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoginViewController.xib; sourceTree = "<group>"; };
 		D59F15C314735D94006946EE /* UIViewControllerTextDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewControllerTextDelegate.h; path = class/UIViewControllerTextDelegate.h; sourceTree = "<group>"; };
 		D59F15C414735D94006946EE /* UIViewControllerTextDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewControllerTextDelegate.m; path = class/UIViewControllerTextDelegate.m; sourceTree = "<group>"; };
+		D5D4BE2F14E0A2DD00C20A97 /* TransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionDetailViewController.h; path = class/ViewControllers/TransactionDetailViewController.h; sourceTree = "<group>"; };
+		D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionDetailViewController.m; path = class/ViewControllers/TransactionDetailViewController.m; sourceTree = "<group>"; };
+		D5D4BE3414E0A30300C20A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TransactionDetailViewController.xib; sourceTree = "<group>"; };
+		D5D4BE4014E0B61F00C20A97 /* StoredBeneficiaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoredBeneficiaryTableViewCell.h; path = CustomCell/StoredBeneficiaryTableViewCell.h; sourceTree = "<group>"; };
+		D5D4BE4114E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoredBeneficiaryTableViewCell.m; path = CustomCell/StoredBeneficiaryTableViewCell.m; sourceTree = "<group>"; };
+		D5D4BE4314E0B71F00C20A97 /* BeneficiaryRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeneficiaryRec.h; path = model_objects/BeneficiaryRec.h; sourceTree = "<group>"; };
+		D5D4BE4414E0B71F00C20A97 /* BeneficiaryRec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeneficiaryRec.m; path = model_objects/BeneficiaryRec.m; sourceTree = "<group>"; };
+		D5D4BE4614E0B92500C20A97 /* StoredBeneficiaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = StoredBeneficiaryTableViewController.h; path = class/ViewControllers/StoredBeneficiaryTableViewController.h; sourceTree = "<group>"; };
+		D5D4BE4714E0B92600C20A97 /* StoredBeneficiaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoredBeneficiaryTableViewController.m; path = class/ViewControllers/StoredBeneficiaryTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -874,6 +888,8 @@
 			children = (
 				D514A33614D9148E00E1BEFE /* CurrencyTableViewCell.h */,
 				D514A33714D9148E00E1BEFE /* CurrencyTableViewCell.m */,
+				D5D4BE4014E0B61F00C20A97 /* StoredBeneficiaryTableViewCell.h */,
+				D5D4BE4114E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -885,6 +901,8 @@
 				D51AD08C14D7A824000EB3BF /* LogInResult.m */,
 				D514A32914D90DB600E1BEFE /* PriceRec.h */,
 				D514A32A14D90DB600E1BEFE /* PriceRec.m */,
+				D5D4BE4314E0B71F00C20A97 /* BeneficiaryRec.h */,
+				D5D4BE4414E0B71F00C20A97 /* BeneficiaryRec.m */,
 			);
 			name = "model objects";
 			sourceTree = "<group>";
@@ -1335,6 +1353,7 @@
 				D5792190147DCB7C00005E85 /* CurrencyViewController.xib */,
 				D5792195147DCF6900005E85 /* StoredBeneficiaryViewController.xib */,
 				D579219A147DD1F500005E85 /* ExistingBeneficiaryViewController.xib */,
+				D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */,
 			);
 			name = en.lproj;
 			sourceTree = "<group>";
@@ -1379,6 +1398,10 @@
 				D59F1585147353B3006946EE /* RootViewController.m */,
 				D514A31314D8F8EE00E1BEFE /* CurrencyViewController.h */,
 				D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */,
+				D5D4BE2F14E0A2DD00C20A97 /* TransactionDetailViewController.h */,
+				D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */,
+				D5D4BE4614E0B92500C20A97 /* StoredBeneficiaryTableViewController.h */,
+				D5D4BE4714E0B92600C20A97 /* StoredBeneficiaryTableViewController.m */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -1888,6 +1911,7 @@
 				D5792196147DCF6900005E85 /* StoredBeneficiaryViewController.xib in Resources */,
 				D5792199147DD08D00005E85 /* StoredBeneficiaryTableViewCell.xib in Resources */,
 				D579219B147DD1F500005E85 /* ExistingBeneficiaryViewController.xib in Resources */,
+				D5D4BE3514E0A30300C20A97 /* TransactionDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1942,6 +1966,10 @@
 				D514A33814D9148E00E1BEFE /* CurrencyTableViewCell.m in Sources */,
 				D514A34014D91BEC00E1BEFE /* EasyFXNavigationController.m in Sources */,
 				D514A34714D91DD000E1BEFE /* EasyFXNavigationBar.m in Sources */,
+				D5D4BE3114E0A2DD00C20A97 /* TransactionDetailViewController.m in Sources */,
+				D5D4BE4214E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m in Sources */,
+				D5D4BE4514E0B71F00C20A97 /* BeneficiaryRec.m in Sources */,
+				D5D4BE4814E0B92600C20A97 /* StoredBeneficiaryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2010,6 +2038,14 @@
 				D59F15BB14735B58006946EE /* en */,
 			);
 			name = LoginViewController.xib;
+			sourceTree = "<group>";
+		};
+		D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5D4BE3414E0A30300C20A97 /* en */,
+			);
+			name = TransactionDetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

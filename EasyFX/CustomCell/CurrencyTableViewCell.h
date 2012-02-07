@@ -16,6 +16,7 @@
     IBOutlet UIImageView *imgFrom;
     IBOutlet UIImageView *imgTo;
     IBOutlet UILabel *lblPrice;
+    UIViewController *fromController;
 }
 
 @property(nonatomic, retain) UILabel *curFrom;
@@ -24,6 +25,7 @@
 @property(nonatomic, retain) UIImageView *imgTo;
 @property(nonatomic, retain) UILabel *lblPrice;
 
-- (void)setCurrencyPair:(PriceRec*)priceRec;
+- (void)setCurrencyPair:(PriceRec*)priceRec fromController:(UIViewController*)viewController;
+- (IBAction)btnBuyClick:(id)sender;
 
 @end

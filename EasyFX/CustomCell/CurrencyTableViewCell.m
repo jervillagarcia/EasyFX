@@ -7,6 +7,7 @@
 //
 
 #import "CurrencyTableViewCell.h"
+#import "TransactionDetailViewController.h"
 
 @implementation CurrencyTableViewCell
 
@@ -15,7 +16,6 @@
 @synthesize imgFrom;
 @synthesize imgTo;
 @synthesize lblPrice;
-
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -33,8 +33,10 @@
     // Configure the view for the selected state
 }
 
-- (void)setCurrencyPair:(PriceRec*)priceRec {
+- (void)setCurrencyPair:(PriceRec*)priceRec fromController:(UIViewController*)viewController{
     currencyPair = priceRec;
+
+	fromController = viewController;
 
 	[curFrom	setText:[currencyPair.pair substringWithRange:NSMakeRange(0,3)]];
 	[imgFrom	setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) curFrom.text]]];
@@ -45,5 +47,12 @@
 	[lblPrice	setText:[NSString stringWithFormat:@"%.4f",[currencyPair.ask floatValue]]];
 
 }
+
+- (IBAction)btnBuyClick:(id)sender {
+    TransactionDetailViewController *viewController = [[TransactionDetailViewController alloc] initWithNibName:@"TransactionDetailViewController" bundle:nil price:currencyPair];
+    [fromController.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
+}
+
 
 @end

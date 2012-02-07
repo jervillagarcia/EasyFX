@@ -9,6 +9,7 @@
 #import "CurrencyViewController.h"
 #import "WebServiceFactory.h"
 #import "CurrencyTableViewCell.h"
+#import "TransactionDetailViewController.h"
 
 @implementation CurrencyViewController
 
@@ -122,7 +123,7 @@
             }
         }
     }
-    [cell setCurrencyPair:(PriceRec *)[currencyList objectAtIndex:indexPath.row]];
+    [cell setCurrencyPair:(PriceRec *)[currencyList objectAtIndex:indexPath.row] fromController:self];
     return cell;		
 }
 
@@ -238,7 +239,7 @@
 }
 
 #pragma mark Actions (Button)
--(IBAction) backAction:(id)sender {
+- (IBAction) backAction:(id)sender {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     WebServiceFactory *ws = [[WebServiceFactory alloc] init];
     
@@ -252,7 +253,7 @@
 
 }
 
--(IBAction) editAction:(id)sender {
+- (IBAction) editAction:(id)sender {
     [table setEditing:YES animated:YES];
     
 }

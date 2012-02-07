@@ -32,5 +32,7 @@
 @property(nonatomic, retain) NSString *lastPrice;
 @property(nonatomic, retain) NSString *openPrice;
 
+- (NSString*)getCurrencyYouBuy;
+- (NSString*)getCurrencyYouSell;
 
 @end
