@@ -421,6 +421,11 @@
 		D5D4BE4214E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4114E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m */; };
 		D5D4BE4514E0B71F00C20A97 /* BeneficiaryRec.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4414E0B71F00C20A97 /* BeneficiaryRec.m */; };
 		D5D4BE4814E0B92600C20A97 /* StoredBeneficiaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4714E0B92600C20A97 /* StoredBeneficiaryTableViewController.m */; };
+		D5D5491314E3C47700CA6E83 /* ExistingBeneficiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D5491214E3C47700CA6E83 /* ExistingBeneficiaryViewController.m */; };
+		D5D5491714E3CC7700CA6E83 /* CardRec.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D5491614E3CC7700CA6E83 /* CardRec.m */; };
+		D5D5491A14E3CD7600CA6E83 /* CardListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D5491814E3CD7600CA6E83 /* CardListViewController.xib */; };
+		D5D5491D14E3CDFE00CA6E83 /* CardListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D5491C14E3CDFE00CA6E83 /* CardListViewController.m */; };
+		D5D5492514E3D44C00CA6E83 /* EasyFXTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D5492414E3D44C00CA6E83 /* EasyFXTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -872,6 +877,15 @@
 		D5D4BE4414E0B71F00C20A97 /* BeneficiaryRec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeneficiaryRec.m; path = model_objects/BeneficiaryRec.m; sourceTree = "<group>"; };
 		D5D4BE4614E0B92500C20A97 /* StoredBeneficiaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoredBeneficiaryTableViewController.h; path = class/ViewControllers/StoredBeneficiaryTableViewController.h; sourceTree = "<group>"; };
 		D5D4BE4714E0B92600C20A97 /* StoredBeneficiaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoredBeneficiaryTableViewController.m; path = class/ViewControllers/StoredBeneficiaryTableViewController.m; sourceTree = "<group>"; };
+		D5D5491114E3C47700CA6E83 /* ExistingBeneficiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExistingBeneficiaryViewController.h; path = class/ViewControllers/ExistingBeneficiaryViewController.h; sourceTree = "<group>"; };
+		D5D5491214E3C47700CA6E83 /* ExistingBeneficiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExistingBeneficiaryViewController.m; path = class/ViewControllers/ExistingBeneficiaryViewController.m; sourceTree = "<group>"; };
+		D5D5491514E3CC7700CA6E83 /* CardRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardRec.h; path = model_objects/CardRec.h; sourceTree = "<group>"; };
+		D5D5491614E3CC7700CA6E83 /* CardRec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardRec.m; path = model_objects/CardRec.m; sourceTree = "<group>"; };
+		D5D5491914E3CD7600CA6E83 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CardListViewController.xib; sourceTree = "<group>"; };
+		D5D5491B14E3CDFD00CA6E83 /* CardListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardListViewController.h; path = class/ViewControllers/CardListViewController.h; sourceTree = "<group>"; };
+		D5D5491C14E3CDFE00CA6E83 /* CardListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardListViewController.m; path = class/ViewControllers/CardListViewController.m; sourceTree = "<group>"; };
+		D5D5492314E3D44C00CA6E83 /* EasyFXTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EasyFXTextField.h; sourceTree = "<group>"; };
+		D5D5492414E3D44C00CA6E83 /* EasyFXTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -921,6 +935,8 @@
 				D514A32A14D90DB600E1BEFE /* PriceRec.m */,
 				D5D4BE4314E0B71F00C20A97 /* BeneficiaryRec.h */,
 				D5D4BE4414E0B71F00C20A97 /* BeneficiaryRec.m */,
+				D5D5491514E3CC7700CA6E83 /* CardRec.h */,
+				D5D5491614E3CC7700CA6E83 /* CardRec.m */,
 			);
 			name = "model objects";
 			sourceTree = "<group>";
@@ -1375,6 +1391,7 @@
 				D5792195147DCF6900005E85 /* StoredBeneficiaryViewController.xib */,
 				D579219A147DD1F500005E85 /* ExistingBeneficiaryViewController.xib */,
 				D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */,
+				D5D5491814E3CD7600CA6E83 /* CardListViewController.xib */,
 			);
 			name = en.lproj;
 			sourceTree = "<group>";
@@ -1423,6 +1440,10 @@
 				D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */,
 				D5D4BE4614E0B92500C20A97 /* StoredBeneficiaryTableViewController.h */,
 				D5D4BE4714E0B92600C20A97 /* StoredBeneficiaryTableViewController.m */,
+				D5D5491114E3C47700CA6E83 /* ExistingBeneficiaryViewController.h */,
+				D5D5491214E3C47700CA6E83 /* ExistingBeneficiaryViewController.m */,
+				D5D5491B14E3CDFD00CA6E83 /* CardListViewController.h */,
+				D5D5491C14E3CDFE00CA6E83 /* CardListViewController.m */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -1476,6 +1497,8 @@
 		D59F15BF14735D11006946EE /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				D5D5492314E3D44C00CA6E83 /* EasyFXTextField.h */,
+				D5D5492414E3D44C00CA6E83 /* EasyFXTextField.m */,
 				D514A34514D91DD000E1BEFE /* EasyFXNavigationBar.h */,
 				D514A34614D91DD000E1BEFE /* EasyFXNavigationBar.m */,
 				D51AD07414D79952000EB3BF /* Reachability.h */,
@@ -1948,6 +1971,7 @@
 				D0890C1A14E1F42F0068AFA4 /* iphone4.png in Resources */,
 				D0890C1C14E1F4A50068AFA4 /* splash_screen2.png in Resources */,
 				D0890C2214E1F4EC0068AFA4 /* Default.png in Resources */,
+				D5D5491A14E3CD7600CA6E83 /* CardListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2006,6 +2030,10 @@
 				D5D4BE4214E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m in Sources */,
 				D5D4BE4514E0B71F00C20A97 /* BeneficiaryRec.m in Sources */,
 				D5D4BE4814E0B92600C20A97 /* StoredBeneficiaryTableViewController.m in Sources */,
+				D5D5491314E3C47700CA6E83 /* ExistingBeneficiaryViewController.m in Sources */,
+				D5D5491714E3CC7700CA6E83 /* CardRec.m in Sources */,
+				D5D5491D14E3CDFE00CA6E83 /* CardListViewController.m in Sources */,
+				D5D5492514E3D44C00CA6E83 /* EasyFXTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2082,6 +2110,14 @@
 				D5D4BE3414E0A30300C20A97 /* en */,
 			);
 			name = TransactionDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		D5D5491814E3CD7600CA6E83 /* CardListViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5D5491914E3CD7600CA6E83 /* en */,
+			);
+			name = CardListViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PriceRec.h"
+#import "UIViewControllerTextDelegate.h"
 
-
-@interface TransactionDetailViewController : UIViewController {
+@interface TransactionDetailViewController : UIViewControllerTextDelegate {
     IBOutlet UITextField *txtCurYouBuy;    
     IBOutlet UITextField *txtAmtToBuy;
     IBOutlet UITextField *txtCalcRate;

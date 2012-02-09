@@ -98,13 +98,13 @@
 //	EasyFXAppDelegate *appDelegate = (EasyFXAppDelegate *)[[UIApplication sharedApplication] delegate];
 //	[(EasyFXWindow*)appDelegate.window keyboardWillShow];
 	
-//	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
 	return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-//	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	return YES;
 }
 @end

@@ -1,22 +1,20 @@
 //
-//  StoreBeneficiaryTableViewController.m
+//  CardListViewController.m
 //  EasyFX
 //
-//  Created by Errol on 2/7/12.
+//  Created by Errol on 2/9/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "StoredBeneficiaryTableViewController.h"
-#import "WebServiceFactory.h"
-#import "BeneficiaryRec.h"
-#import "StoredBeneficiaryTableViewCell.h"
-#import "ExistingBeneficiaryViewController.h"
+#import "CardListViewController.h"
 #import "Utils.h"
+#import "WebServiceFactory.h"
+#import "CardRec.h"
 
-@implementation StoredBeneficiaryTableViewController
+@implementation CardListViewController
 
 @synthesize table;
-@synthesize beneficiaryList;
+@synthesize cardsList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,11 +42,12 @@
 }
 */
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+/*
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSelector:@selector(fetchBeneficiaries)];
+    [self performSelector:@selector(fetchCards)];
 }
 
 - (void)viewDidUnload
@@ -82,7 +81,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [beneficiaryList count];
+    return [cardsList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,25 +90,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"StoredBeneficiaryCell";
-    NSString *nibName = @"StoredBeneficiaryTableViewCell";
+    static NSString *CellIdentifier = @"cardCell";
     
-    StoredBeneficiaryTableViewCell *cell = (StoredBeneficiaryTableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil){
-        NSLog(@"New Cell Made");
-        
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
-        
-        for(id currentObject in topLevelObjects)
-        {
-            if([currentObject isKindOfClass:[StoredBeneficiaryTableViewCell class]])
-            {
-                cell = (StoredBeneficiaryTableViewCell *)currentObject;
-                break;
-            }
-        }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    [cell setBeneficiary:(BeneficiaryRec *)[beneficiaryList objectAtIndex:indexPath.row]];
+
+    [cell setOpaque:NO];
+    [cell.textLabel setTextColor:[UIColor colorWithRed:20.0 green:108.0 blue:156.0 alpha:1]];
+    [cell.textLabel setText:[(CardRec*)[cardsList objectAtIndex:indexPath.row] name]];
+    [cell.detailTextLabel setText:[(CardRec*)[cardsList objectAtIndex:indexPath.row] cardNumber]];
     return cell;		
 }
 
@@ -156,21 +147,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     ExistingBeneficiaryViewController *detailViewController = [[ExistingBeneficiaryViewController alloc] initWithNibName:@"ExistingBeneficiaryViewController" bundle:nil beneficiaryRec:(BeneficiaryRec *)[beneficiaryList objectAtIndex:indexPath.row]];
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
+/*
+    ExistingBeneficiaryViewController *detailViewController = [[ExistingBeneficiaryViewController alloc] initWithNibName:@"ExistingBeneficiaryViewController" bundle:nil beneficiaryRec:(BeneficiaryRec *)[beneficiaryList objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+ */
 }
 
 
--(void)fetchBeneficiaries {
+-(void)fetchCards {
     //    [NSThread detachNewThreadSelector:@selector(showActivity) toTarget:self withObject:nil];
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     WebServiceFactory *ws = [[WebServiceFactory alloc] init];
     
-    [ws getBeneficiaries];
+    [ws getCardsList];
     
-    [beneficiaryList release];
-    beneficiaryList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+    [cardsList release];
+    cardsList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
 	
     //    if([ws.wsResponse count] > 0) { 
     //        if (([ws.wsResponse count] == 1) && [[ws.wsResponse objectAtIndex:0] isKindOfClass:[Fault class]]) {

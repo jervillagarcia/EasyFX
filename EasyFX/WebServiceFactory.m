@@ -258,23 +258,21 @@
 	}
 }
 
-- (void)getBeneficiaryDetails:(NSString*)beneficiaryId
-{
-	if ([self isConnectedToInternet:URL_STRING]) {
+- (void)getCardsList{
+	if ([self isConnectedToInternet:HOST]) {
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
 		// Create the SOAP body 
 		[sRequest appendFormat:[self getStartHeader]];
-		[sRequest appendString:@"<sch:GetBeneficiaryDetails>"];
-		[sRequest appendString:@"<sch:BeneficiaryID>"];
-		[sRequest appendString:beneficiaryId];
-		[sRequest appendString:@"</sch:BeneficiaryID>"];
-		[sRequest appendString:@"</sch:GetBeneficiaryDetails>"];
-		[sRequest appendFormat:[self getEndHeader]];
+		[sRequest appendString:@"<sch:GetCardList/>"];
+		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaryDetails"] fromURI:@"Table" toObject:@"BeneficiaryDetail" parseError:nil];
+		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaryDetails" isLogin:NO] fromURI:@"Table" toObject:@"BeneficiaryDetail" parseError:nil];
-		
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetCardList" isLogin:NO] fromURI:@"CardRec" toObject:@"CardRec" parseError:nil];
+        
+        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+        
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		
@@ -283,139 +281,164 @@
 	}
 }
 
-
-- (void)makeDeal:(NSString*)contactId 
-		strVendorTxCode:(NSString*)vendorTxCode
-		paymentDetailsId:(NSString*)paymentDetailsId
-		strCV2:(NSString*)cvv
-		sExpiryDate:(NSString*)expiryDate
-		sStartDate:(NSString*)startDate
-		sIssueNumber:(NSString*)issueNo
-		clientRate:(NSString*)clientRate
-		sCurBought:(NSString*)currBought
-	    amtBought:(NSString*)amtBought
-		sCurSold:(NSString*)currSold
-		amtSold:(NSString*)amtSold
-		beneficiaryId:(NSString*)beneficiaryId
-		sYourReference:(NSString*)youReference
-		sFurtherDetails:(NSString*)furtherDetails
-{
-	if ([self isConnectedToInternet:URL_STRING]) {
-		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
-		// Create the SOAP body 
-		[sRequest appendFormat:[self getStartHeader]];
-		[sRequest appendString:@"<sch:MakeDeal>"];
-		[sRequest appendString:@"<sch:Contact_ID>"];
-		[sRequest appendString:contactId];
-		[sRequest appendString:@"</sch:Contact_ID>"];
-		[sRequest appendString:@"<sch:strVendorTxCode>"];
-		[sRequest appendString:vendorTxCode];
-		[sRequest appendString:@"</sch:strVendorTxCode>"];
-		[sRequest appendString:@"<sch:PaymentDetailsID>"];
-		[sRequest appendString:paymentDetailsId];
-		[sRequest appendString:@"</sch:PaymentDetailsID>"];
-		[sRequest appendString:@"<sch:strCV2>"];
-		[sRequest appendString:cvv];
-		[sRequest appendString:@"</sch:strCV2>"];	
-		[sRequest appendString:@"<sch:sExpiryDate>"];
-		[sRequest appendString:expiryDate];
-		[sRequest appendString:@"</sch:sExpiryDate>"];
-		[sRequest appendString:@"<sch:sStartDate>"];
-		[sRequest appendString:startDate];
-		[sRequest appendString:@"</sch:sStartDate>"];	
-		[sRequest appendString:@"<sch:sIssueNumber>"];
-		[sRequest appendString:issueNo];
-		[sRequest appendString:@"</sch:sIssueNumber>"];
-		[sRequest appendString:@"<sch:ClientRate>"];
-		[sRequest appendString:clientRate];
-		[sRequest appendString:@"</sch:ClientRate>"];
-		[sRequest appendString:@"<sch:sCurBought>"];
-		[sRequest appendString:currBought];
-		[sRequest appendString:@"</sch:sCurBought>"];
-		[sRequest appendString:@"<sch:AmtBought>"];
-		[sRequest appendString:amtBought];
-		[sRequest appendString:@"</sch:AmtBought>"];	
-		[sRequest appendString:@"<sch:sCurSold>"];
-		[sRequest appendString:currSold];
-		[sRequest appendString:@"</sch:sCurSold>"];
-		[sRequest appendString:@"<sch:AmtSold>"];
-		[sRequest appendString:amtSold];
-		[sRequest appendString:@"</sch:AmtSold>"];
-		[sRequest appendString:@"<sch:BeneficiaryID>"];
-		[sRequest appendString:beneficiaryId];
-		[sRequest appendString:@"</sch:BeneficiaryID>"];
-		[sRequest appendString:@"<sch:sYourReference>"];
-		[sRequest appendString:youReference];
-		[sRequest appendString:@"</sch:sYourReference>"];
-		[sRequest appendString:@"<sch:sFurtherDetails>"];
-		[sRequest appendString:furtherDetails];
-		[sRequest appendString:@"</sch:sFurtherDetails>"];
-		[sRequest appendString:@"</sch:MakeDeal>"];
-		[sRequest appendFormat:[self getEndHeader]];
-		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeDeal"] fromURI:@"Table1" toObject:@"MakeDeal" parseError:nil];
-		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeDeal" isLogin:NO] fromURI:@"Table1" toObject:@"MakeDeal" parseError:nil];
-		
-		NSLog(@"%@", sRequest);
-		
-		[self.wsResponse release];
-		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
-		
-		[sRequest release];		
-		[xmlParser release];
-	}
-}
-
-- (void)getPaymentDetail:(NSString*)contactId
-{
-	if ([self isConnectedToInternet:URL_STRING]) {
-		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
-		// Create the SOAP body 
-		[sRequest appendFormat:[self getStartHeader]];
-		[sRequest appendString:@"<sch:GetPaymentDetail>"];
-		[sRequest appendString:@"<sch:Contact_ID>"];
-		[sRequest appendString:contactId];
-		[sRequest appendString:@"</sch:Contact_ID>"];
-		[sRequest appendString:@"</sch:GetPaymentDetail>"];
-		[sRequest appendFormat:[self getEndHeader]];
-		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetPaymentDetail"] fromURI:@"Table" toObject:@"PaymentDetail" parseError:nil];
-		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetPaymentDetail" isLogin:NO] fromURI:@"Table" toObject:@"PaymentDetail" parseError:nil];
-		
-		[self.wsResponse release];
-		self.wsResponse = [[NSMutableArray alloc] initWithArray:[xmlParser items]];
-		
-		[sRequest release];	
-		[xmlParser release];
-	}
-}
-
-- (void)getContactDetail:(NSString*)accountId
-{
-	if ([self isConnectedToInternet:URL_STRING]) {
-		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
-		// Create the SOAP body 
-		[sRequest appendFormat:[self getStartHeader]];
-		[sRequest appendString:@"<sch:GetContactDealingDetails>"];
-		[sRequest appendString:@"<sch:AccountID>"];
-		[sRequest appendString:accountId];
-		[sRequest appendString:@"</sch:AccountID>"];
-		[sRequest appendString:@"</sch:GetContactDealingDetails>"];
-		[sRequest appendFormat:[self getEndHeader]];
-		
-		//** MEMORY LEAK -->XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetContactDealingDetails"] fromURI:@"Table" toObject:@"ContactDealingDetail" parseError:nil];
-		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetContactDealingDetails" isLogin:NO] fromURI:@"Table" toObject:@"ContactDealingDetail" parseError:nil];
-		 
-		[self.wsResponse release];
-		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
-		
-		[sRequest release];	
-		[xmlParser release];
-	}
-}
+//- (void)getBeneficiaryDetails:(NSString*)beneficiaryId
+//{
+//	if ([self isConnectedToInternet:URL_STRING]) {
+//		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+//		// Create the SOAP body 
+//		[sRequest appendFormat:[self getStartHeader]];
+//		[sRequest appendString:@"<sch:GetBeneficiaryDetails>"];
+//		[sRequest appendString:@"<sch:BeneficiaryID>"];
+//		[sRequest appendString:beneficiaryId];
+//		[sRequest appendString:@"</sch:BeneficiaryID>"];
+//		[sRequest appendString:@"</sch:GetBeneficiaryDetails>"];
+//		[sRequest appendFormat:[self getEndHeader]];
+//		
+//		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaryDetails"] fromURI:@"Table" toObject:@"BeneficiaryDetail" parseError:nil];
+//		XmlParser *xmlParser = [[XmlParser alloc] init];
+//		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaryDetails" isLogin:NO] fromURI:@"Table" toObject:@"BeneficiaryDetail" parseError:nil];
+//		
+//		[self.wsResponse release];
+//		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+//		
+//		[sRequest release];	
+//		[xmlParser release];
+//	}
+//}
+//
+//
+//- (void)makeDeal:(NSString*)contactId 
+//		strVendorTxCode:(NSString*)vendorTxCode
+//		paymentDetailsId:(NSString*)paymentDetailsId
+//		strCV2:(NSString*)cvv
+//		sExpiryDate:(NSString*)expiryDate
+//		sStartDate:(NSString*)startDate
+//		sIssueNumber:(NSString*)issueNo
+//		clientRate:(NSString*)clientRate
+//		sCurBought:(NSString*)currBought
+//	    amtBought:(NSString*)amtBought
+//		sCurSold:(NSString*)currSold
+//		amtSold:(NSString*)amtSold
+//		beneficiaryId:(NSString*)beneficiaryId
+//		sYourReference:(NSString*)youReference
+//		sFurtherDetails:(NSString*)furtherDetails
+//{
+//	if ([self isConnectedToInternet:URL_STRING]) {
+//		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+//		// Create the SOAP body 
+//		[sRequest appendFormat:[self getStartHeader]];
+//		[sRequest appendString:@"<sch:MakeDeal>"];
+//		[sRequest appendString:@"<sch:Contact_ID>"];
+//		[sRequest appendString:contactId];
+//		[sRequest appendString:@"</sch:Contact_ID>"];
+//		[sRequest appendString:@"<sch:strVendorTxCode>"];
+//		[sRequest appendString:vendorTxCode];
+//		[sRequest appendString:@"</sch:strVendorTxCode>"];
+//		[sRequest appendString:@"<sch:PaymentDetailsID>"];
+//		[sRequest appendString:paymentDetailsId];
+//		[sRequest appendString:@"</sch:PaymentDetailsID>"];
+//		[sRequest appendString:@"<sch:strCV2>"];
+//		[sRequest appendString:cvv];
+//		[sRequest appendString:@"</sch:strCV2>"];	
+//		[sRequest appendString:@"<sch:sExpiryDate>"];
+//		[sRequest appendString:expiryDate];
+//		[sRequest appendString:@"</sch:sExpiryDate>"];
+//		[sRequest appendString:@"<sch:sStartDate>"];
+//		[sRequest appendString:startDate];
+//		[sRequest appendString:@"</sch:sStartDate>"];	
+//		[sRequest appendString:@"<sch:sIssueNumber>"];
+//		[sRequest appendString:issueNo];
+//		[sRequest appendString:@"</sch:sIssueNumber>"];
+//		[sRequest appendString:@"<sch:ClientRate>"];
+//		[sRequest appendString:clientRate];
+//		[sRequest appendString:@"</sch:ClientRate>"];
+//		[sRequest appendString:@"<sch:sCurBought>"];
+//		[sRequest appendString:currBought];
+//		[sRequest appendString:@"</sch:sCurBought>"];
+//		[sRequest appendString:@"<sch:AmtBought>"];
+//		[sRequest appendString:amtBought];
+//		[sRequest appendString:@"</sch:AmtBought>"];	
+//		[sRequest appendString:@"<sch:sCurSold>"];
+//		[sRequest appendString:currSold];
+//		[sRequest appendString:@"</sch:sCurSold>"];
+//		[sRequest appendString:@"<sch:AmtSold>"];
+//		[sRequest appendString:amtSold];
+//		[sRequest appendString:@"</sch:AmtSold>"];
+//		[sRequest appendString:@"<sch:BeneficiaryID>"];
+//		[sRequest appendString:beneficiaryId];
+//		[sRequest appendString:@"</sch:BeneficiaryID>"];
+//		[sRequest appendString:@"<sch:sYourReference>"];
+//		[sRequest appendString:youReference];
+//		[sRequest appendString:@"</sch:sYourReference>"];
+//		[sRequest appendString:@"<sch:sFurtherDetails>"];
+//		[sRequest appendString:furtherDetails];
+//		[sRequest appendString:@"</sch:sFurtherDetails>"];
+//		[sRequest appendString:@"</sch:MakeDeal>"];
+//		[sRequest appendFormat:[self getEndHeader]];
+//		
+//		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeDeal"] fromURI:@"Table1" toObject:@"MakeDeal" parseError:nil];
+//		XmlParser *xmlParser = [[XmlParser alloc] init];
+//		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeDeal" isLogin:NO] fromURI:@"Table1" toObject:@"MakeDeal" parseError:nil];
+//		
+//		NSLog(@"%@", sRequest);
+//		
+//		[self.wsResponse release];
+//		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+//		
+//		[sRequest release];		
+//		[xmlParser release];
+//	}
+//}
+//
+//- (void)getPaymentDetail:(NSString*)contactId
+//{
+//	if ([self isConnectedToInternet:URL_STRING]) {
+//		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+//		// Create the SOAP body 
+//		[sRequest appendFormat:[self getStartHeader]];
+//		[sRequest appendString:@"<sch:GetPaymentDetail>"];
+//		[sRequest appendString:@"<sch:Contact_ID>"];
+//		[sRequest appendString:contactId];
+//		[sRequest appendString:@"</sch:Contact_ID>"];
+//		[sRequest appendString:@"</sch:GetPaymentDetail>"];
+//		[sRequest appendFormat:[self getEndHeader]];
+//		
+//		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetPaymentDetail"] fromURI:@"Table" toObject:@"PaymentDetail" parseError:nil];
+//		XmlParser *xmlParser = [[XmlParser alloc] init];
+//		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetPaymentDetail" isLogin:NO] fromURI:@"Table" toObject:@"PaymentDetail" parseError:nil];
+//		
+//		[self.wsResponse release];
+//		self.wsResponse = [[NSMutableArray alloc] initWithArray:[xmlParser items]];
+//		
+//		[sRequest release];	
+//		[xmlParser release];
+//	}
+//}
+//
+//- (void)getContactDetail:(NSString*)accountId
+//{
+//	if ([self isConnectedToInternet:URL_STRING]) {
+//		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+//		// Create the SOAP body 
+//		[sRequest appendFormat:[self getStartHeader]];
+//		[sRequest appendString:@"<sch:GetContactDealingDetails>"];
+//		[sRequest appendString:@"<sch:AccountID>"];
+//		[sRequest appendString:accountId];
+//		[sRequest appendString:@"</sch:AccountID>"];
+//		[sRequest appendString:@"</sch:GetContactDealingDetails>"];
+//		[sRequest appendFormat:[self getEndHeader]];
+//		
+//		//** MEMORY LEAK -->XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetContactDealingDetails"] fromURI:@"Table" toObject:@"ContactDealingDetail" parseError:nil];
+//		XmlParser *xmlParser = [[XmlParser alloc] init];
+//		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetContactDealingDetails" isLogin:NO] fromURI:@"Table" toObject:@"ContactDealingDetail" parseError:nil];
+//		 
+//		[self.wsResponse release];
+//		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+//		
+//		[sRequest release];	
+//		[xmlParser release];
+//	}
+//}
 
 
 - (NSString*)getStartHeader {

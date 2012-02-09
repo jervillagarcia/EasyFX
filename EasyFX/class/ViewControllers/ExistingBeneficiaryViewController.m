@@ -1,30 +1,32 @@
 //
-//  TransactionDetailViewController.m
+//  ExistingBeneficiaryViewController.m
 //  EasyFX
 //
-//  Created by Errol on 2/7/12.
+//  Created by Errol on 2/9/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TransactionDetailViewController.h"
-#import "StoredBeneficiaryTableViewController.h"
+#import "ExistingBeneficiaryViewController.h"
 #import "Utils.h"
+#import "CardListViewController.h"
 
-@implementation TransactionDetailViewController
+@implementation ExistingBeneficiaryViewController
 
-@synthesize txtCurYouBuy;    
-@synthesize txtAmtToBuy;
-@synthesize txtCalcRate;
-@synthesize txtCurYouSell;
-@synthesize txtAmtToSell;
-@synthesize priceRec;
+@synthesize lblBeneficiaryName;
+@synthesize lblBeneficiaryAddress;
+@synthesize lblCountry;
+@synthesize imgCountry;
+@synthesize lblAcctNo;
+@synthesize lblBankName;
+@synthesize lblSwift;
+@synthesize lblIban;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil price:(PriceRec*)mPrice
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil beneficiaryRec:(BeneficiaryRec*)mBeneficiaryRec
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        priceRec = mPrice;
         // Custom initialization
+        beneficiaryRec = mBeneficiaryRec;
     }
     return self;
 }
@@ -46,22 +48,28 @@
 }
 */
 
+/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [txtCurYouBuy 	setText:[priceRec getCurrencyYouBuy]];
-    [txtCalcRate    setText:[priceRec ask]];
-    [txtCurYouSell  setText:[priceRec getCurrencyYouSell]];
-    
 }
+*/
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     [Utils setNavTitleImage:self];
-    
+
+    [lblBeneficiaryName         setText:beneficiaryRec.beneficiaryName];
+    [lblBeneficiaryAddress      setText:beneficiaryRec.getBankAddress];
+    [imgCountry                 setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) [beneficiaryRec countryCode]]]];
+    [lblCountry                 setText:beneficiaryRec.countryCode];
+    [lblAcctNo                  setText:beneficiaryRec.accountNumber];
+    [lblBankName                setText:beneficiaryRec.bankName];
+    [lblSwift                   setText:beneficiaryRec.sWIFTBIC];
+    [lblIban                    setText:beneficiaryRec.iBAN];
+
 }
 
 - (void)viewDidUnload
@@ -77,9 +85,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma Action Methods
 - (IBAction)next:(id)sender {
-    StoredBeneficiaryTableViewController *viewController = [[StoredBeneficiaryTableViewController alloc] initWithNibName:@"StoredBeneficiaryViewController" bundle:nil];
+    CardListViewController *viewController = [[CardListViewController alloc] initWithNibName:@"CardListViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
 }
