@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import "WebServiceFactory.h"
 #import "CardRec.h"
+#import "CardDetailViewController.h"
 
 @implementation CardListViewController
 
@@ -147,11 +148,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-/*
-    ExistingBeneficiaryViewController *detailViewController = [[ExistingBeneficiaryViewController alloc] initWithNibName:@"ExistingBeneficiaryViewController" bundle:nil beneficiaryRec:(BeneficiaryRec *)[beneficiaryList objectAtIndex:indexPath.row]];
+    CardDetailViewController *detailViewController = [[CardDetailViewController alloc] initWithNibName:@"CardDetailViewController" bundle:nil cardRec:(CardRec *)[cardsList objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
- */
 }
 
 

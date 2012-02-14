@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        cardRec = mCardRec;
     }
     return self;
 }
@@ -46,19 +47,30 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [txtCardMemberName      setText:cardRec.name];
+    [txtAddressLine1        setText:cardRec.address1];
+    [txtCardNumber          setText:cardRec.cardNumber];
+    [txtExpiryDate          setText:cardRec.expiryDate];
+    [txtStartDate           setText:cardRec.startDate];
 }
-*/
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [Utils setNavTitleImage:self];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
