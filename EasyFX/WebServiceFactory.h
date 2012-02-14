@@ -22,26 +22,8 @@
 - (void)logOut;
 - (void)getBeneficiaries;
 - (void)getCardsList;
-//- (void)getBeneficiaryDetails:(NSString*)beneficiaryId;
-//- (void)makeDeal:(NSString*)contactId 
-// strVendorTxCode:(NSString*)vendorTxCode
-//paymentDetailsId:(NSString*)paymentDetailsId
-//		  strCV2:(NSString*)cvv
-//	 sExpiryDate:(NSString*)expiryDate
-//	  sStartDate:(NSString*)startDate
-//	sIssueNumber:(NSString*)issueNo
-//	  clientRate:(NSString*)clientRate
-//	  sCurBought:(NSString*)currBought
-//	   amtBought:(NSString*)amtBought
-//		sCurSold:(NSString*)currSold
-//		 amtSold:(NSString*)amtSold
-//   beneficiaryId:(NSString*)beneficiaryId
-//  sYourReference:(NSString*)youReference
-// sFurtherDetails:(NSString*)furtherDetails;
-//- (void)getPaymentDetail:(NSString*)contactId;
-//- (void)getContactDetail:(NSString*)accountId;
+- (void)setCCYList:(NSArray*)ccyList;
 
-//- (NSString*)giveHostDomain;
 - (NSString*)getStartHeader;
 - (NSString*)getEndHeader;
 
