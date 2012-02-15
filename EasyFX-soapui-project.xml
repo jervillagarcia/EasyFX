@@ -1,0 +1,1615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="EasyFX" resourceRoot="" soapui-version="4.0.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="EWSClassSoap" type="wsdl" bindingName="{http://voltrexfx.com/webservices/}EWSClassSoap" soapVersion="1_1" anonymous="optional" definition="http://www.voltrexfx.com/easyws/ews.asmx?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://www.voltrexfx.com/easyws/ews.asmx?wsdl"><con:part><con:url>http://www.voltrexfx.com/easyws/ews.asmx?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://voltrexfx.com/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://voltrexfx.com/webservices/" xmlns:s1="http://voltrexfx.com/webservices/AbstractTypes" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://voltrexfx.com/webservices/">
+      <s:element name="LogIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parameters" type="tns:LogInElement"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LogInElement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LogInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogInResult" type="tns:LoginResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Fee" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CCYPairs" type="tns:ArrayOfString"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LogOut">
+        <s:complexType/>
+      </s:element>
+      <s:element name="LogOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogOutResult" type="tns:ResultElement"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultElement">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetCurrencyList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CCYPairs" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCurrencyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetCurrencyListResult" type="tns:ResultElement"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrencyList">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetCurrencyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyListResult" type="tns:CurrencyListResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CurrencyListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Prices" type="tns:ArrayOfPriceRec"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPriceRec">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PriceRec" nillable="true" type="tns:PriceRec"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PriceRec">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Pair" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Bid" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Ask" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastBid" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastAsk" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OpenPrice" type="s:double"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrencyPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CCYPair" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrencyPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyPriceResult" type="tns:PriceResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PriceResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Pair" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Bid" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Ask" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastBid" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastAsk" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OpenPrice" type="s:double"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBeneficiaryList">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetBeneficiaryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBeneficiaryListResult" type="tns:BeneficiaryListResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BeneficiaryListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Beneficiaries" type="tns:ArrayOfBeneficiaryRec"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBeneficiaryRec">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BeneficiaryRec" nillable="true" type="tns:BeneficiaryRec"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BeneficiaryRec">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BeneficiaryName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BankAddress1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BankAddress2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BankAddress3" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SWIFTBIC" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IBAN" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Reference1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Reference2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Reference3" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddBeneficiary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CCY" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="BankAddress1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="BankAddress2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="BankAddress3" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="SortCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="SwiftCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="IBAN" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reference1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reference2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reference3" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBeneficiaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBeneficiaryResult" type="tns:ResultElement"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardList">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetCardListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardListResult" type="tns:CardListResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CardListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Cards" type="tns:ArrayOfCardRec"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCardRec">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardRec" nillable="true" type="tns:CardRec"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CardRec">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CVV" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IssueNumber" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ExpiryDate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CVV" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="IssueNumber" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ExpiryDate" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddCardResult" type="tns:ResultElement"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeADeal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CardID" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CVV" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="Rate" type="s:double"/>
+            <s:element minOccurs="0" maxOccurs="1" name="BuyCCY" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="BuyAmount" type="s:double"/>
+            <s:element minOccurs="0" maxOccurs="1" name="SellCCY" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="SellAmount" type="s:double"/>
+            <s:element minOccurs="1" maxOccurs="1" name="PayeeID" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeADealResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeADealResult" type="tns:DealResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DealResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DealNumber" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ResultElement" nillable="true" type="tns:ResultElement"/>
+      <s:element name="CurrencyListResult" nillable="true" type="tns:CurrencyListResult"/>
+      <s:element name="PriceResult" nillable="true" type="tns:PriceResult"/>
+      <s:element name="BeneficiaryListResult" nillable="true" type="tns:BeneficiaryListResult"/>
+      <s:element name="CardListResult" nillable="true" type="tns:CardListResult"/>
+      <s:element name="DealResult" nillable="true" type="tns:DealResult"/>
+    </s:schema>
+    <s:schema targetNamespace="http://voltrexfx.com/webservices/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string"/>
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LogInSoapIn">
+    <wsdl:part name="parameters" element="tns:LogIn"/>
+  </wsdl:message>
+  <wsdl:message name="LogInSoapOut">
+    <wsdl:part name="parameters" element="tns:LogInResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapIn">
+    <wsdl:part name="parameters" element="tns:LogOut"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogOutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetCurrencyListSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCurrencyList"/>
+  </wsdl:message>
+  <wsdl:message name="SetCurrencyListSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCurrencyListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencyList"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrencyListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencyPrice"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrencyPriceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetBeneficiaryListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBeneficiaryList"/>
+  </wsdl:message>
+  <wsdl:message name="GetBeneficiaryListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBeneficiaryListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiarySoapIn">
+    <wsdl:part name="parameters" element="tns:AddBeneficiary"/>
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiarySoapOut">
+    <wsdl:part name="parameters" element="tns:AddBeneficiaryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCardListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCardList"/>
+  </wsdl:message>
+  <wsdl:message name="GetCardListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCardListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddCardSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCard"/>
+  </wsdl:message>
+  <wsdl:message name="AddCardSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCardResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MakeADealSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeADeal"/>
+  </wsdl:message>
+  <wsdl:message name="MakeADealSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeADealResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpGetIn"/>
+  <wsdl:message name="LogOutHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="SetCurrencyListHttpGetIn">
+    <wsdl:part name="CCYPairs" type="s1:StringArray"/>
+  </wsdl:message>
+  <wsdl:message name="SetCurrencyListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListHttpGetIn"/>
+  <wsdl:message name="GetCurrencyListHttpGetOut">
+    <wsdl:part name="Body" element="tns:CurrencyListResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpGetIn">
+    <wsdl:part name="CCYPair" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpGetOut">
+    <wsdl:part name="Body" element="tns:PriceResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetBeneficiaryListHttpGetIn"/>
+  <wsdl:message name="GetBeneficiaryListHttpGetOut">
+    <wsdl:part name="Body" element="tns:BeneficiaryListResult"/>
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpGetIn">
+    <wsdl:part name="Name" type="s:string"/>
+    <wsdl:part name="CCY" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="BankName" type="s:string"/>
+    <wsdl:part name="BankAddress1" type="s:string"/>
+    <wsdl:part name="BankAddress2" type="s:string"/>
+    <wsdl:part name="BankAddress3" type="s:string"/>
+    <wsdl:part name="SortCode" type="s:string"/>
+    <wsdl:part name="AccountNumber" type="s:string"/>
+    <wsdl:part name="SwiftCode" type="s:string"/>
+    <wsdl:part name="IBAN" type="s:string"/>
+    <wsdl:part name="Reference1" type="s:string"/>
+    <wsdl:part name="Reference2" type="s:string"/>
+    <wsdl:part name="Reference3" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="GetCardListHttpGetIn"/>
+  <wsdl:message name="GetCardListHttpGetOut">
+    <wsdl:part name="Body" element="tns:CardListResult"/>
+  </wsdl:message>
+  <wsdl:message name="AddCardHttpGetIn">
+    <wsdl:part name="CardNumber" type="s:string"/>
+    <wsdl:part name="CVV" type="s:string"/>
+    <wsdl:part name="StartDate" type="s:string"/>
+    <wsdl:part name="IssueNumber" type="s:string"/>
+    <wsdl:part name="ExpiryDate" type="s:string"/>
+    <wsdl:part name="Name" type="s:string"/>
+    <wsdl:part name="Address1" type="s:string"/>
+    <wsdl:part name="Address2" type="s:string"/>
+    <wsdl:part name="Address3" type="s:string"/>
+    <wsdl:part name="PostCode" type="s:string"/>
+    <wsdl:part name="CountryCode" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddCardHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="MakeADealHttpGetIn">
+    <wsdl:part name="CardID" type="s:string"/>
+    <wsdl:part name="CVV" type="s:string"/>
+    <wsdl:part name="Rate" type="s:string"/>
+    <wsdl:part name="BuyCCY" type="s:string"/>
+    <wsdl:part name="BuyAmount" type="s:string"/>
+    <wsdl:part name="SellCCY" type="s:string"/>
+    <wsdl:part name="SellAmount" type="s:string"/>
+    <wsdl:part name="PayeeID" type="s:string"/>
+    <wsdl:part name="Reference" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MakeADealHttpGetOut">
+    <wsdl:part name="Body" element="tns:DealResult"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpPostIn"/>
+  <wsdl:message name="LogOutHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="SetCurrencyListHttpPostIn">
+    <wsdl:part name="CCYPairs" type="s1:StringArray"/>
+  </wsdl:message>
+  <wsdl:message name="SetCurrencyListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListHttpPostIn"/>
+  <wsdl:message name="GetCurrencyListHttpPostOut">
+    <wsdl:part name="Body" element="tns:CurrencyListResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpPostIn">
+    <wsdl:part name="CCYPair" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpPostOut">
+    <wsdl:part name="Body" element="tns:PriceResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetBeneficiaryListHttpPostIn"/>
+  <wsdl:message name="GetBeneficiaryListHttpPostOut">
+    <wsdl:part name="Body" element="tns:BeneficiaryListResult"/>
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpPostIn">
+    <wsdl:part name="Name" type="s:string"/>
+    <wsdl:part name="CCY" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="BankName" type="s:string"/>
+    <wsdl:part name="BankAddress1" type="s:string"/>
+    <wsdl:part name="BankAddress2" type="s:string"/>
+    <wsdl:part name="BankAddress3" type="s:string"/>
+    <wsdl:part name="SortCode" type="s:string"/>
+    <wsdl:part name="AccountNumber" type="s:string"/>
+    <wsdl:part name="SwiftCode" type="s:string"/>
+    <wsdl:part name="IBAN" type="s:string"/>
+    <wsdl:part name="Reference1" type="s:string"/>
+    <wsdl:part name="Reference2" type="s:string"/>
+    <wsdl:part name="Reference3" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddBeneficiaryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="GetCardListHttpPostIn"/>
+  <wsdl:message name="GetCardListHttpPostOut">
+    <wsdl:part name="Body" element="tns:CardListResult"/>
+  </wsdl:message>
+  <wsdl:message name="AddCardHttpPostIn">
+    <wsdl:part name="CardNumber" type="s:string"/>
+    <wsdl:part name="CVV" type="s:string"/>
+    <wsdl:part name="StartDate" type="s:string"/>
+    <wsdl:part name="IssueNumber" type="s:string"/>
+    <wsdl:part name="ExpiryDate" type="s:string"/>
+    <wsdl:part name="Name" type="s:string"/>
+    <wsdl:part name="Address1" type="s:string"/>
+    <wsdl:part name="Address2" type="s:string"/>
+    <wsdl:part name="Address3" type="s:string"/>
+    <wsdl:part name="PostCode" type="s:string"/>
+    <wsdl:part name="CountryCode" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddCardHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="MakeADealHttpPostIn">
+    <wsdl:part name="CardID" type="s:string"/>
+    <wsdl:part name="CVV" type="s:string"/>
+    <wsdl:part name="Rate" type="s:string"/>
+    <wsdl:part name="BuyCCY" type="s:string"/>
+    <wsdl:part name="BuyAmount" type="s:string"/>
+    <wsdl:part name="SellCCY" type="s:string"/>
+    <wsdl:part name="SellAmount" type="s:string"/>
+    <wsdl:part name="PayeeID" type="s:string"/>
+    <wsdl:part name="Reference" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MakeADealHttpPostOut">
+    <wsdl:part name="Body" element="tns:DealResult"/>
+  </wsdl:message>
+  <wsdl:portType name="EWSClassSoap">
+    <wsdl:operation name="LogIn">
+      <wsdl:input message="tns:LogInSoapIn"/>
+      <wsdl:output message="tns:LogInSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutSoapIn"/>
+      <wsdl:output message="tns:LogOutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetCurrencyList">
+      <wsdl:input message="tns:SetCurrencyListSoapIn"/>
+      <wsdl:output message="tns:SetCurrencyListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListSoapIn"/>
+      <wsdl:output message="tns:GetCurrencyListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <wsdl:input message="tns:GetCurrencyPriceSoapIn"/>
+      <wsdl:output message="tns:GetCurrencyPriceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBeneficiaryList">
+      <wsdl:input message="tns:GetBeneficiaryListSoapIn"/>
+      <wsdl:output message="tns:GetBeneficiaryListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <wsdl:input message="tns:AddBeneficiarySoapIn"/>
+      <wsdl:output message="tns:AddBeneficiarySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardList">
+      <wsdl:input message="tns:GetCardListSoapIn"/>
+      <wsdl:output message="tns:GetCardListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddCard">
+      <wsdl:input message="tns:AddCardSoapIn"/>
+      <wsdl:output message="tns:AddCardSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MakeADeal">
+      <wsdl:input message="tns:MakeADealSoapIn"/>
+      <wsdl:output message="tns:MakeADealSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EWSClassHttpGet">
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutHttpGetIn"/>
+      <wsdl:output message="tns:LogOutHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetCurrencyList">
+      <wsdl:input message="tns:SetCurrencyListHttpGetIn"/>
+      <wsdl:output message="tns:SetCurrencyListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListHttpGetIn"/>
+      <wsdl:output message="tns:GetCurrencyListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <wsdl:input message="tns:GetCurrencyPriceHttpGetIn"/>
+      <wsdl:output message="tns:GetCurrencyPriceHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBeneficiaryList">
+      <wsdl:input message="tns:GetBeneficiaryListHttpGetIn"/>
+      <wsdl:output message="tns:GetBeneficiaryListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <wsdl:input message="tns:AddBeneficiaryHttpGetIn"/>
+      <wsdl:output message="tns:AddBeneficiaryHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardList">
+      <wsdl:input message="tns:GetCardListHttpGetIn"/>
+      <wsdl:output message="tns:GetCardListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddCard">
+      <wsdl:input message="tns:AddCardHttpGetIn"/>
+      <wsdl:output message="tns:AddCardHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MakeADeal">
+      <wsdl:input message="tns:MakeADealHttpGetIn"/>
+      <wsdl:output message="tns:MakeADealHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EWSClassHttpPost">
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutHttpPostIn"/>
+      <wsdl:output message="tns:LogOutHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetCurrencyList">
+      <wsdl:input message="tns:SetCurrencyListHttpPostIn"/>
+      <wsdl:output message="tns:SetCurrencyListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListHttpPostIn"/>
+      <wsdl:output message="tns:GetCurrencyListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <wsdl:input message="tns:GetCurrencyPriceHttpPostIn"/>
+      <wsdl:output message="tns:GetCurrencyPriceHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBeneficiaryList">
+      <wsdl:input message="tns:GetBeneficiaryListHttpPostIn"/>
+      <wsdl:output message="tns:GetBeneficiaryListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <wsdl:input message="tns:AddBeneficiaryHttpPostIn"/>
+      <wsdl:output message="tns:AddBeneficiaryHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardList">
+      <wsdl:input message="tns:GetCardListHttpPostIn"/>
+      <wsdl:output message="tns:GetCardListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddCard">
+      <wsdl:input message="tns:AddCardHttpPostIn"/>
+      <wsdl:output message="tns:AddCardHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MakeADeal">
+      <wsdl:input message="tns:MakeADealHttpPostIn"/>
+      <wsdl:output message="tns:MakeADealHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EWSClassSoap" type="tns:EWSClassSoap">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"/>
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LogIn">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/LogIn" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/LogOut" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCurrencyList">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/SetCurrencyList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyPrice" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBeneficiaryList">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/GetBeneficiaryList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/AddBeneficiary" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardList">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/GetCardList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCard">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/AddCard" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeADeal">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/MakeADeal" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EWSClassSoap12" type="tns:EWSClassSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LogIn">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/LogIn" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/LogOut" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCurrencyList">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/SetCurrencyList" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyList" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyPrice" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBeneficiaryList">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/GetBeneficiaryList" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/AddBeneficiary" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardList">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/GetCardList" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCard">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/AddCard" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeADeal">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/MakeADeal" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EWSClassHttpGet" type="tns:EWSClassHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="LogOut">
+      <http:operation location="/LogOut"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCurrencyList">
+      <http:operation location="/SetCurrencyList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <http:operation location="/GetCurrencyList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <http:operation location="/GetCurrencyPrice"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBeneficiaryList">
+      <http:operation location="/GetBeneficiaryList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <http:operation location="/AddBeneficiary"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardList">
+      <http:operation location="/GetCardList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCard">
+      <http:operation location="/AddCard"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeADeal">
+      <http:operation location="/MakeADeal"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EWSClassHttpPost" type="tns:EWSClassHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="LogOut">
+      <http:operation location="/LogOut"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCurrencyList">
+      <http:operation location="/SetCurrencyList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <http:operation location="/GetCurrencyList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <http:operation location="/GetCurrencyPrice"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBeneficiaryList">
+      <http:operation location="/GetBeneficiaryList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBeneficiary">
+      <http:operation location="/AddBeneficiary"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCardList">
+      <http:operation location="/GetCardList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCard">
+      <http:operation location="/AddCard"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeADeal">
+      <http:operation location="/MakeADeal"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EWSClass">
+    <wsdl:port name="EWSClassSoap" binding="tns:EWSClassSoap">
+      <soap:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="EWSClassSoap12" binding="tns:EWSClassSoap12">
+      <soap12:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="EWSClassHttpGet" binding="tns:EWSClassHttpGet">
+      <http:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="EWSClassHttpPost" binding="tns:EWSClassHttpPost">
+      <http:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/GetCurrencyList" name="GetCurrencyList" bindingOperationName="GetCurrencyList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Cookie" value="ASP.NET_SessionId=bdh4rvexmvjb0hia2cad3kim; path=/; HttpOnly" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCurrencyList/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetCurrencyList"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/GetCurrencyPrice" name="GetCurrencyPrice" bindingOperationName="GetCurrencyPrice" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Cookie" value="ASP.NET_SessionId=wym1nl45vxerj4ahhvtuzp45; path=/; HttpOnly" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCurrencyPrice>
+         <!--Optional:-->
+         <web:CCYPair>GBPUSD</web:CCYPair>
+      </web:GetCurrencyPrice>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetCurrencyPrice"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/LogIn" name="LogIn" bindingOperationName="LogIn" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:LogIn>
+         <!--Optional:-->
+         <web:parameters>
+            <!--Optional:-->
+            <web:ClientID>EFX901140</web:ClientID>
+            <!--Optional:-->
+            <web:UserID>test</web:UserID>
+            <!--Optional:-->
+            <web:Password>welcome</web:Password>
+         </web:parameters>
+      </web:LogIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/LogIn"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://voltrexfx.com/webservices/"> <soapenv:Header/> <soapenv:Body><sch:LogIn><sch:parameters><sch:ClientID>EFX901140</sch:ClientID><sch:UserID>test</sch:UserID><sch:Password>welcome</sch:Password></sch:parameters></sch:LogIn></soapenv:Body> </soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/LogIn"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/LogOut" name="LogOut" bindingOperationName="LogOut" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:LogOut/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/LogOut"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/GetBeneficiaryList" name="GetBeneficiaryList" bindingOperationName="GetBeneficiaryList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetBeneficiaryList/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetBeneficiaryList"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/AddBeneficiary" name="AddBeneficiary" bindingOperationName="AddBeneficiary" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:AddBeneficiary>
+         <!--Optional:-->
+         <web:Name>?</web:Name>
+         <!--Optional:-->
+         <web:CCY>?</web:CCY>
+         <!--Optional:-->
+         <web:Country>?</web:Country>
+         <!--Optional:-->
+         <web:BankName>?</web:BankName>
+         <!--Optional:-->
+         <web:BankAddress1>?</web:BankAddress1>
+         <!--Optional:-->
+         <web:BankAddress2>?</web:BankAddress2>
+         <!--Optional:-->
+         <web:BankAddress3>?</web:BankAddress3>
+         <!--Optional:-->
+         <web:SortCode>?</web:SortCode>
+         <!--Optional:-->
+         <web:AccountNumber>?</web:AccountNumber>
+         <!--Optional:-->
+         <web:SwiftCode>?</web:SwiftCode>
+         <!--Optional:-->
+         <web:IBAN>?</web:IBAN>
+         <!--Optional:-->
+         <web:Reference1>?</web:Reference1>
+         <!--Optional:-->
+         <web:Reference2>?</web:Reference2>
+         <!--Optional:-->
+         <web:Reference3>?</web:Reference3>
+      </web:AddBeneficiary>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/AddBeneficiary"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/GetCardList" name="GetCardList" bindingOperationName="GetCardList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCardList/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetCardList"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/AddCard" name="AddCard" bindingOperationName="AddCard" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:AddCard>
+         <!--Optional:-->
+         <web:CardNumber>?</web:CardNumber>
+         <!--Optional:-->
+         <web:CVV>?</web:CVV>
+         <!--Optional:-->
+         <web:StartDate>?</web:StartDate>
+         <web:IssueNumber>?</web:IssueNumber>
+         <!--Optional:-->
+         <web:ExpiryDate>?</web:ExpiryDate>
+         <!--Optional:-->
+         <web:Name>?</web:Name>
+         <!--Optional:-->
+         <web:Address1>?</web:Address1>
+         <!--Optional:-->
+         <web:Address2>?</web:Address2>
+         <!--Optional:-->
+         <web:Address3>?</web:Address3>
+         <!--Optional:-->
+         <web:PostCode>?</web:PostCode>
+         <!--Optional:-->
+         <web:CountryCode>?</web:CountryCode>
+      </web:AddCard>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/AddCard"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/SetCurrencyList" name="SetCurrencyList" bindingOperationName="SetCurrencyList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:SetCurrencyList>
+         <!--Optional:-->
+         <web:CCYPairs>
+            <!--Zero or more repetitions:-->
+            <web:string>?</web:string>
+         </web:CCYPairs>
+      </web:SetCurrencyList>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/SetCurrencyList"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/MakeADeal" name="MakeADeal" bindingOperationName="MakeADeal" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:MakeADeal>
+         <web:CardID>?</web:CardID>
+         <!--Optional:-->
+         <web:CVV>?</web:CVV>
+         <web:Rate>?</web:Rate>
+         <!--Optional:-->
+         <web:BuyCCY>?</web:BuyCCY>
+         <web:BuyAmount>?</web:BuyAmount>
+         <!--Optional:-->
+         <web:SellCCY>?</web:SellCCY>
+         <web:SellAmount>?</web:SellAmount>
+         <web:PayeeID>?</web:PayeeID>
+         <!--Optional:-->
+         <web:Reference>?</web:Reference>
+      </web:MakeADeal>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/MakeADeal"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="EWSClassSoap12" type="wsdl" bindingName="{http://voltrexfx.com/webservices/}EWSClassSoap12" soapVersion="1_2" anonymous="optional" definition="http://www.voltrexfx.com/easyws/ews.asmx?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://www.voltrexfx.com/easyws/ews.asmx?wsdl"><con:part><con:url>http://www.voltrexfx.com/easyws/ews.asmx?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://voltrexfx.com/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://voltrexfx.com/webservices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://voltrexfx.com/webservices/">
+      <s:element name="LogIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parameters" type="tns:LogInElement"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LogInElement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LogInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogInResult" type="tns:LoginResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Fee" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CCYPairs" type="tns:ArrayOfString"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LogOut">
+        <s:complexType/>
+      </s:element>
+      <s:element name="LogOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogOutResult" type="tns:ResultElement"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultElement">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrencyList">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetCurrencyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyListResult" type="tns:CurrencyListResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CurrencyListResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Currencies" type="tns:ArrayOfCurrency"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCurrency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Currency" nillable="true" type="tns:Currency"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Currency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Pair" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrencyPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CCYPair" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrencyPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyPriceResult" type="tns:PriceResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PriceResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Pair" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Bid" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Ask" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastBid" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastAsk" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LastPrice" type="s:double"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OpenPrice" type="s:double"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ResultElement" nillable="true" type="tns:ResultElement"/>
+      <s:element name="CurrencyListResult" nillable="true" type="tns:CurrencyListResult"/>
+      <s:element name="PriceResult" nillable="true" type="tns:PriceResult"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LogInSoapIn">
+    <wsdl:part name="parameters" element="tns:LogIn"/>
+  </wsdl:message>
+  <wsdl:message name="LogInSoapOut">
+    <wsdl:part name="parameters" element="tns:LogInResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapIn">
+    <wsdl:part name="parameters" element="tns:LogOut"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogOutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencyList"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrencyListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencyPrice"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrencyPriceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpGetIn"/>
+  <wsdl:message name="LogOutHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListHttpGetIn"/>
+  <wsdl:message name="GetCurrencyListHttpGetOut">
+    <wsdl:part name="Body" element="tns:CurrencyListResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpGetIn">
+    <wsdl:part name="CCYPair" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpGetOut">
+    <wsdl:part name="Body" element="tns:PriceResult"/>
+  </wsdl:message>
+  <wsdl:message name="LogOutHttpPostIn"/>
+  <wsdl:message name="LogOutHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResultElement"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListHttpPostIn"/>
+  <wsdl:message name="GetCurrencyListHttpPostOut">
+    <wsdl:part name="Body" element="tns:CurrencyListResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpPostIn">
+    <wsdl:part name="CCYPair" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyPriceHttpPostOut">
+    <wsdl:part name="Body" element="tns:PriceResult"/>
+  </wsdl:message>
+  <wsdl:portType name="EWSClassSoap">
+    <wsdl:operation name="LogIn">
+      <wsdl:input message="tns:LogInSoapIn"/>
+      <wsdl:output message="tns:LogInSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutSoapIn"/>
+      <wsdl:output message="tns:LogOutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListSoapIn"/>
+      <wsdl:output message="tns:GetCurrencyListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <wsdl:input message="tns:GetCurrencyPriceSoapIn"/>
+      <wsdl:output message="tns:GetCurrencyPriceSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EWSClassHttpGet">
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutHttpGetIn"/>
+      <wsdl:output message="tns:LogOutHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListHttpGetIn"/>
+      <wsdl:output message="tns:GetCurrencyListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <wsdl:input message="tns:GetCurrencyPriceHttpGetIn"/>
+      <wsdl:output message="tns:GetCurrencyPriceHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EWSClassHttpPost">
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutHttpPostIn"/>
+      <wsdl:output message="tns:LogOutHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListHttpPostIn"/>
+      <wsdl:output message="tns:GetCurrencyListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <wsdl:input message="tns:GetCurrencyPriceHttpPostIn"/>
+      <wsdl:output message="tns:GetCurrencyPriceHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EWSClassSoap" type="tns:EWSClassSoap">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"/>
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LogIn">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/LogIn" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/LogOut" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <soap:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyPrice" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EWSClassSoap12" type="tns:EWSClassSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LogIn">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/LogIn" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/LogOut" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyList" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <soap12:operation soapAction="http://voltrexfx.com/webservices/GetCurrencyPrice" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EWSClassHttpGet" type="tns:EWSClassHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="LogOut">
+      <http:operation location="/LogOut"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <http:operation location="/GetCurrencyList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <http:operation location="/GetCurrencyPrice"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EWSClassHttpPost" type="tns:EWSClassHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="LogOut">
+      <http:operation location="/LogOut"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <http:operation location="/GetCurrencyList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPrice">
+      <http:operation location="/GetCurrencyPrice"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EWSClass">
+    <wsdl:port name="EWSClassSoap" binding="tns:EWSClassSoap">
+      <soap:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="EWSClassSoap12" binding="tns:EWSClassSoap12">
+      <soap12:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="EWSClassHttpGet" binding="tns:EWSClassHttpGet">
+      <http:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="EWSClassHttpPost" binding="tns:EWSClassHttpPost">
+      <http:address location="http://www.voltrexfx.com/easyws/ews.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/GetCurrencyList" name="GetCurrencyList" bindingOperationName="GetCurrencyList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://voltrexfx.com/webservices/">
+   <soap:Header/>
+   <soap:Body>
+      <web:GetCurrencyList/>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/EWSClassSoap/GetCurrencyListRequest"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/GetCurrencyPrice" name="GetCurrencyPrice" bindingOperationName="GetCurrencyPrice" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://voltrexfx.com/webservices/">
+   <soap:Header/>
+   <soap:Body>
+      <web:GetCurrencyPrice>
+         <!--Optional:-->
+         <web:CCYPair>?</web:CCYPair>
+      </web:GetCurrencyPrice>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/EWSClassSoap/GetCurrencyPriceRequest"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/LogIn" name="LogIn" bindingOperationName="LogIn" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://voltrexfx.com/webservices/">
+   <soap:Header/>
+   <soap:Body>
+      <web:LogIn>
+         <!--Optional:-->
+         <web:parameters>
+            <!--Optional:-->
+            <web:ClientID>?</web:ClientID>
+            <!--Optional:-->
+            <web:UserID>?</web:UserID>
+            <!--Optional:-->
+            <web:Password>?</web:Password>
+         </web:parameters>
+      </web:LogIn>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/EWSClassSoap/LogInRequest"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/LogOut" name="LogOut" bindingOperationName="LogOut" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://voltrexfx.com/webservices/">
+   <soap:Header/>
+   <soap:Body>
+      <web:LogOut/>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/EWSClassSoap/LogOutRequest"/></con:call></con:operation></con:interface><con:testSuite name="EWSClassSoap TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="true" maxResults="0" name="LogIn TestCase" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" id="a1e9692f-75ad-413f-9533-643e4b8b4ff7"><con:settings/><con:testStep type="request" name="LogIn"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>LogIn</con:operation><con:request name="LogIn"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:LogIn>
+         <!--Optional:-->
+         <web:parameters>
+            <!--Optional:-->
+            <web:ClientID>EFX901140</web:ClientID>
+            <!--Optional:-->
+            <web:UserID>test</web:UserID>
+            <!--Optional:-->
+            <web:Password>welcome</web:Password>
+         </web:parameters>
+      </web:LogIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://voltrexfx.com/webservices/LogIn" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script"><con:settings/><con:config><script>def cookie_vals = testRunner.testCase.getTestStepByName("LogIn").httpRequest.response.responseHeaders["Set-Cookie"]
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
+groovyUtils.setPropertyValue("GetCurrencyList", "LTPA", cookie_vals.toString())
+groovyUtils.setPropertyValue("GetCurrencyPrice", "LTPA", cookie_vals.toString())
+groovyUtils.setPropertyValue("GetBeneficiaryList", "LTPA", cookie_vals.toString())
+groovyUtils.setPropertyValue("LogOut", "LTPA", cookie_vals.toString())</script></con:config></con:testStep><con:testStep type="request" name="GetCurrencyList"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>GetCurrencyList</con:operation><con:request name="GetCurrencyList"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCurrencyList/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://voltrexfx.com/webservices/GetCurrencyList" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetCurrencyPrice"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>GetCurrencyPrice</con:operation><con:request name="GetCurrencyPrice"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCurrencyPrice>
+         <!--Optional:-->
+         <web:CCYPair>GBPUSD</web:CCYPair>
+      </web:GetCurrencyPrice>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="Invalid HTTP Status Codes" name="Invalid HTTP Status Codes"><con:configuration><codes/></con:configuration></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://voltrexfx.com/webservices/GetCurrencyPrice" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetBeneficiaryList"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>GetBeneficiaryList</con:operation><con:request name="GetBeneficiaryList" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetBeneficiaryList/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetBeneficiaryList"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetCardList"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>GetCardList</con:operation><con:request name="GetCardList" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetCardList/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetCardList"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="LogOut"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>LogOut</con:operation><con:request name="LogOut"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:LogOut/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://voltrexfx.com/webservices/LogOut" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>
