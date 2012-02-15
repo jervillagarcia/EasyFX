@@ -9,6 +9,7 @@
 #import "TransactionDetailViewController.h"
 #import "StoredBeneficiaryTableViewController.h"
 #import "Utils.h"
+#import "EasyFXAppDelegate.h"
 
 @implementation TransactionDetailViewController
 
@@ -18,6 +19,8 @@
 @synthesize txtCurYouSell;
 @synthesize txtAmtToSell;
 @synthesize priceRec;
+
+float amount = 0.00;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil price:(PriceRec*)mPrice
 {
@@ -79,9 +82,44 @@
 
 #pragma Action Methods
 - (IBAction)next:(id)sender {
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [delegate.payment setBuyCCY:[txtCurYouBuy text]];
+    [delegate.payment setBuyAmount:[txtAmtToBuy text]];
+    [delegate.payment setRate:[txtCalcRate text]];
+    [delegate.payment setSellCCY:[txtCurYouSell text]];
+    [delegate.payment setSellAmount:[txtAmtToSell text]];
+    
     StoredBeneficiaryTableViewController *viewController = [[StoredBeneficiaryTableViewController alloc] initWithNibName:@"StoredBeneficiaryViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
+}
+
+- (IBAction)calculate:(id)sender {
+    
+//	if (priceRec.ask > 0) {
+//		if ([sender isEqual:txtAmtToBuy]) {
+//			amount = [[txtAmtToBuy text] floatValue] / ([priceRec.ask floatValue] - ([priceRec.ask floatValue] * [[delegate limit] floatValue]));
+//			[txtAmtToSell	setText:[NSString stringWithFormat:@"%.2f", amount]];
+//			[txtAmtToBuy		setText:[@"" stringByAppendingFormat:@"%.2f", [txtAmtToBuy.text floatValue]]];
+//		} else {
+//			amount = [[txtAmtToSell text] floatValue] * [priceRec.ask floatValue];
+//			[txtAmtToBuy		setText:[NSString stringWithFormat:@"%.2f", amount]];
+//			[txtAmtToSell	setText:[@"" stringByAppendingFormat:@"%.2f", [txtAmtToSell.text floatValue]]];
+//		}
+//	}
+
+	if (priceRec.ask > 0) {
+		if ([sender isEqual:txtAmtToBuy]) {
+			amount = [[txtAmtToBuy text] floatValue] * [priceRec.ask floatValue];
+			[txtAmtToSell		setText:[NSString stringWithFormat:@"%.2f", amount]];
+			[txtAmtToBuy	setText:[@"" stringByAppendingFormat:@"%.2f", [txtAmtToBuy.text floatValue]]];
+		} else {
+			amount = [[txtAmtToSell text] floatValue] / [priceRec.ask floatValue];
+			[txtAmtToBuy	setText:[NSString stringWithFormat:@"%.2f", amount]];
+			[txtAmtToSell		setText:[@"" stringByAppendingFormat:@"%.2f", [txtAmtToSell.text floatValue]]];
+		}
+	}
+
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Payment.h"
 
 @interface WebServiceFactory : NSObject {
 	
@@ -23,6 +23,7 @@
 - (void)getBeneficiaries;
 - (void)getCardsList;
 - (void)setCCYList:(NSArray*)ccyList;
+- (void)makeDeal:(Payment*)payment;
 
 - (NSString*)getStartHeader;
 - (NSString*)getEndHeader;

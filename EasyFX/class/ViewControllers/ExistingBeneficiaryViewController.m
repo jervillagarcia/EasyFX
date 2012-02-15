@@ -9,6 +9,7 @@
 #import "ExistingBeneficiaryViewController.h"
 #import "Utils.h"
 #import "CardListViewController.h"
+#import "EasyFXAppDelegate.h"
 
 @implementation ExistingBeneficiaryViewController
 
@@ -86,6 +87,9 @@
 }
 
 - (IBAction)next:(id)sender {
+    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate.payment setBeneficiaryRec:beneficiaryRec];
+    
     CardListViewController *viewController = [[CardListViewController alloc] initWithNibName:@"CardListViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];

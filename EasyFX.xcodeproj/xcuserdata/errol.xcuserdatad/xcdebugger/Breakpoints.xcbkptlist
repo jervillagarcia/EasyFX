@@ -4,16 +4,16 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "EasyFX/EasyFXTextField.m"
-         timestampString = "350476462.479936"
+         timestampString = "350998469.983998"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "83"
-         endingLineNumber = "83"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
          landmarkName = "-keyboardWillShow:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -22,27 +22,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "EasyFX/EasyFXTextField.m"
-         timestampString = "350476462.479936"
+         filePath = "EasyFX/class/ViewControllers/ConfirmPaymentViewController.m"
+         timestampString = "351009209.523973"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
-         landmarkName = "-keyboardWillShow:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "EasyFX/EasyFXTextField.m"
-         timestampString = "350476304.683191"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
-         landmarkName = "-keyboardWillShow:"
+         startingLineNumber = "109"
+         endingLineNumber = "109"
+         landmarkName = "-confirmClick:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

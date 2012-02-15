@@ -10,6 +10,7 @@
 #import "WebServiceFactory.h"
 #import "LogInResult.h"
 #import "CurrencyViewController.h"
+#import "EasyFXAppDelegate.h"
 
 @implementation LoginViewController
 
@@ -19,7 +20,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -42,6 +42,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [preloadView release];
+    preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
+    preloadView.tag = 1;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -63,18 +67,30 @@
 }
 
 -(IBAction)loginOnClick:(id)sender{
-    WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
+	[self.view addSubview:preloadView];
+    [NSThread detachNewThreadSelector:@selector(loginAction) toTarget:self withObject:nil];
+    
+}
+-(void)loginAction {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
     [wsFactory logInWithUser:[txtUsername text] password:[txtPassword text] clientId:[txtCliendId text]];
     
     if ([[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] success] isEqualToString:@"true"]) {
+        //Store CCYPAIRS
+        EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        [delegate setCcyPairList:[[wsFactory.wsResponse objectAtIndex:0] cCYPairs]];
+        [delegate setLimit:[[wsFactory.wsResponse objectAtIndex:0] limit]];
+        
         CurrencyViewController *viewController = [[CurrencyViewController alloc] init];
         [self.navigationController pushViewController:viewController animated:YES];
         [self.navigationController setNavigationBarHidden:NO];
         [viewController release];
     }
-        
     
     [wsFactory release];
+    [pool release];
+    [preloadView removeFromSuperview];
 }
 -(void)callHelpdesk:(id)sender{}
 -(void)applyFinancialOnClick:(id)sender{}

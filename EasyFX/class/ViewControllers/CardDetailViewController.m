@@ -8,6 +8,8 @@
 
 #import "CardDetailViewController.h"
 #import "Utils.h"
+#import "ConfirmPaymentViewController.h"
+#import "EasyFXAppDelegate.h"
 
 @implementation CardDetailViewController
 
@@ -77,6 +79,17 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)nextClick:(id)sender {
+    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate.payment setCardRec:cardRec];
+    [delegate.payment setCvv:[txtCVV text]];
+
+    
+    ConfirmPaymentViewController *viewController = [[ConfirmPaymentViewController alloc] initWithNibName:@"ConfirmPaymentViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
 }
 
 @end

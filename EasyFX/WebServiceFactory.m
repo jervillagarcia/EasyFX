@@ -295,12 +295,12 @@
 		[sRequest appendString:@"<sch:CCYPairs>"];
         for (id ccyPair in ccyList) {
             [sRequest appendString:@"<sch:string>"];
-            [sRequest appendString:[(PriceRec*)ccyPair pair]];
-            [sRequest appendString:@"<sch:string/>"];
+            [sRequest appendString:ccyPair];
+            [sRequest appendString:@"</sch:string>"];
         }
         
-		[sRequest appendString:@"<sch:CCYPairs/>"];
-		[sRequest appendString:@"<sch:SetCurrencyList/>"];
+		[sRequest appendString:@"</sch:CCYPairs>"];
+		[sRequest appendString:@"</sch:SetCurrencyList>"];
 		[sRequest appendString:[self getEndHeader]];
 		
 		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
@@ -316,9 +316,56 @@
 		[sRequest release];	
 		[xmlParser release];
 	}
-    
 }
 
+- (void)makeDeal:(Payment*)payment {
+    if ([self isConnectedToInternet:HOST]) {
+        
+		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+		// Create the SOAP body 
+		[sRequest appendFormat:[self getStartHeader]];
+		[sRequest appendString:@"<sch:MakeADeal>"];
+		[sRequest appendString:@"<sch:CardID>"];
+		[sRequest appendString:payment.cardRec.iD];
+		[sRequest appendString:@"</sch:CardID>"];
+		[sRequest appendString:@"<sch:CVV>"];
+		[sRequest appendString:payment.cvv];
+		[sRequest appendString:@"</sch:CVV>"];
+		[sRequest appendString:@"<sch:Rate>"];
+		[sRequest appendString:payment.rate];
+		[sRequest appendString:@"</sch:Rate>"];
+		[sRequest appendString:@"<sch:BuyCCY>"];
+		[sRequest appendString:payment.buyCCY];
+		[sRequest appendString:@"</sch:BuyCCY>"];
+		[sRequest appendString:@"<sch:BuyAmount>"];
+		[sRequest appendString:payment.buyAmount];
+		[sRequest appendString:@"</sch:BuyAmount>"];
+		[sRequest appendString:@"<sch:SellCCY>"];
+		[sRequest appendString:payment.sellCCY];
+		[sRequest appendString:@"</sch:SellCCY>"];
+		[sRequest appendString:@"<sch:PayeeID>"];
+		[sRequest appendString:payment.beneficiaryRec.iD];
+		[sRequest appendString:@"</sch:PayeeID>"];
+		[sRequest appendString:@"<sch:Reference>"];
+		[sRequest appendString:@""];
+		[sRequest appendString:@"</sch:Reference>"];
+		[sRequest appendString:@"</sch:MakeADeal>"];
+		[sRequest appendString:[self getEndHeader]];
+		
+		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+		XmlParser *xmlParser = [[XmlParser alloc] init];
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeADeal" isLogin:NO] fromURI:@"DealResult" toObject:@"DealResult" parseError:nil];
+        
+        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+        
+		[self.wsResponse release];
+		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+		
+		[sRequest release];	
+		[xmlParser release];
+	}
+}
 - (NSString*)getStartHeader {
 	return [NSString stringWithFormat:@"%@=\"%@\" xmlns:sch=\"http://voltrexfx.com/webservices/\"> <soapenv:Header/> <soapenv:Body>",@"<soapenv:Envelope xmlns:soapenv", SOAP_ENV];
 }

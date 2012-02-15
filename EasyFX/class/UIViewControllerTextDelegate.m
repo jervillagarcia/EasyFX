@@ -15,6 +15,7 @@
 @implementation UIViewControllerTextDelegate
 
 @synthesize currentTextField;
+@synthesize keyToolbar;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -76,6 +77,9 @@
     [self.view setFrame:viewFrame];
     
     [UIView commitAnimations];	
+
+	[textField setInputAccessoryView:keyToolbar];
+	currentTextField = textField;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -90,14 +94,10 @@
     [self.view setFrame:viewFrame];
     
     [UIView commitAnimations];
-//	EasyFXAppDelegate *appDelegate = (EasyFXAppDelegate *)[[UIApplication sharedApplication] delegate];
-//	[(EasyFXWindow*)appDelegate.window keyboardWillHide];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-//	EasyFXAppDelegate *appDelegate = (EasyFXAppDelegate *)[[UIApplication sharedApplication] delegate];
-//	[(EasyFXWindow*)appDelegate.window keyboardWillShow];
-	
+	currentTextField = textField;
 	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
 	return YES;
@@ -107,4 +107,26 @@
 	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	return YES;
 }
+
+-(IBAction)nextField:(id)sender{
+    UITextField *txtField = currentTextField;
+    [currentTextField resignFirstResponder];
+    [[[txtField superview] viewWithTag:[txtField tag] + 1] becomeFirstResponder];
+//	[[NSNotificationCenter defaultCenter] addObserver:currentTextField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    currentTextField = (UITextField*)[[txtField superview] viewWithTag:[txtField tag] + 1];
+}
+
+
+-(IBAction)prevField:(id)sender{
+    UITextField *txtField = currentTextField;
+    if (txtField.tag > 1) {
+        [currentTextField resignFirstResponder];
+        [[[txtField superview] viewWithTag:[txtField tag] - 1] becomeFirstResponder];
+    }
+}
+
+-(IBAction)done:(id)sender{
+    [currentTextField resignFirstResponder];
+}
+
 @end

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTextDelegate.h"
+#import "EasyFXPreloader.h"
 
 @interface LoginViewController : UIViewControllerTextDelegate {
     IBOutlet UITextField        *txtCliendId;
     IBOutlet UITextField        *txtUsername;
     IBOutlet UITextField        *txtPassword;
+    EasyFXPreloader             *preloadView;
 }
 
 @property (nonatomic, retain) UITextField *txtClientId;
@@ -20,6 +22,7 @@
 @property (nonatomic, retain) UITextField *txtPassword;
 
 -(IBAction)loginOnClick:(id)sender;
+-(void)loginAction;
 -(void)callHelpdesk:(id)sender;
 -(void)applyFinancialOnClick:(id)sender;
 

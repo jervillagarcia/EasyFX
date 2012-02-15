@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PriceRec.h"
 #import "UIViewControllerTextDelegate.h"
+#import "EasyFXTextFieldDelegate.h"
 
 @interface TransactionDetailViewController : UIViewControllerTextDelegate {
     IBOutlet UITextField *txtCurYouBuy;    
@@ -18,6 +19,7 @@
     IBOutlet UITextField *txtAmtToSell;
     
     PriceRec *priceRec;
+ 
 }
 
 @property(nonatomic, retain) PriceRec *priceRec;

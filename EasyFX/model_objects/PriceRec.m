@@ -19,6 +19,7 @@
 @synthesize lastAsk;
 @synthesize lastPrice;
 @synthesize openPrice;
+@synthesize selected;
     
 
 - (NSString*)getCurrencyYouBuy{

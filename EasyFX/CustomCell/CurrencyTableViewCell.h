@@ -16,9 +16,13 @@
     IBOutlet UIImageView *imgFrom;
     IBOutlet UIImageView *imgTo;
     IBOutlet UILabel *lblPrice;
+    IBOutlet UIButton *btnBuy;
+    IBOutlet UIButton *btnAdd;
     UIViewController *fromController;
 }
 
+@property(nonatomic, retain) UIButton *btnBuy;
+@property(nonatomic, retain) UIButton *btnAdd;
 @property(nonatomic, retain) UILabel *curFrom;
 @property(nonatomic, retain) UILabel *curTo;
 @property(nonatomic, retain) UIImageView *imgFrom;

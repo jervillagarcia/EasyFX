@@ -14,10 +14,11 @@
 	CGFloat animatedDistance;
 	BOOL numberPadShowing;
 	UIButton *dot;
-	UIToolbar *keyToolbar;
+	IBOutlet UIToolbar *keyToolbar;
 	UITextField *currentTextField;
 }
 
 @property (nonatomic, retain) UITextField *currentTextField;
+@property (nonatomic, retain) UIToolbar *keyToolbar;
 
 @end

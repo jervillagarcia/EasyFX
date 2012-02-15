@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Payment.h"
 
 @interface EasyFXAppDelegate : NSObject <UIApplicationDelegate> {
-    NSString *sessionCookie;
+    NSString    *sessionCookie;
+    NSArray     *ccyPairList;
+    NSString    *limit;
+    Payment     *payment;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -19,6 +23,9 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic, retain) NSString *sessionCookie;
+@property (nonatomic, retain) NSArray *ccyPairList;
+@property (nonatomic, retain) NSString *limit;
+@property (nonatomic, retain) Payment *payment;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

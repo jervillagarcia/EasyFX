@@ -10,6 +10,7 @@
 #import "WebServiceFactory.h"
 #import "CurrencyTableViewCell.h"
 #import "TransactionDetailViewController.h"
+#import "EasyFXAppDelegate.h"
 
 @implementation CurrencyViewController
 
@@ -20,6 +21,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        filteredList = [[NSMutableArray alloc] init];
+        [preloadView release];
+        preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
+        [preloadView setMessage:@"Logging out"];
+        preloadView.tag = 1;
     }
     return self;
 }
@@ -78,6 +84,12 @@
 
 }
 
+- (void)dealloc {
+    [currencyList release];
+    [filteredList release];
+    [super dealloc];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -96,7 +108,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [currencyList count];
+    if([tableView isEditing])
+        return [currencyList count];
+    else
+        return [filteredList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,8 +138,18 @@
             }
         }
     }
-    [cell setCurrencyPair:(PriceRec *)[currencyList objectAtIndex:indexPath.row] fromController:self];
+    if([tableView isEditing])
+        [cell setCurrencyPair:(PriceRec *)[currencyList objectAtIndex:indexPath.row] fromController:self];
+    else
+        [cell setCurrencyPair:(PriceRec *)[filteredList objectAtIndex:indexPath.row] fromController:self];
     return cell;		
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
+}
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
 
 /*
@@ -166,19 +191,6 @@
  }
  */
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
-}
 
 
 -(void)fetchCurrencies {
@@ -190,72 +202,71 @@
     
     [currencyList release];
     currencyList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
-	
-//    if([ws.wsResponse count] > 0) { 
-//        if (([ws.wsResponse count] == 1) && [[ws.wsResponse objectAtIndex:0] isKindOfClass:[Fault class]]) {
-//            [ws release];
-//            [pool release];
-//            
-//            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:[(Fault*)[ws.wsResponse objectAtIndex:0] faultstring] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//            [alert show];
-//            [alert release];
-//        } else if (([ws.wsResponse count] == 1) && [[ws.wsResponse objectAtIndex:0] isKindOfClass:[Error class]]) {
-//            [ws release];
-//            [pool release];
-//            
-//            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[(Error*)[ws.wsResponse objectAtIndex:0] CODE] message:[(Error*)[ws.wsResponse objectAtIndex:0] DESCRIPTION] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//            [alert show];
-//            [alert release];
-//        } else {
-//            [arr release];
-//            arr = [ws.wsResponse retain];
-//            
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Validated OK." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Details", nil];
-//            [alert show];
-//            [alert release];
-//            
-//            [ws release];
-//            [pool release];
-//            
-//            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-//        }
-//    } else {
-//        
-//        [ws release];
-//        [pool release];
-//        
-//        [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"No results found." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
-//        [alert release];
-//        
-//    }
-
+    
+    [filteredList release];
+    filteredList = [[NSMutableArray alloc] init];
+    for (PriceRec *price in currencyList) {
+        [price setSelected:[[(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList] containsObject:price.pair]];
+        if ([price isSelected]) {
+            [filteredList addObject:price];
+        }
+    }
+    
     [ws release];
     [pool release];
 
+}
+
+-(void)filterSelectedCurrency {
+    [filteredList release];
+    filteredList = [[NSMutableArray alloc] init];
+    for (PriceRec *priceRec in currencyList) {
+        if ([priceRec isSelected]) [filteredList addObject:priceRec];
+    }
+    
+}
+
+-(void)updateCurrencyList{
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (PriceRec *mPrice in filteredList) {
+        [arr addObject:mPrice.pair];
+    }
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+    
+    [ws setCCYList:arr];
+        
+    [ws release];
+    [pool release];
 }
 
 #pragma mark Actions (Button)
 - (IBAction) backAction:(id)sender {
+    [self.view addSubview:preloadView];
+    [NSThread detachNewThreadSelector:@selector(logoutAction) toTarget:self withObject:nil];
+
+}
+
+-(void)logoutAction {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     WebServiceFactory *ws = [[WebServiceFactory alloc] init];
     
     [ws logOut];
-
+    
     [ws release];
     [pool release];
-    
+    [preloadView removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
-
-
 }
 
 - (IBAction) editAction:(id)sender {
-    [table setEditing:YES animated:YES];
-    
+    if (table.isEditing) {
+        [table setEditing:NO animated:YES];
+        [NSThread detachNewThreadSelector:@selector(updateCurrencyList) toTarget:self withObject:nil];
+    } else
+        [table setEditing:YES animated:YES];
+    [self filterSelectedCurrency];
+    [table reloadData];
 }
 
 @end

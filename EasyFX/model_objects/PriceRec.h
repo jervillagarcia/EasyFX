@@ -19,6 +19,7 @@
     NSString *lastAsk;
     NSString *lastPrice;
     NSString *openPrice;
+    BOOL selected;
     
 }
 
@@ -31,6 +32,7 @@
 @property(nonatomic, retain) NSString *lastAsk;
 @property(nonatomic, retain) NSString *lastPrice;
 @property(nonatomic, retain) NSString *openPrice;
+@property(nonatomic, getter = isSelected) BOOL selected;
 
 - (NSString*)getCurrencyYouBuy;
 - (NSString*)getCurrencyYouSell;

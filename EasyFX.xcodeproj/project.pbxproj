@@ -416,6 +416,18 @@
 		D59F15B51473567B006946EE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F15B31473567B006946EE /* LoginViewController.m */; };
 		D59F15BC14735B58006946EE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D59F15BA14735B58006946EE /* LoginViewController.xib */; };
 		D59F15C514735D94006946EE /* UIViewControllerTextDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F15C414735D94006946EE /* UIViewControllerTextDelegate.m */; };
+		D5D2B4C814EB98ED003C7717 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4C614EB98EC003C7717 /* check.png */; };
+		D5D2B4C914EB98ED003C7717 /* uncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4C714EB98EC003C7717 /* uncheck.png */; };
+		D5D2B4D614EBA479003C7717 /* EasyFXTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4D514EBA479003C7717 /* EasyFXTextFieldDelegate.m */; };
+		D5D2B4DD14EBB765003C7717 /* dotA.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4DB14EBB763003C7717 /* dotA.png */; };
+		D5D2B4DE14EBB765003C7717 /* dotB.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4DC14EBB764003C7717 /* dotB.png */; };
+		D5D2B4E614EBDDAB003C7717 /* ConfirmPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4E414EBDDAB003C7717 /* ConfirmPaymentViewController.xib */; };
+		D5D2B4E914EBE25E003C7717 /* ConfirmPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4E814EBE25B003C7717 /* ConfirmPaymentViewController.m */; };
+		D5D2B4EC14EBE758003C7717 /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4EB14EBE757003C7717 /* Payment.m */; };
+		D5D2B4EF14EBF0BE003C7717 /* DealResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4EE14EBF0BC003C7717 /* DealResult.m */; };
+		D5D2B4F214EBF356003C7717 /* TransactionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4F014EBF356003C7717 /* TransactionCompleteViewController.xib */; };
+		D5D2B4F514EBF595003C7717 /* TransactionCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4F414EBF58C003C7717 /* TransactionCompleteViewController.m */; };
+		D5D2B4F814EBFFF3003C7717 /* EasyFXPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4F714EBFFF1003C7717 /* EasyFXPreloader.m */; };
 		D5D4BE3114E0A2DD00C20A97 /* TransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */; };
 		D5D4BE3514E0A30300C20A97 /* TransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */; };
 		D5D4BE4214E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4114E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m */; };
@@ -871,6 +883,24 @@
 		D59F15BB14735B58006946EE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoginViewController.xib; sourceTree = "<group>"; };
 		D59F15C314735D94006946EE /* UIViewControllerTextDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewControllerTextDelegate.h; path = class/UIViewControllerTextDelegate.h; sourceTree = "<group>"; };
 		D59F15C414735D94006946EE /* UIViewControllerTextDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewControllerTextDelegate.m; path = class/UIViewControllerTextDelegate.m; sourceTree = "<group>"; };
+		D5D2B4C614EB98EC003C7717 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = images/check.png; sourceTree = "<group>"; };
+		D5D2B4C714EB98EC003C7717 /* uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uncheck.png; path = images/uncheck.png; sourceTree = "<group>"; };
+		D5D2B4D414EBA479003C7717 /* EasyFXTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXTextFieldDelegate.h; sourceTree = "<group>"; };
+		D5D2B4D514EBA479003C7717 /* EasyFXTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXTextFieldDelegate.m; sourceTree = "<group>"; };
+		D5D2B4DB14EBB763003C7717 /* dotA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dotA.png; path = images/dotA.png; sourceTree = "<group>"; };
+		D5D2B4DC14EBB764003C7717 /* dotB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dotB.png; path = images/dotB.png; sourceTree = "<group>"; };
+		D5D2B4E514EBDDAB003C7717 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ConfirmPaymentViewController.xib; sourceTree = "<group>"; };
+		D5D2B4E714EBE256003C7717 /* ConfirmPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmPaymentViewController.h; path = class/ViewControllers/ConfirmPaymentViewController.h; sourceTree = "<group>"; };
+		D5D2B4E814EBE25B003C7717 /* ConfirmPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmPaymentViewController.m; path = class/ViewControllers/ConfirmPaymentViewController.m; sourceTree = "<group>"; };
+		D5D2B4EA14EBE757003C7717 /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Payment.h; path = model_objects/Payment.h; sourceTree = "<group>"; };
+		D5D2B4EB14EBE757003C7717 /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Payment.m; path = model_objects/Payment.m; sourceTree = "<group>"; };
+		D5D2B4ED14EBF0BB003C7717 /* DealResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DealResult.h; path = model_objects/DealResult.h; sourceTree = "<group>"; };
+		D5D2B4EE14EBF0BC003C7717 /* DealResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DealResult.m; path = model_objects/DealResult.m; sourceTree = "<group>"; };
+		D5D2B4F114EBF356003C7717 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TransactionCompleteViewController.xib; sourceTree = "<group>"; };
+		D5D2B4F314EBF589003C7717 /* TransactionCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionCompleteViewController.h; path = class/ViewControllers/TransactionCompleteViewController.h; sourceTree = "<group>"; };
+		D5D2B4F414EBF58C003C7717 /* TransactionCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionCompleteViewController.m; path = class/ViewControllers/TransactionCompleteViewController.m; sourceTree = "<group>"; };
+		D5D2B4F614EBFFEF003C7717 /* EasyFXPreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXPreloader.h; sourceTree = "<group>"; };
+		D5D2B4F714EBFFF1003C7717 /* EasyFXPreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXPreloader.m; sourceTree = "<group>"; };
 		D5D4BE2F14E0A2DD00C20A97 /* TransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionDetailViewController.h; path = class/ViewControllers/TransactionDetailViewController.h; sourceTree = "<group>"; };
 		D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionDetailViewController.m; path = class/ViewControllers/TransactionDetailViewController.m; sourceTree = "<group>"; };
 		D5D4BE3414E0A30300C20A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TransactionDetailViewController.xib; sourceTree = "<group>"; };
@@ -947,6 +977,10 @@
 				D5D5491614E3CC7700CA6E83 /* CardRec.m */,
 				D5D78B8414E9F29B001FAB3D /* SetCurrencyListResult.h */,
 				D5D78B8514E9F29B001FAB3D /* SetCurrencyListResult.m */,
+				D5D2B4EA14EBE757003C7717 /* Payment.h */,
+				D5D2B4EB14EBE757003C7717 /* Payment.m */,
+				D5D2B4ED14EBF0BB003C7717 /* DealResult.h */,
+				D5D2B4EE14EBF0BC003C7717 /* DealResult.m */,
 			);
 			name = "model objects";
 			sourceTree = "<group>";
@@ -1403,6 +1437,8 @@
 				D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */,
 				D5D5491814E3CD7600CA6E83 /* CardListViewController.xib */,
 				D5D78B7D14E9EC0E001FAB3D /* CardDetailViewController.xib */,
+				D5D2B4E414EBDDAB003C7717 /* ConfirmPaymentViewController.xib */,
+				D5D2B4F014EBF356003C7717 /* TransactionCompleteViewController.xib */,
 			);
 			name = en.lproj;
 			sourceTree = "<group>";
@@ -1410,6 +1446,8 @@
 		D59F15AD147355AC006946EE /* delegate */ = {
 			isa = PBXGroup;
 			children = (
+				D5D2B4D414EBA479003C7717 /* EasyFXTextFieldDelegate.h */,
+				D5D2B4D514EBA479003C7717 /* EasyFXTextFieldDelegate.m */,
 				D59F157B147353B3006946EE /* EasyFXAppDelegate.h */,
 				D59F157C147353B3006946EE /* EasyFXAppDelegate.m */,
 			);
@@ -1457,6 +1495,10 @@
 				D5D5491C14E3CDFE00CA6E83 /* CardListViewController.m */,
 				D5D78B8114E9EE86001FAB3D /* CardDetailViewController.h */,
 				D5D78B8214E9EE86001FAB3D /* CardDetailViewController.m */,
+				D5D2B4E714EBE256003C7717 /* ConfirmPaymentViewController.h */,
+				D5D2B4E814EBE25B003C7717 /* ConfirmPaymentViewController.m */,
+				D5D2B4F314EBF589003C7717 /* TransactionCompleteViewController.h */,
+				D5D2B4F414EBF58C003C7717 /* TransactionCompleteViewController.m */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -1472,6 +1514,10 @@
 		D59F15B714735ADA006946EE /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D5D2B4DB14EBB763003C7717 /* dotA.png */,
+				D5D2B4DC14EBB764003C7717 /* dotB.png */,
+				D5D2B4C614EB98EC003C7717 /* check.png */,
+				D5D2B4C714EB98EC003C7717 /* uncheck.png */,
 				D0890C1B14E1F4A50068AFA4 /* splash_screen2.png */,
 				D0890C0D14E1F4060068AFA4 /* gb.png */,
 				D0890C0E14E1F4060068AFA4 /* textfieldblue_split.png */,
@@ -1510,6 +1556,8 @@
 		D59F15BF14735D11006946EE /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				D5D2B4F614EBFFEF003C7717 /* EasyFXPreloader.h */,
+				D5D2B4F714EBFFF1003C7717 /* EasyFXPreloader.m */,
 				D5D5492314E3D44C00CA6E83 /* EasyFXTextField.h */,
 				D5D5492414E3D44C00CA6E83 /* EasyFXTextField.m */,
 				D514A34514D91DD000E1BEFE /* EasyFXNavigationBar.h */,
@@ -1986,6 +2034,12 @@
 				D0890C2214E1F4EC0068AFA4 /* Default.png in Resources */,
 				D5D5491A14E3CD7600CA6E83 /* CardListViewController.xib in Resources */,
 				D5D78B7F14E9EC0E001FAB3D /* CardDetailViewController.xib in Resources */,
+				D5D2B4C814EB98ED003C7717 /* check.png in Resources */,
+				D5D2B4C914EB98ED003C7717 /* uncheck.png in Resources */,
+				D5D2B4DD14EBB765003C7717 /* dotA.png in Resources */,
+				D5D2B4DE14EBB765003C7717 /* dotB.png in Resources */,
+				D5D2B4E614EBDDAB003C7717 /* ConfirmPaymentViewController.xib in Resources */,
+				D5D2B4F214EBF356003C7717 /* TransactionCompleteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2050,6 +2104,12 @@
 				D5D5492514E3D44C00CA6E83 /* EasyFXTextField.m in Sources */,
 				D5D78B8314E9EE86001FAB3D /* CardDetailViewController.m in Sources */,
 				D5D78B8614E9F29B001FAB3D /* SetCurrencyListResult.m in Sources */,
+				D5D2B4D614EBA479003C7717 /* EasyFXTextFieldDelegate.m in Sources */,
+				D5D2B4E914EBE25E003C7717 /* ConfirmPaymentViewController.m in Sources */,
+				D5D2B4EC14EBE758003C7717 /* Payment.m in Sources */,
+				D5D2B4EF14EBF0BE003C7717 /* DealResult.m in Sources */,
+				D5D2B4F514EBF595003C7717 /* TransactionCompleteViewController.m in Sources */,
+				D5D2B4F814EBFFF3003C7717 /* EasyFXPreloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2118,6 +2178,22 @@
 				D59F15BB14735B58006946EE /* en */,
 			);
 			name = LoginViewController.xib;
+			sourceTree = "<group>";
+		};
+		D5D2B4E414EBDDAB003C7717 /* ConfirmPaymentViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5D2B4E514EBDDAB003C7717 /* en */,
+			);
+			name = ConfirmPaymentViewController.xib;
+			sourceTree = "<group>";
+		};
+		D5D2B4F014EBF356003C7717 /* TransactionCompleteViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5D2B4F114EBF356003C7717 /* en */,
+			);
+			name = TransactionCompleteViewController.xib;
 			sourceTree = "<group>";
 		};
 		D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */ = {
