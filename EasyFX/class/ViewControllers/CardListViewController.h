@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EasyFXPreloader.h"
 
 @interface CardListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *table;
     NSArray *cardsList;
+    
+    EasyFXPreloader *preloadView;
 }
 
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) NSArray *cardsList;
 
-
+-(void)loadData;
 -(void)fetchCards;
 
 @end

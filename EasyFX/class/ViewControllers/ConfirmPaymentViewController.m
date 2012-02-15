@@ -31,7 +31,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [preloadView release];
+        preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
+        [preloadView setMessage:@"processing payment..."];
+        preloadView.tag = 1;
     }
     return self;
 }
@@ -104,12 +107,18 @@
 }
 
 - (IBAction)confirmClick:(id)sender {
+    [self.view addSubview:preloadView];
+    [NSThread detachNewThreadSelector:@selector(confirmAction) toTarget:self withObject:nil];
+}
+
+- (void)confirmAction {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
     [wsFactory makeDeal:[delegate payment]];
     DealResult *dealResult = (DealResult*)[wsFactory.wsResponse objectAtIndex:0];
     if ([[dealResult success] isEqualToString:@"true"]) {
-         TransactionCompleteViewController *viewController = [[TransactionCompleteViewController alloc] initWithNibName:@"TransactionCompleteViewController" bundle:nil dealNo:[dealResult dealNumber]];
+        TransactionCompleteViewController *viewController = [[TransactionCompleteViewController alloc] initWithNibName:@"TransactionCompleteViewController" bundle:nil dealNo:[dealResult dealNumber]];
         [self.navigationController pushViewController:viewController animated:YES];
         [self.navigationController setNavigationBarHidden:NO];
         [viewController release];
@@ -120,6 +129,8 @@
     }
     
     [wsFactory release];
+    [pool release];
+    [preloadView removeFromSuperview];
 }
 
 @end

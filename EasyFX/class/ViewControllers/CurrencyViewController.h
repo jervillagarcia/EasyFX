@@ -14,6 +14,13 @@
     NSArray *currencyList;
     NSMutableArray *filteredList;
     EasyFXPreloader             *preloadView;
+    UIBarButtonItem *backItem1;
+    UIBarButtonItem *backItem2;
+    UIButton *button1;
+    UIButton *button2;
+    UIImageView *logoImage;
+    UIImage  *buttonImage;
+    UIImage  *editImage;
 }
 
 @property (nonatomic, retain) UITableView *table;

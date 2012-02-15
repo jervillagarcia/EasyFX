@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         filteredList = [[NSMutableArray alloc] init];
+
         [preloadView release];
         preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
         [preloadView setMessage:@"Logging out"];
@@ -60,33 +61,39 @@
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 
-    UIImage  *buttonImage = [UIImage imageNamed:@"back_button.png"];
-    UIImage  *editImage = [UIImage imageNamed:@"edit_currency_icon.png"];
+    buttonImage = [[UIImage imageNamed:@"back_button.png"] retain];
+    editImage = [[UIImage imageNamed:@"edit_currency_icon.png"] retain];
     
-    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button1 setImage:buttonImage forState:UIControlStateNormal];
     [button1 addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [button1 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
     
-    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [button2 setImage:editImage forState:UIControlStateNormal];
     [button2 addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
     [button2 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
 
     //Logout Button
-    UIBarButtonItem *backItem1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
+    backItem1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
     [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:backItem1];
 
-    UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
+    backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
     [self.navigationController.navigationBar.topItem     setRightBarButtonItem:backItem2];
-    
-    self.navigationController.navigationBar.topItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]] autorelease];
+    logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]];
+    self.navigationController.navigationBar.topItem.titleView = logoImage;
 
 }
 
 - (void)dealloc {
+//    [buttonImage release];
+//    [editImage release];
+    [logoImage release];
+    [backItem1 release];
+    [backItem2 release];
     [currencyList release];
     [filteredList release];
+    [preloadView release];
     [super dealloc];
 }
 
@@ -194,7 +201,6 @@
 
 
 -(void)fetchCurrencies {
-//    [NSThread detachNewThreadSelector:@selector(showActivity) toTarget:self withObject:nil];
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     WebServiceFactory *ws = [[WebServiceFactory alloc] init];
     
@@ -227,11 +233,11 @@
 }
 
 -(void)updateCurrencyList{
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     for (PriceRec *mPrice in filteredList) {
         [arr addObject:mPrice.pair];
     }
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     WebServiceFactory *ws = [[WebServiceFactory alloc] init];
     
     [ws setCCYList:arr];
@@ -244,7 +250,7 @@
 - (IBAction) backAction:(id)sender {
     [self.view addSubview:preloadView];
     [NSThread detachNewThreadSelector:@selector(logoutAction) toTarget:self withObject:nil];
-
+    
 }
 
 -(void)logoutAction {
@@ -253,10 +259,10 @@
     
     [ws logOut];
     
-    [ws release];
-    [pool release];
     [preloadView removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
+    [ws release];
+    [pool release];
 }
 
 - (IBAction) editAction:(id)sender {

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EasyFXPreloader.h"
 
 @interface ConfirmPaymentViewController : UIViewController<UIAlertViewDelegate>{
     IBOutlet UILabel *lblAccountName;
@@ -19,6 +20,8 @@
     IBOutlet UILabel *lblExchangeRate;
     IBOutlet UILabel *lblCurrencyTo;
     IBOutlet UILabel *lblPaymentAmount;
+    
+    EasyFXPreloader *preloadView;
 }
     
 @property(nonatomic, retain) UILabel *lblAccountName;
@@ -31,5 +34,7 @@
 @property(nonatomic, retain) UILabel *lblExchangeRate;
 @property(nonatomic, retain) UILabel *lblCurrencyTo;
 @property(nonatomic, retain) UILabel *lblPaymentAmount;
+
+- (void)confirmAction;
 
 @end

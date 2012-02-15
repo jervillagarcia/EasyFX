@@ -225,9 +225,6 @@
 		XmlParser *xmlParser = [[XmlParser alloc] init];
 		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogOut" isLogin:NO] fromURI:@"nil" toObject:@"" parseError:nil];
         
-        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
-        
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		
@@ -306,10 +303,7 @@
 		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
 		XmlParser *xmlParser = [[XmlParser alloc] init];
 		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"SetCurrencyList" isLogin:NO] fromURI:@"SetCurrencyListResult" toObject:@"SetCurrencyListResult" parseError:nil];
-        
-        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
-        
+                
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		
@@ -343,16 +337,21 @@
 		[sRequest appendString:@"<sch:SellCCY>"];
 		[sRequest appendString:payment.sellCCY];
 		[sRequest appendString:@"</sch:SellCCY>"];
+		[sRequest appendString:@"<sch:SellAmount>"];
+		[sRequest appendString:payment.sellAmount];
+		[sRequest appendString:@"</sch:SellAmount>"];
 		[sRequest appendString:@"<sch:PayeeID>"];
 		[sRequest appendString:payment.beneficiaryRec.iD];
 		[sRequest appendString:@"</sch:PayeeID>"];
 		[sRequest appendString:@"<sch:Reference>"];
-		[sRequest appendString:@""];
+		[sRequest appendString:@" "];
 		[sRequest appendString:@"</sch:Reference>"];
 		[sRequest appendString:@"</sch:MakeADeal>"];
 		[sRequest appendString:[self getEndHeader]];
 		
 		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+        NSLog(@"Request: ----->  %@", sRequest);
+        
 		XmlParser *xmlParser = [[XmlParser alloc] init];
 		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeADeal" isLogin:NO] fromURI:@"DealResult" toObject:@"DealResult" parseError:nil];
         

@@ -23,11 +23,11 @@
     
 
 - (NSString*)getCurrencyYouBuy{
-	return [pair substringWithRange:NSMakeRange(0,3)];
+	return [pair substringWithRange:NSMakeRange(3,3)];
 }
 
 - (NSString*)getCurrencyYouSell{
-	return [pair substringWithRange:NSMakeRange(3,3)];
+	return [pair substringWithRange:NSMakeRange(0,3)];
 }
 
 

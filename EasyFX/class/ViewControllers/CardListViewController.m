@@ -21,7 +21,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [preloadView release];
+        preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
+        [preloadView setMessage:@"Loading..."];
+        preloadView.tag = 1;
     }
     return self;
 }
@@ -48,7 +51,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSelector:@selector(fetchCards)];
 }
 
 - (void)viewDidUnload
@@ -62,6 +64,7 @@
     [super viewDidAppear:animated];
     
     [Utils setNavTitleImage:self];
+    [self loadData];
     
 }
 
@@ -71,6 +74,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [cardsList release];
+    [preloadView release];
+    [super dealloc];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -153,6 +161,10 @@
     [detailViewController release];
 }
 
+-(void)loadData {
+    [self.view addSubview:preloadView];
+    [NSThread detachNewThreadSelector:@selector(fetchCards) toTarget:self withObject:nil];
+}
 
 -(void)fetchCards {
     //    [NSThread detachNewThreadSelector:@selector(showActivity) toTarget:self withObject:nil];
@@ -163,52 +175,12 @@
     
     [cardsList release];
     cardsList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
-	
-    //    if([ws.wsResponse count] > 0) { 
-    //        if (([ws.wsResponse count] == 1) && [[ws.wsResponse objectAtIndex:0] isKindOfClass:[Fault class]]) {
-    //            [ws release];
-    //            [pool release];
-    //            
-    //            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-    //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:[(Fault*)[ws.wsResponse objectAtIndex:0] faultstring] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    //            [alert show];
-    //            [alert release];
-    //        } else if (([ws.wsResponse count] == 1) && [[ws.wsResponse objectAtIndex:0] isKindOfClass:[Error class]]) {
-    //            [ws release];
-    //            [pool release];
-    //            
-    //            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-    //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[(Error*)[ws.wsResponse objectAtIndex:0] CODE] message:[(Error*)[ws.wsResponse objectAtIndex:0] DESCRIPTION] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    //            [alert show];
-    //            [alert release];
-    //        } else {
-    //            [arr release];
-    //            arr = [ws.wsResponse retain];
-    //            
-    //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Validated OK." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Details", nil];
-    //            [alert show];
-    //            [alert release];
-    //            
-    //            [ws release];
-    //            [pool release];
-    //            
-    //            [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-    //        }
-    //    } else {
-    //        
-    //        [ws release];
-    //        [pool release];
-    //        
-    //        [processActivity dismissWithClickedButtonIndex:0 animated:YES];
-    //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"No results found." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    //        [alert show];
-    //        [alert release];
-    //        
-    //    }
-    
+	    
+    [table reloadData];
+    [preloadView removeFromSuperview];
+
     [ws release];
     [pool release];
-    
 }
 
 #pragma mark Actions (Button)

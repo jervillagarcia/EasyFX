@@ -19,7 +19,6 @@
     IBOutlet UITextField *txtAmtToSell;
     
     PriceRec *priceRec;
- 
 }
 
 @property(nonatomic, retain) PriceRec *priceRec;

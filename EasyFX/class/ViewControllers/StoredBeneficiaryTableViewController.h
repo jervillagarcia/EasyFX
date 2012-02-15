@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EasyFXPreloader.h"
 
 @interface StoredBeneficiaryTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *table;
     NSArray *beneficiaryList;
+    
+    EasyFXPreloader *preloadView;
 }
 
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) NSArray *beneficiaryList;
 
-
+-(void)loadData;
 -(void)fetchBeneficiaries;
 
 @end
