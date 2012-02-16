@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SetCurrencyListResult : NSObject {
+@interface Result : NSObject {
     
     NSString    *success;
     NSString    *errorID;

@@ -106,6 +106,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)dealloc {
+    [preloadView release];
+    [super dealloc];
+}
+
 - (IBAction)confirmClick:(id)sender {
     [self.view addSubview:preloadView];
     [NSThread detachNewThreadSelector:@selector(confirmAction) toTarget:self withObject:nil];
@@ -128,9 +133,10 @@
         [alert release];
     }
     
+    [preloadView removeFromSuperview];
+
     [wsFactory release];
     [pool release];
-    [preloadView removeFromSuperview];
 }
 
 - (IBAction)backAction:(id)sender {

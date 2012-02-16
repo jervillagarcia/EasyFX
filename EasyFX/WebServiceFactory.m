@@ -302,7 +302,7 @@
 		
 		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"SetCurrencyList" isLogin:NO] fromURI:@"SetCurrencyListResult" toObject:@"SetCurrencyListResult" parseError:nil];
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"SetCurrencyList" isLogin:NO] fromURI:@"SetCurrencyListResult" toObject:@"Result" parseError:nil];
                 
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
@@ -354,6 +354,66 @@
         
 		XmlParser *xmlParser = [[XmlParser alloc] init];
 		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeADeal" isLogin:NO] fromURI:@"DealResult" toObject:@"DealResult" parseError:nil];
+        
+        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+        
+		[self.wsResponse release];
+		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+		
+		[sRequest release];	
+		[xmlParser release];
+	}
+}
+
+- (void)AddCard:(CardRec*)cardRec {
+    if ([self isConnectedToInternet:HOST]) {
+        
+		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+		// Create the SOAP body 
+		[sRequest appendFormat:[self getStartHeader]];
+		[sRequest appendString:@"<sch:AddCard>"];
+		[sRequest appendString:@"<sch:CardNumber>"];
+		[sRequest appendString:cardRec.cardNumber];
+		[sRequest appendString:@"</sch:CardNumber>"];
+		[sRequest appendString:@"<sch:CVV>"];
+		[sRequest appendString:cardRec.cvv];
+		[sRequest appendString:@"</sch:CVV>"];
+		[sRequest appendString:@"<sch:StartDate>"];
+		[sRequest appendString:cardRec.startDate];
+		[sRequest appendString:@"</sch:StartDate>"];
+		[sRequest appendString:@"<sch:IssueNumber>"];
+		[sRequest appendString:cardRec.issueNumber];
+		[sRequest appendString:@"</sch:IssueNumber>"];
+		[sRequest appendString:@"<sch:ExpiryDate>"];
+		[sRequest appendString:cardRec.expiryDate];
+		[sRequest appendString:@"</sch:ExpiryDate>"];
+		[sRequest appendString:@"<sch:Name>"];
+		[sRequest appendString:cardRec.name];
+		[sRequest appendString:@"</sch:Name>"];
+		[sRequest appendString:@"<sch:Address1>"];
+		[sRequest appendString:cardRec.address1];
+		[sRequest appendString:@"</sch:Address1>"];
+		[sRequest appendString:@"<sch:Address2>"];
+		[sRequest appendString:cardRec.address2];
+		[sRequest appendString:@"</sch:Address2>"];
+		[sRequest appendString:@"<sch:Address3>"];
+		[sRequest appendString:cardRec.address3];
+		[sRequest appendString:@"</sch:Address3>"];
+		[sRequest appendString:@"<sch:PostCode>"];
+		[sRequest appendString:cardRec.postCode];
+		[sRequest appendString:@"</sch:PostCode>"];
+		[sRequest appendString:@"<sch:CountryCode>"];
+		[sRequest appendString:cardRec.countryCode];
+		[sRequest appendString:@"</sch:CountryCode>"];
+		[sRequest appendString:@"</sch:AddCard>"];
+		[sRequest appendString:[self getEndHeader]];
+		
+		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+        NSLog(@"Request: ----->  %@", sRequest);
+        
+		XmlParser *xmlParser = [[XmlParser alloc] init];
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"AddCard" isLogin:NO] fromURI:@"ResultElement" toObject:@"Result" parseError:nil];
         
         //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
         //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);

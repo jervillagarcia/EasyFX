@@ -1100,34 +1100,28 @@
    <soapenv:Body>
       <web:GetCardList/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetCardList"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/AddCard" name="AddCard" bindingOperationName="AddCard" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetCardList"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/AddCard" name="AddCard" bindingOperationName="AddCard" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:AddCard>
          <!--Optional:-->
-         <web:CardNumber>?</web:CardNumber>
+         <web:CardNumber>4000000000000002</web:CardNumber>
          <!--Optional:-->
-         <web:CVV>?</web:CVV>
+         <web:CVV>123</web:CVV>
          <!--Optional:-->
-         <web:StartDate>?</web:StartDate>
-         <web:IssueNumber>?</web:IssueNumber>
+         <web:StartDate>01/11</web:StartDate>
+         <web:IssueNumber>123</web:IssueNumber>
          <!--Optional:-->
-         <web:ExpiryDate>?</web:ExpiryDate>
+         <web:ExpiryDate>01/20</web:ExpiryDate>
          <!--Optional:-->
-         <web:Name>?</web:Name>
+         <web:Name>ApplyFin Test</web:Name>
          <!--Optional:-->
-         <web:Address1>?</web:Address1>
+         <web:Address1>London, London</web:Address1>
          <!--Optional:-->
-         <web:Address2>?</web:Address2>
-         <!--Optional:-->
-         <web:Address3>?</web:Address3>
-         <!--Optional:-->
-         <web:PostCode>?</web:PostCode>
-         <!--Optional:-->
-         <web:CountryCode>?</web:CountryCode>
+         <web:CountryCode>GB</web:CountryCode>
       </web:AddCard>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/AddCard"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/SetCurrencyList" name="SetCurrencyList" bindingOperationName="SetCurrencyList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/AddCard"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://voltrexfx.com/webservices/SetCurrencyList" name="SetCurrencyList" bindingOperationName="SetCurrencyList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:SetCurrencyList>
@@ -1157,6 +1151,20 @@
          <web:Reference>?</web:Reference>
       </web:MakeADeal>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/MakeADeal"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://voltrexfx.com/webservices/"> 
+<soapenv:Header/> 
+<soapenv:Body>
+<sch:MakeADeal>
+<sch:CardID>1</sch:CardID>
+<sch:CVV>123</sch:CVV>
+<sch:Rate>1.2136</sch:Rate>
+<sch:BuyCCY>GBP</sch:BuyCCY>
+<sch:BuyAmount>70.00</sch:BuyAmount>
+<sch:SellCCY>EUR</sch:SellCCY>
+<sch:PayeeID>740</sch:PayeeID>
+<sch:Reference></sch:Reference>
+</sch:MakeADeal>
+</soapenv:Body> 
 </soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/MakeADeal"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="EWSClassSoap12" type="wsdl" bindingName="{http://voltrexfx.com/webservices/}EWSClassSoap12" soapVersion="1_2" anonymous="optional" definition="http://www.voltrexfx.com/easyws/ews.asmx?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://www.voltrexfx.com/easyws/ews.asmx?wsdl"><con:part><con:url>http://www.voltrexfx.com/easyws/ews.asmx?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://voltrexfx.com/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://voltrexfx.com/webservices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://voltrexfx.com/webservices/">
@@ -1602,7 +1610,28 @@ groovyUtils.setPropertyValue("LogOut", "LTPA", cookie_vals.toString())</script><
    <soapenv:Body>
       <web:GetBeneficiaryList/>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetBeneficiaryList"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetCardList"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>GetCardList</con:operation><con:request name="GetCardList" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/GetBeneficiaryList"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="AddCard"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>AddCard</con:operation><con:request name="AddCard" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:AddCard>
+         <!--Optional:-->
+         <web:CardNumber>4000000000000002</web:CardNumber>
+         <!--Optional:-->
+         <web:CVV>123</web:CVV>
+         <!--Optional:-->
+         <web:StartDate>0111</web:StartDate>
+         <web:IssueNumber>123</web:IssueNumber>
+         <!--Optional:-->
+         <web:ExpiryDate>0120</web:ExpiryDate>
+         <!--Optional:-->
+         <web:Name>ApplyFin Test</web:Name>
+         <!--Optional:-->
+         <web:Address1>London, London</web:Address1>
+         <!--Optional:-->
+         <web:CountryCode>GB</web:CountryCode>
+      </web:AddCard>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://voltrexfx.com/webservices/AddCard"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetCardList"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EWSClassSoap</con:interface><con:operation>GetCardList</con:operation><con:request name="GetCardList" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.voltrexfx.com/easyws/ews.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://voltrexfx.com/webservices/">
    <soapenv:Header/>
    <soapenv:Body>
       <web:GetCardList/>

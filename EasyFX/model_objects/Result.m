@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SetCurrencyListResult.h"
+#import "Result.h"
 
-@implementation SetCurrencyListResult
+@implementation Result
 
 @synthesize success;
 @synthesize errorID;

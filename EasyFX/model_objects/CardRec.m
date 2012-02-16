@@ -21,5 +21,6 @@
 @synthesize address3;
 @synthesize postCode;
 @synthesize countryCode;
+@synthesize cvv;
 
 @end

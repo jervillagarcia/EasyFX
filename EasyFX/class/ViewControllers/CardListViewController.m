@@ -11,6 +11,8 @@
 #import "WebServiceFactory.h"
 #import "CardRec.h"
 #import "CardDetailViewController.h"
+#import "AddCardViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CardListViewController
 
@@ -187,7 +189,22 @@
 
 - (IBAction) editAction:(id)sender {
     [table setEditing:YES animated:YES];
+}
+
+- (IBAction)addCardAction:(id)sender {
+	CATransition *animation = [CATransition animation];
+	animation.type = kCATransitionFromBottom;
+	animation.duration = 0.5;  //Or whatever
+//	animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]; //Or whatever
+//	animation.startProgress = 0;  //Set this as needed
+//	animation.endProgress = 0.66;  //Set this as needed
+	animation.fillMode = kCAFillModeBoth;
+	[[self.navigationController.view layer] addAnimation:animation forKey:kCATransition];
+
     
+    AddCardViewController *viewController = [[AddCardViewController alloc] initWithNibName:@"AddViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:NO];
+    [viewController release];
 }
 
 @end

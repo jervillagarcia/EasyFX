@@ -429,6 +429,8 @@
 		D5D2B4F514EBF595003C7717 /* TransactionCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4F414EBF58C003C7717 /* TransactionCompleteViewController.m */; };
 		D5D2B4F814EBFFF3003C7717 /* EasyFXPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4F714EBFFF1003C7717 /* EasyFXPreloader.m */; };
 		D5D2B4FA14EC9071003C7717 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D2B4F914EC906C003C7717 /* QuartzCore.framework */; };
+		D5D2B4FF14EC9DB7003C7717 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4FD14EC9DB7003C7717 /* AddViewController.xib */; };
+		D5D2B50214ECA1F3003C7717 /* AddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B50114ECA1F1003C7717 /* AddCardViewController.m */; };
 		D5D4BE3114E0A2DD00C20A97 /* TransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */; };
 		D5D4BE3514E0A30300C20A97 /* TransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */; };
 		D5D4BE4214E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4114E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m */; };
@@ -441,7 +443,7 @@
 		D5D5492514E3D44C00CA6E83 /* EasyFXTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D5492414E3D44C00CA6E83 /* EasyFXTextField.m */; };
 		D5D78B7F14E9EC0E001FAB3D /* CardDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D78B7D14E9EC0E001FAB3D /* CardDetailViewController.xib */; };
 		D5D78B8314E9EE86001FAB3D /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D78B8214E9EE86001FAB3D /* CardDetailViewController.m */; };
-		D5D78B8614E9F29B001FAB3D /* SetCurrencyListResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D78B8514E9F29B001FAB3D /* SetCurrencyListResult.m */; };
+		D5D78B8614E9F29B001FAB3D /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D78B8514E9F29B001FAB3D /* Result.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -903,6 +905,9 @@
 		D5D2B4F614EBFFEF003C7717 /* EasyFXPreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXPreloader.h; sourceTree = "<group>"; };
 		D5D2B4F714EBFFF1003C7717 /* EasyFXPreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXPreloader.m; sourceTree = "<group>"; };
 		D5D2B4F914EC906C003C7717 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D5D2B4FE14EC9DB7003C7717 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AddViewController.xib; sourceTree = "<group>"; };
+		D5D2B50014ECA1EB003C7717 /* AddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCardViewController.h; path = class/ViewControllers/AddCardViewController.h; sourceTree = "<group>"; };
+		D5D2B50114ECA1F1003C7717 /* AddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCardViewController.m; path = class/ViewControllers/AddCardViewController.m; sourceTree = "<group>"; };
 		D5D4BE2F14E0A2DD00C20A97 /* TransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionDetailViewController.h; path = class/ViewControllers/TransactionDetailViewController.h; sourceTree = "<group>"; };
 		D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionDetailViewController.m; path = class/ViewControllers/TransactionDetailViewController.m; sourceTree = "<group>"; };
 		D5D4BE3414E0A30300C20A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TransactionDetailViewController.xib; sourceTree = "<group>"; };
@@ -924,8 +929,8 @@
 		D5D78B7E14E9EC0E001FAB3D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CardDetailViewController.xib; sourceTree = "<group>"; };
 		D5D78B8114E9EE86001FAB3D /* CardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardDetailViewController.h; path = class/ViewControllers/CardDetailViewController.h; sourceTree = "<group>"; };
 		D5D78B8214E9EE86001FAB3D /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardDetailViewController.m; path = class/ViewControllers/CardDetailViewController.m; sourceTree = "<group>"; };
-		D5D78B8414E9F29B001FAB3D /* SetCurrencyListResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCurrencyListResult.h; path = model_objects/SetCurrencyListResult.h; sourceTree = "<group>"; };
-		D5D78B8514E9F29B001FAB3D /* SetCurrencyListResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCurrencyListResult.m; path = model_objects/SetCurrencyListResult.m; sourceTree = "<group>"; };
+		D5D78B8414E9F29B001FAB3D /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Result.h; path = model_objects/Result.h; sourceTree = "<group>"; };
+		D5D78B8514E9F29B001FAB3D /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Result.m; path = model_objects/Result.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -978,8 +983,8 @@
 				D5D4BE4414E0B71F00C20A97 /* BeneficiaryRec.m */,
 				D5D5491514E3CC7700CA6E83 /* CardRec.h */,
 				D5D5491614E3CC7700CA6E83 /* CardRec.m */,
-				D5D78B8414E9F29B001FAB3D /* SetCurrencyListResult.h */,
-				D5D78B8514E9F29B001FAB3D /* SetCurrencyListResult.m */,
+				D5D78B8414E9F29B001FAB3D /* Result.h */,
+				D5D78B8514E9F29B001FAB3D /* Result.m */,
 				D5D2B4EA14EBE757003C7717 /* Payment.h */,
 				D5D2B4EB14EBE757003C7717 /* Payment.m */,
 				D5D2B4ED14EBF0BB003C7717 /* DealResult.h */,
@@ -1443,6 +1448,7 @@
 				D5D78B7D14E9EC0E001FAB3D /* CardDetailViewController.xib */,
 				D5D2B4E414EBDDAB003C7717 /* ConfirmPaymentViewController.xib */,
 				D5D2B4F014EBF356003C7717 /* TransactionCompleteViewController.xib */,
+				D5D2B4FD14EC9DB7003C7717 /* AddViewController.xib */,
 			);
 			name = en.lproj;
 			sourceTree = "<group>";
@@ -1503,6 +1509,8 @@
 				D5D2B4E814EBE25B003C7717 /* ConfirmPaymentViewController.m */,
 				D5D2B4F314EBF589003C7717 /* TransactionCompleteViewController.h */,
 				D5D2B4F414EBF58C003C7717 /* TransactionCompleteViewController.m */,
+				D5D2B50014ECA1EB003C7717 /* AddCardViewController.h */,
+				D5D2B50114ECA1F1003C7717 /* AddCardViewController.m */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -2044,6 +2052,7 @@
 				D5D2B4DE14EBB765003C7717 /* dotB.png in Resources */,
 				D5D2B4E614EBDDAB003C7717 /* ConfirmPaymentViewController.xib in Resources */,
 				D5D2B4F214EBF356003C7717 /* TransactionCompleteViewController.xib in Resources */,
+				D5D2B4FF14EC9DB7003C7717 /* AddViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2107,13 +2116,14 @@
 				D5D5491D14E3CDFE00CA6E83 /* CardListViewController.m in Sources */,
 				D5D5492514E3D44C00CA6E83 /* EasyFXTextField.m in Sources */,
 				D5D78B8314E9EE86001FAB3D /* CardDetailViewController.m in Sources */,
-				D5D78B8614E9F29B001FAB3D /* SetCurrencyListResult.m in Sources */,
+				D5D78B8614E9F29B001FAB3D /* Result.m in Sources */,
 				D5D2B4D614EBA479003C7717 /* EasyFXTextFieldDelegate.m in Sources */,
 				D5D2B4E914EBE25E003C7717 /* ConfirmPaymentViewController.m in Sources */,
 				D5D2B4EC14EBE758003C7717 /* Payment.m in Sources */,
 				D5D2B4EF14EBF0BE003C7717 /* DealResult.m in Sources */,
 				D5D2B4F514EBF595003C7717 /* TransactionCompleteViewController.m in Sources */,
 				D5D2B4F814EBFFF3003C7717 /* EasyFXPreloader.m in Sources */,
+				D5D2B50214ECA1F3003C7717 /* AddCardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2200,6 +2210,14 @@
 			name = TransactionCompleteViewController.xib;
 			sourceTree = "<group>";
 		};
+		D5D2B4FD14EC9DB7003C7717 /* AddViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5D2B4FE14EC9DB7003C7717 /* en */,
+			);
+			name = AddViewController.xib;
+			sourceTree = "<group>";
+		};
 		D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2232,7 +2250,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Errol Villagarcia (B926DLSS68)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Errol Villagarcia (B926DLSS68)";
 				CURRENT_PROJECT_VERSION = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2244,6 +2262,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = EasyFX;
 				PROVISIONING_PROFILE = "94D88BFE-40EE-4FFB-9320-98E1FF129B4C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "94D88BFE-40EE-4FFB-9320-98E1FF129B4C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

@@ -20,6 +20,7 @@
     NSString *address3;
     NSString *postCode;
     NSString *countryCode;
+    NSString *cvv;
 }
 
 @property(nonatomic, retain) NSString *iD;
@@ -33,5 +34,6 @@
 @property(nonatomic, retain) NSString *address3;
 @property(nonatomic, retain) NSString *postCode;
 @property(nonatomic, retain) NSString *countryCode;
+@property(nonatomic, retain) NSString *cvv;
 
 @end
