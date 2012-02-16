@@ -20,9 +20,20 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
     }
     return self;
 }
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isFromModal:(BOOL)mIsFromModal
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        isFromModal = mIsFromModal;
+    }
+    return self;
+}
+
 
 - (void)dealloc
 {
@@ -58,6 +69,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES];
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.isFromLogin = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -76,23 +89,34 @@
 	WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
     [wsFactory logInWithUser:[txtUsername text] password:[txtPassword text] clientId:[txtCliendId text]];
     
+    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.isFromLogin = NO;
+    
     if ([[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] success] isEqualToString:@"true"]) {
         //Store CCYPAIRS
-        EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         [delegate setCcyPairList:[[wsFactory.wsResponse objectAtIndex:0] cCYPairs]];
         [delegate setLimit:[[wsFactory.wsResponse objectAtIndex:0] limit]];
         
-        CurrencyViewController *viewController = [[CurrencyViewController alloc] init];
-        [self.navigationController pushViewController:viewController animated:YES];
-        [self.navigationController setNavigationBarHidden:NO];
-        [viewController release];
+        if (isFromModal) {
+            [self dismissModalViewControllerAnimated:YES];
+            isFromModal = NO;
+        } else {
+            CurrencyViewController *viewController = [[CurrencyViewController alloc] init];
+            [self.navigationController pushViewController:viewController animated:YES];
+            [self.navigationController setNavigationBarHidden:NO];
+            [viewController release];
+        }
     }
     
     [wsFactory release];
     [pool release];
     [preloadView removeFromSuperview];
 }
--(void)callHelpdesk:(id)sender{}
--(void)applyFinancialOnClick:(id)sender{}
+-(IBAction)callHelpdesk:(id)sender{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", @"08000961234"]]];
+}
+-(IBAction)applyFinancialOnClick:(id)sender{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.applyfinancial.co.uk"]];
+}
 
 @end

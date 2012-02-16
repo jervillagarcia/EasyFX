@@ -75,6 +75,11 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [txtCVV resignFirstResponder];
+    [super viewWillDisappear:animated];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -90,6 +95,10 @@
     ConfirmPaymentViewController *viewController = [[ConfirmPaymentViewController alloc] initWithNibName:@"ConfirmPaymentViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
+}
+
+- (IBAction)backAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

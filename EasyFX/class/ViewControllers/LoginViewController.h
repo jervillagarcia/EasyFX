@@ -15,6 +15,7 @@
     IBOutlet UITextField        *txtUsername;
     IBOutlet UITextField        *txtPassword;
     EasyFXPreloader             *preloadView;
+    BOOL                        isFromModal;
 }
 
 @property (nonatomic, retain) UITextField *txtClientId;
@@ -23,7 +24,10 @@
 
 -(IBAction)loginOnClick:(id)sender;
 -(void)loginAction;
--(void)callHelpdesk:(id)sender;
 -(void)applyFinancialOnClick:(id)sender;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isFromModal:(BOOL)isFromModal;
+
 
 @end

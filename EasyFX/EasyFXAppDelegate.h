@@ -14,6 +14,8 @@
     NSArray     *ccyPairList;
     NSString    *limit;
     Payment     *payment;
+    
+    BOOL        isFromLogin;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -26,6 +28,7 @@
 @property (nonatomic, retain) NSArray *ccyPairList;
 @property (nonatomic, retain) NSString *limit;
 @property (nonatomic, retain) Payment *payment;
+@property (nonatomic) BOOL        isFromLogin;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

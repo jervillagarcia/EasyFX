@@ -428,6 +428,7 @@
 		D5D2B4F214EBF356003C7717 /* TransactionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4F014EBF356003C7717 /* TransactionCompleteViewController.xib */; };
 		D5D2B4F514EBF595003C7717 /* TransactionCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4F414EBF58C003C7717 /* TransactionCompleteViewController.m */; };
 		D5D2B4F814EBFFF3003C7717 /* EasyFXPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4F714EBFFF1003C7717 /* EasyFXPreloader.m */; };
+		D5D2B4FA14EC9071003C7717 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D2B4F914EC906C003C7717 /* QuartzCore.framework */; };
 		D5D4BE3114E0A2DD00C20A97 /* TransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */; };
 		D5D4BE3514E0A30300C20A97 /* TransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5D4BE3314E0A30300C20A97 /* TransactionDetailViewController.xib */; };
 		D5D4BE4214E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D4BE4114E0B62000C20A97 /* StoredBeneficiaryTableViewCell.m */; };
@@ -901,6 +902,7 @@
 		D5D2B4F414EBF58C003C7717 /* TransactionCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionCompleteViewController.m; path = class/ViewControllers/TransactionCompleteViewController.m; sourceTree = "<group>"; };
 		D5D2B4F614EBFFEF003C7717 /* EasyFXPreloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXPreloader.h; sourceTree = "<group>"; };
 		D5D2B4F714EBFFF1003C7717 /* EasyFXPreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXPreloader.m; sourceTree = "<group>"; };
+		D5D2B4F914EC906C003C7717 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D5D4BE2F14E0A2DD00C20A97 /* TransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionDetailViewController.h; path = class/ViewControllers/TransactionDetailViewController.h; sourceTree = "<group>"; };
 		D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionDetailViewController.m; path = class/ViewControllers/TransactionDetailViewController.m; sourceTree = "<group>"; };
 		D5D4BE3414E0A30300C20A97 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TransactionDetailViewController.xib; sourceTree = "<group>"; };
@@ -931,6 +933,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D2B4FA14EC9071003C7717 /* QuartzCore.framework in Frameworks */,
 				D51AD08614D79E04000EB3BF /* SystemConfiguration.framework in Frameworks */,
 				D59F156B147353B3006946EE /* UIKit.framework in Frameworks */,
 				D59F156D147353B3006946EE /* Foundation.framework in Frameworks */,
@@ -1372,6 +1375,7 @@
 		D59F1569147353B3006946EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5D2B4F914EC906C003C7717 /* QuartzCore.framework */,
 				D51AD08514D79E04000EB3BF /* SystemConfiguration.framework */,
 				D59F156A147353B3006946EE /* UIKit.framework */,
 				D59F156C147353B3006946EE /* Foundation.framework */,

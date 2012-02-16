@@ -10,6 +10,8 @@
 
 #import "LoginViewController.h"
 
+#import "WebServiceFactory.h"
+
 @implementation EasyFXAppDelegate
 
 
@@ -30,6 +32,8 @@
 @synthesize limit;
 
 @synthesize payment;
+
+@synthesize isFromLogin;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -58,6 +62,14 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    if (isFromLogin) {
+        return;
+    }
+    
+    WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
+    [wsFactory logOut];
+    [wsFactory release];
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -65,6 +77,14 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    
+    if (isFromLogin) {
+        return;
+    }
+
+    LoginViewController *viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil isFromModal:YES];
+    [self.navigationController presentModalViewController:viewController animated:YES];
+    [viewController release];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

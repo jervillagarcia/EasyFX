@@ -8,6 +8,7 @@
 
 #import "EasyFXTextField.h"
 #import "Utils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EasyFXTextField
 
@@ -59,7 +60,15 @@
         int topWindow = [allWindows count] - 1;
         
         UIWindow *keyboardWindow = [allWindows objectAtIndex:topWindow];
+        
+        //Fixes Decimal Button Transition
+        CATransition *applicationLoadViewIn =[CATransition animation];
+        [applicationLoadViewIn setDuration:1.5];
+        [applicationLoadViewIn setType:kCATransitionReveal];
+        [applicationLoadViewIn setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+        [[dot layer]addAnimation:applicationLoadViewIn forKey:kCATransitionReveal];
         [keyboardWindow addSubview:dot];
+
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
