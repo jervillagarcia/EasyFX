@@ -19,6 +19,7 @@
     IBOutlet UIButton *btnBuy;
     IBOutlet UIButton *btnAdd;
     UIViewController *fromController;
+    UIColor *blueGradient;
 }
 
 @property(nonatomic, retain) UIButton *btnBuy;

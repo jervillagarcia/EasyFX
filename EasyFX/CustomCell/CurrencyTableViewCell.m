@@ -8,7 +8,7 @@
 
 #import "CurrencyTableViewCell.h"
 #import "TransactionDetailViewController.h"
-
+#import "Utils.h"
 @implementation CurrencyTableViewCell
 
 @synthesize curFrom;
@@ -41,13 +41,19 @@
         [btnAdd setHidden:NO];
         if (currencyPair.isSelected) {
             [btnAdd setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
+            [self setOpaque:YES];
+            [self setBackgroundColor:[UIColor darkGrayColor]];
         } else {
+            [self setOpaque:NO];
+            [self setBackgroundColor:[UIColor clearColor]];
             [btnAdd setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
         }
         
     }else if (state == UITableViewCellStateDefaultMask) {
         [btnBuy setHidden:NO];
         [btnAdd setHidden:YES];
+        [self setOpaque:NO];
+        [self setBackgroundColor:[UIColor clearColor]];
     }
 }
 
@@ -78,9 +84,13 @@
 - (IBAction)btnAdd:(id)sender {
     if ([self isEditing]) {
         if(currencyPair.isSelected){
+            [self setOpaque:NO];
+            [self setBackgroundColor:[UIColor clearColor]];
             [btnAdd setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
             [currencyPair setSelected:NO];
         } else {
+            [self setOpaque:YES];
+            [self setBackgroundColor:[UIColor darkGrayColor]];
             [btnAdd setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
             [currencyPair setSelected:YES];
         }

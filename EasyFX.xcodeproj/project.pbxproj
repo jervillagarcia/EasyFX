@@ -416,6 +416,7 @@
 		D59F15B51473567B006946EE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F15B31473567B006946EE /* LoginViewController.m */; };
 		D59F15BC14735B58006946EE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D59F15BA14735B58006946EE /* LoginViewController.xib */; };
 		D59F15C514735D94006946EE /* UIViewControllerTextDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D59F15C414735D94006946EE /* UIViewControllerTextDelegate.m */; };
+		D5A30A6214EE4A3D0077A916 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = D5A30A6114EE4A3D0077A916 /* iTunesArtwork */; };
 		D5D2B4C814EB98ED003C7717 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4C614EB98EC003C7717 /* check.png */; };
 		D5D2B4C914EB98ED003C7717 /* uncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = D5D2B4C714EB98EC003C7717 /* uncheck.png */; };
 		D5D2B4D614EBA479003C7717 /* EasyFXTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D2B4D514EBA479003C7717 /* EasyFXTextFieldDelegate.m */; };
@@ -886,6 +887,7 @@
 		D59F15BB14735B58006946EE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoginViewController.xib; sourceTree = "<group>"; };
 		D59F15C314735D94006946EE /* UIViewControllerTextDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewControllerTextDelegate.h; path = class/UIViewControllerTextDelegate.h; sourceTree = "<group>"; };
 		D59F15C414735D94006946EE /* UIViewControllerTextDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewControllerTextDelegate.m; path = class/UIViewControllerTextDelegate.m; sourceTree = "<group>"; };
+		D5A30A6114EE4A3D0077A916 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		D5D2B4C614EB98EC003C7717 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = images/check.png; sourceTree = "<group>"; };
 		D5D2B4C714EB98EC003C7717 /* uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uncheck.png; path = images/uncheck.png; sourceTree = "<group>"; };
 		D5D2B4D414EBA479003C7717 /* EasyFXTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXTextFieldDelegate.h; sourceTree = "<group>"; };
@@ -1358,6 +1360,7 @@
 		D59F155B147353B3006946EE = {
 			isa = PBXGroup;
 			children = (
+				D5A30A6114EE4A3D0077A916 /* iTunesArtwork */,
 				D0890C2114E1F4EC0068AFA4 /* Default.png */,
 				D0890C1914E1F42F0068AFA4 /* iphone4.png */,
 				D0890C1714E1F41A0068AFA4 /* iphone3.png */,
@@ -2053,6 +2056,7 @@
 				D5D2B4E614EBDDAB003C7717 /* ConfirmPaymentViewController.xib in Resources */,
 				D5D2B4F214EBF356003C7717 /* TransactionCompleteViewController.xib in Resources */,
 				D5D2B4FF14EC9DB7003C7717 /* AddViewController.xib in Resources */,
+				D5A30A6214EE4A3D0077A916 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
