@@ -1642,9 +1642,9 @@ groovyUtils.setPropertyValue("LogOut", "LTPA", cookie_vals.toString())</script><
 <sch:MakeADeal>
 <sch:CardID>1</sch:CardID>
 <sch:CVV>444</sch:CVV>
-<sch:Rate>1.21</sch:Rate>
+<sch:Rate>1.1916</sch:Rate>
 <sch:BuyCCY>EUR</sch:BuyCCY>
-<sch:BuyAmount>60.76</sch:BuyAmount>
+<sch:BuyAmount>60.83</sch:BuyAmount>
 <sch:SellCCY>GBP</sch:SellCCY>
 <sch:SellAmount>50.00</sch:SellAmount>
 <sch:PayeeID>740</sch:PayeeID>
