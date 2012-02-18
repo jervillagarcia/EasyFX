@@ -9,13 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "EasyFXPreloader.h"
 #import "UIViewControllerTextDelegate.h"
+#import "EasyFXSmallDateFieldDelegate.h"
 
-@interface AddCardViewController : UIViewControllerTextDelegate{
+@interface AddCardViewController : UIViewControllerTextDelegate <UIActionSheetDelegate>{
     EasyFXPreloader *preloadView;
     UIBarButtonItem *backItem1;
     UIBarButtonItem *backItem2;    
+    
+    IBOutlet UITextField *txtStartDate;
+    IBOutlet UITextField *txtExpiryDate;
+    
+    EasyFXSmallDateFieldDelegate *smallDateFieldDelegate;
 }
 
+@property(nonatomic, retain) EasyFXSmallDateFieldDelegate *smallDateFieldDelegate;
+@property(nonatomic, retain) UITextField *txtStartDate;
+@property(nonatomic, retain) UITextField *txtExpiryDate;
     
 
 @end

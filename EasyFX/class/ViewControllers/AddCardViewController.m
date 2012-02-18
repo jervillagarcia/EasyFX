@@ -12,6 +12,10 @@
 
 @implementation AddCardViewController
 
+@synthesize smallDateFieldDelegate;
+@synthesize txtStartDate;
+@synthesize txtExpiryDate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,13 +45,15 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    smallDateFieldDelegate = [[EasyFXSmallDateFieldDelegate alloc] initDelegate:self view:self.view];
+    [txtExpiryDate setDelegate:smallDateFieldDelegate];
+    [txtStartDate setDelegate:smallDateFieldDelegate];
+    
 }
-*/
 
 - (void)viewDidUnload
 {
@@ -101,5 +107,36 @@
     [alertView show];
     [alertView release];
 }
+# pragma mark Action Sheet
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0 :
+		{
+			for (id subview in actionSheet.subviews) {
+				if ([subview isKindOfClass:[UIPickerView class]]){
+					id aDelegate = [(UIPickerView*)subview delegate];
+					UITextField *txtField = [aDelegate curTxtField];
+					int fieldTag = [txtField tag];
+					[((UITextField*)[self.view viewWithTag:fieldTag]) setText:[aDelegate getPickerValue:(UIPickerView*)subview]];
+//					[self goToNextField:fieldTag];
+				}
+			}
+			break;
+		}
+		default:
+			break;
+	}
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
+	for (id subview in actionSheet.subviews) {
+        if ([subview isKindOfClass:[UIPickerView class]]){
+			id aDelegate = [(UIPickerView*)subview delegate];
+			[[aDelegate curTxtField] resignFirstResponder];
+		}
+	}
+}
+
 
 @end
