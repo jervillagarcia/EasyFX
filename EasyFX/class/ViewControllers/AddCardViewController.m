@@ -9,21 +9,34 @@
 #import "AddCardViewController.h"
 #import "Utils.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EasyFXAppDelegate.h"
+#import "WebServiceFactory.h"
+#import "Result.h"
 
 @implementation AddCardViewController
 
 @synthesize smallDateFieldDelegate;
+@synthesize countryFieldDelegate;
+@synthesize txtCardNo;
+@synthesize txtCVV;
+@synthesize txtName;
+@synthesize txtAddress1;
+@synthesize txtAddress2;
+@synthesize txtAddress3;
+@synthesize txtPostalCode;
 @synthesize txtStartDate;
 @synthesize txtExpiryDate;
+@synthesize txtCountry;
+@synthesize txtIssueNo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        [preloadView release];
-//        preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
-//        [preloadView setMessage:@"processing payment..."];
-//        preloadView.tag = 1;
+        [preloadView release];
+        preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
+        [preloadView setMessage:@"saving new card..."];
+        preloadView.tag = 1;
     }
     return self;
 }
@@ -50,8 +63,10 @@
 {
     [super viewDidLoad];
     smallDateFieldDelegate = [[EasyFXSmallDateFieldDelegate alloc] initDelegate:self view:self.view];
+    countryFieldDelegate = [[EasyFXLookupTextFieldDelegate alloc] initDelegate:self view:self.view viewController:self];
     [txtExpiryDate setDelegate:smallDateFieldDelegate];
     [txtStartDate setDelegate:smallDateFieldDelegate];
+    [txtCountry setDelegate:countryFieldDelegate];
     
 }
 
@@ -83,6 +98,7 @@
 }
 
 - (void) dealloc {
+    [country release];
     [preloadView release];
     [super dealloc];
 }
@@ -103,9 +119,45 @@
 }
 
 - (void)save {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Not yet available." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
-    [alertView release];
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Not yet available." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alertView show];
+//    [alertView release];
+    
+    [self.view addSubview:preloadView];
+    
+    CardRec *cardRec = [[CardRec alloc] init];
+    [cardRec        setCardNumber:[txtCardNo text]];
+    [cardRec        setCountryCode:countryCode];
+    [cardRec        setAddress1:[txtAddress1 text]];
+    [cardRec        setAddress2:[txtAddress2 text]];
+    [cardRec        setAddress3:[txtAddress3 text]];
+    [cardRec        setCvv:[txtCVV text]];
+    [cardRec        setExpiryDate:[txtExpiryDate text]];
+    [cardRec        setIssueNumber:[txtIssueNo text]];
+    [cardRec        setName:[txtName text]];
+    [cardRec        setPostCode:[txtPostalCode text]];
+    [cardRec        setStartDate:[txtStartDate text]];
+    
+    [NSThread detachNewThreadSelector:@selector(saveRecord:) toTarget:self withObject:cardRec];
+}
+
+- (void)saveRecord:(CardRec*)cardRec {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
+    [wsFactory AddCard:cardRec];
+    Result *result = (Result*)[wsFactory.wsResponse objectAtIndex:0];
+    if ([[result success] isEqualToString:@"true"]) {
+        [preloadView removeFromSuperview];
+        [self cancel];
+    } else {
+        [preloadView removeFromSuperview];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[result errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];	
+        [alert release];
+    }
+    
+    [wsFactory release];
+    [pool release];
 }
 # pragma mark Action Sheet
 
@@ -124,6 +176,17 @@
 			}
 			break;
 		}
+        case 1 :
+        {
+			for (id subview in actionSheet.subviews) {
+				if ([subview isKindOfClass:[UIPickerView class]]){
+                    id aDelegate = [(UIPickerView*)subview delegate];
+                    UITextField *txtField = [aDelegate curTxtField];
+                    [txtField resignFirstResponder];
+                }
+            }
+            
+        }
 		default:
 			break;
 	}
@@ -131,12 +194,19 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
 	for (id subview in actionSheet.subviews) {
-        if ([subview isKindOfClass:[UIPickerView class]]){
+		if ([subview isKindOfClass:[UIPickerView class]]){
 			id aDelegate = [(UIPickerView*)subview delegate];
 			[[aDelegate curTxtField] resignFirstResponder];
 		}
 	}
 }
 
+-(void)setCountry:(Country *)mCountry {
+    countryCode = [mCountry iso];
+    [txtCountry setText:[mCountry name]];
+    [txtCountry resignFirstResponder];
+    [txtIssueNo becomeFirstResponder];
+    [txtIssueNo resignFirstResponder];
+}
 
 @end

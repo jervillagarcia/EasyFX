@@ -32,6 +32,8 @@
 -(BOOL)textFieldShouldClear:(UITextField *)textField;
 -(void)textFieldDidBeginEditing:(UITextField *)textField;
 
+-(void)goToNextField:(int)aTag;
+
 -(NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView;
 -(NSString*)getPickerValue:(UIPickerView*)pickerView;
 -(void)dealloc;

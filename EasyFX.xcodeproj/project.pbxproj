@@ -18,6 +18,13 @@
 		D0890C2214E1F4EC0068AFA4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0890C2114E1F4EC0068AFA4 /* Default.png */; };
 		D0EE1FB614EF366600FB4067 /* EasyFXSmallDateFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FB514EF366600FB4067 /* EasyFXSmallDateFieldDelegate.m */; };
 		D0EE1FBD14EF36CA00FB4067 /* EasyFXSmallDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FBC14EF36CA00FB4067 /* EasyFXSmallDatePicker.m */; };
+		D0EE1FD914EF681F00FB4067 /* CountryLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FD814EF681F00FB4067 /* CountryLookupViewController.m */; };
+		D0EE1FDD14EF683100FB4067 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FDC14EF683100FB4067 /* Country.m */; };
+		D0EE1FF114EF696100FB4067 /* EasyFXLookupTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FF014EF696100FB4067 /* EasyFXLookupTextFieldDelegate.m */; };
+		D0EE1FF314EF6AB900FB4067 /* countries.xml in Resources */ = {isa = PBXBuildFile; fileRef = D0EE1FF214EF6AB900FB4067 /* countries.xml */; };
+		D0EE1FF614EF6B0D00FB4067 /* CountryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FF514EF6B0D00FB4067 /* CountryParser.m */; };
+		D0EE1FF914EF6B4000FB4067 /* EasyFXCountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FF814EF6B4000FB4067 /* EasyFXCountryCell.m */; };
+		D0EE1FFB14EF6DF200FB4067 /* CountryLookupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EE1FFA14EF6DF200FB4067 /* CountryLookupViewController.xib */; };
 		D514A31614D8F8EE00E1BEFE /* CurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */; };
 		D514A32B14D90DB600E1BEFE /* PriceRec.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A32A14D90DB600E1BEFE /* PriceRec.m */; };
 		D514A33814D9148E00E1BEFE /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D514A33714D9148E00E1BEFE /* CurrencyTableViewCell.m */; };
@@ -471,8 +478,20 @@
 		D0890C2114E1F4EC0068AFA4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D0EE1FB414EF366600FB4067 /* EasyFXSmallDateFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXSmallDateFieldDelegate.h; sourceTree = "<group>"; };
 		D0EE1FB514EF366600FB4067 /* EasyFXSmallDateFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXSmallDateFieldDelegate.m; sourceTree = "<group>"; };
-		D0EE1FBB14EF36CA00FB4067 /* EasyFXSmallDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EasyFXSmallDatePicker.h; sourceTree = "<group>"; };
+		D0EE1FBB14EF36CA00FB4067 /* EasyFXSmallDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXSmallDatePicker.h; sourceTree = "<group>"; };
 		D0EE1FBC14EF36CA00FB4067 /* EasyFXSmallDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXSmallDatePicker.m; sourceTree = "<group>"; };
+		D0EE1FD714EF681F00FB4067 /* CountryLookupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryLookupViewController.h; sourceTree = "<group>"; };
+		D0EE1FD814EF681F00FB4067 /* CountryLookupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryLookupViewController.m; sourceTree = "<group>"; };
+		D0EE1FDB14EF683100FB4067 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		D0EE1FDC14EF683100FB4067 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		D0EE1FEF14EF696100FB4067 /* EasyFXLookupTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXLookupTextFieldDelegate.h; sourceTree = "<group>"; };
+		D0EE1FF014EF696100FB4067 /* EasyFXLookupTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXLookupTextFieldDelegate.m; sourceTree = "<group>"; };
+		D0EE1FF214EF6AB900FB4067 /* countries.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = countries.xml; sourceTree = "<group>"; };
+		D0EE1FF414EF6B0D00FB4067 /* CountryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryParser.h; sourceTree = "<group>"; };
+		D0EE1FF514EF6B0D00FB4067 /* CountryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryParser.m; sourceTree = "<group>"; };
+		D0EE1FF714EF6B4000FB4067 /* EasyFXCountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXCountryCell.h; sourceTree = "<group>"; };
+		D0EE1FF814EF6B4000FB4067 /* EasyFXCountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXCountryCell.m; sourceTree = "<group>"; };
+		D0EE1FFA14EF6DF200FB4067 /* CountryLookupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryLookupViewController.xib; sourceTree = "<group>"; };
 		D514A31314D8F8EE00E1BEFE /* CurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyViewController.h; path = class/ViewControllers/CurrencyViewController.h; sourceTree = "<group>"; };
 		D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyViewController.m; path = class/ViewControllers/CurrencyViewController.m; sourceTree = "<group>"; };
 		D514A32914D90DB600E1BEFE /* PriceRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PriceRec.h; path = model_objects/PriceRec.h; sourceTree = "<group>"; };
@@ -972,6 +991,8 @@
 		D514A33514D9145C00E1BEFE /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				D0EE1FF714EF6B4000FB4067 /* EasyFXCountryCell.h */,
+				D0EE1FF814EF6B4000FB4067 /* EasyFXCountryCell.m */,
 				D514A33614D9148E00E1BEFE /* CurrencyTableViewCell.h */,
 				D514A33714D9148E00E1BEFE /* CurrencyTableViewCell.m */,
 				D5D4BE4014E0B61F00C20A97 /* StoredBeneficiaryTableViewCell.h */,
@@ -983,6 +1004,8 @@
 		D51AD08714D7A7A0000EB3BF /* model objects */ = {
 			isa = PBXGroup;
 			children = (
+				D0EE1FDB14EF683100FB4067 /* Country.h */,
+				D0EE1FDC14EF683100FB4067 /* Country.m */,
 				D51AD08B14D7A824000EB3BF /* LogInResult.h */,
 				D51AD08C14D7A824000EB3BF /* LogInResult.m */,
 				D514A32914D90DB600E1BEFE /* PriceRec.h */,
@@ -1456,6 +1479,7 @@
 				D5D5491814E3CD7600CA6E83 /* CardListViewController.xib */,
 				D5D78B7D14E9EC0E001FAB3D /* CardDetailViewController.xib */,
 				D5D2B4E414EBDDAB003C7717 /* ConfirmPaymentViewController.xib */,
+				D0EE1FFA14EF6DF200FB4067 /* CountryLookupViewController.xib */,
 				D5D2B4F014EBF356003C7717 /* TransactionCompleteViewController.xib */,
 				D5D2B4FD14EC9DB7003C7717 /* AddViewController.xib */,
 			);
@@ -1471,6 +1495,8 @@
 				D5D2B4D514EBA479003C7717 /* EasyFXTextFieldDelegate.m */,
 				D59F157B147353B3006946EE /* EasyFXAppDelegate.h */,
 				D59F157C147353B3006946EE /* EasyFXAppDelegate.m */,
+				D0EE1FEF14EF696100FB4067 /* EasyFXLookupTextFieldDelegate.h */,
+				D0EE1FF014EF696100FB4067 /* EasyFXLookupTextFieldDelegate.m */,
 			);
 			name = delegate;
 			sourceTree = "<group>";
@@ -1506,6 +1532,8 @@
 				D59F1585147353B3006946EE /* RootViewController.m */,
 				D514A31314D8F8EE00E1BEFE /* CurrencyViewController.h */,
 				D514A31414D8F8EE00E1BEFE /* CurrencyViewController.m */,
+				D0EE1FD714EF681F00FB4067 /* CountryLookupViewController.h */,
+				D0EE1FD814EF681F00FB4067 /* CountryLookupViewController.m */,
 				D5D4BE2F14E0A2DD00C20A97 /* TransactionDetailViewController.h */,
 				D5D4BE3014E0A2DD00C20A97 /* TransactionDetailViewController.m */,
 				D5D4BE4614E0B92500C20A97 /* StoredBeneficiaryTableViewController.h */,
@@ -1529,6 +1557,7 @@
 		D59F15B1147355ED006946EE /* datamodels */ = {
 			isa = PBXGroup;
 			children = (
+				D0EE1FF214EF6AB900FB4067 /* countries.xml */,
 				D59F157E147353B3006946EE /* EasyFX.xcdatamodeld */,
 			);
 			name = datamodels;
@@ -1579,6 +1608,8 @@
 		D59F15BF14735D11006946EE /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				D0EE1FF414EF6B0D00FB4067 /* CountryParser.h */,
+				D0EE1FF514EF6B0D00FB4067 /* CountryParser.m */,
 				D0EE1FBB14EF36CA00FB4067 /* EasyFXSmallDatePicker.h */,
 				D0EE1FBC14EF36CA00FB4067 /* EasyFXSmallDatePicker.m */,
 				D5D2B4F614EBFFEF003C7717 /* EasyFXPreloader.h */,
@@ -2067,6 +2098,8 @@
 				D5D2B4F214EBF356003C7717 /* TransactionCompleteViewController.xib in Resources */,
 				D5D2B4FF14EC9DB7003C7717 /* AddViewController.xib in Resources */,
 				D5A30A6214EE4A3D0077A916 /* iTunesArtwork in Resources */,
+				D0EE1FF314EF6AB900FB4067 /* countries.xml in Resources */,
+				D0EE1FFB14EF6DF200FB4067 /* CountryLookupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2140,6 +2173,11 @@
 				D5D2B50214ECA1F3003C7717 /* AddCardViewController.m in Sources */,
 				D0EE1FB614EF366600FB4067 /* EasyFXSmallDateFieldDelegate.m in Sources */,
 				D0EE1FBD14EF36CA00FB4067 /* EasyFXSmallDatePicker.m in Sources */,
+				D0EE1FD914EF681F00FB4067 /* CountryLookupViewController.m in Sources */,
+				D0EE1FDD14EF683100FB4067 /* Country.m in Sources */,
+				D0EE1FF114EF696100FB4067 /* EasyFXLookupTextFieldDelegate.m in Sources */,
+				D0EE1FF614EF6B0D00FB4067 /* CountryParser.m in Sources */,
+				D0EE1FF914EF6B4000FB4067 /* EasyFXCountryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

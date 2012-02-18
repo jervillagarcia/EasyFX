@@ -96,9 +96,17 @@
 
 -(BOOL)textFieldShouldClear:(UITextField *)textField {
 	isEditing = NO;
+    
+    [textField resignFirstResponder];
 	
 	return YES;
 }
+
+-(void)goToNextField:(int)aTag {
+	// Proceed to next field
+    [(UITextField*)[self.view viewWithTag:aTag+1] becomeFirstResponder];
+}
+
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField { 
 	if (isEditing) {
@@ -107,10 +115,11 @@
 							   delegate:self 
 						 actionDelegate:self.delegate
 								   view:self.view 
-						   currentValue:@""] ;	
+						   currentValue:[textField text]] ;	
 		
     } else {
 		isEditing = YES;
+        [textField resignFirstResponder];
 	}
 }
 
@@ -119,7 +128,7 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-	[textField resignFirstResponder];
+    [textField resignFirstResponder];
 	return YES;
 }
 
