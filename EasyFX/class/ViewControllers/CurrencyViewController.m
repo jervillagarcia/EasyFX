@@ -81,6 +81,9 @@
     backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
     [self.navigationController.navigationBar.topItem     setRightBarButtonItem:backItem2];
     logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]];
+    
+    doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(editAction:)];
+    
     self.navigationController.navigationBar.topItem.titleView = logoImage;
 
 }
@@ -269,8 +272,14 @@
     if (table.isEditing) {
         [table setEditing:NO animated:YES];
         [NSThread detachNewThreadSelector:@selector(updateCurrencyList) toTarget:self withObject:nil];
+        [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:backItem1];
+        [self.navigationController.navigationBar.topItem setRightBarButtonItem:backItem2];
     } else
+    {
         [table setEditing:YES animated:YES];
+        [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:nil];
+        [self.navigationController.navigationBar.topItem setRightBarButtonItem:doneButton];
+    }
     [self filterSelectedCurrency];
     [table reloadData];
 }

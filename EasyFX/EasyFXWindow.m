@@ -68,22 +68,22 @@
 	isTimerOn = NO;
 }
 
-- (void) keyboardWillShow {
-	isKeyboardVisible = YES;
-	if (isTimerOn){
-		if (idleTimer) {
-			[idleTimer invalidate];
-			[idleTimer release];	
-			idleTimer = nil;
-		}
-	}
-}
-
-- (void) keyboardWillHide {
-	isKeyboardVisible = NO;
-	if (isTimerOn){
-		[self resetIdleTimer];
-	}
-}
+//- (void) keyboardWillShow {
+//	isKeyboardVisible = YES;
+//	if (isTimerOn){
+//		if (idleTimer) {
+//			[idleTimer invalidate];
+//			[idleTimer release];	
+//			idleTimer = nil;
+//		}
+//	}
+//}
+//
+//- (void) keyboardWillHide {
+//	isKeyboardVisible = NO;
+//	if (isTimerOn){
+//		[self resetIdleTimer];
+//	}
+//}
 
 @end

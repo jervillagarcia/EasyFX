@@ -69,6 +69,10 @@
         [[dot layer]addAnimation:applicationLoadViewIn forKey:kCATransitionReveal];
         [keyboardWindow addSubview:dot];
 
+    } else {
+        [dot removeFromSuperview];
+        [dot release];
+        dot = nil;
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
@@ -78,6 +82,8 @@
 
 - (void)keyboardWillHide:(NSNotification *)notification {
 	[dot removeFromSuperview];
+    [dot release];
+    dot = nil;
 	[keyboardToolbar removeFromSuperview];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self
@@ -88,6 +94,35 @@
 
 - (void)decimalButtonClicked {
 	[Utils dotOnclick:self];
+}
+
+- (void)removeDecimal {
+	[dot removeFromSuperview];
+    [dot release];
+    dot = nil;
+}
+
+- (void)addDecimal {
+    [dot release];
+    dot = [[UIButton alloc] init];
+    dot.frame = CGRectMake(0, 428, 106, 53);
+    dot.tag = 123;
+    [dot setImage:[UIImage imageNamed:@"dotB.png"] forState:UIControlStateNormal];
+    [dot setImage:[UIImage imageNamed:@"dotA.png"] forState:UIControlStateHighlighted];
+    [dot addTarget:self action:@selector(decimalButtonClicked)  forControlEvents:UIControlEventTouchUpInside];
+    
+    NSArray *allWindows = [[UIApplication sharedApplication] windows];
+    int topWindow = [allWindows count] - 1;
+    
+    UIWindow *keyboardWindow = [allWindows objectAtIndex:topWindow];
+    
+    //Fixes Decimal Button Transition
+    CATransition *applicationLoadViewIn =[CATransition animation];
+    [applicationLoadViewIn setDuration:1.5];
+    [applicationLoadViewIn setType:kCATransitionReveal];
+    [applicationLoadViewIn setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    [[dot layer]addAnimation:applicationLoadViewIn forKey:kCATransitionReveal];
+    [keyboardWindow addSubview:dot];
 }
 
 - (void)dismissKeyboard {

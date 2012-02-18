@@ -46,8 +46,11 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-	[textField setInputAccessoryView:keyToolbar];
+    [curTxtField resignFirstResponder];
 	curTxtField = textField;
+	[curTxtField becomeFirstResponder];
+    
+	[textField setInputAccessoryView:keyToolbar];
 }	
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField          // return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end

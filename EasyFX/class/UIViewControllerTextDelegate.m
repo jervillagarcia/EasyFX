@@ -11,6 +11,7 @@
 #import "Utils.h"
 #import "EasyFXAppDelegate.h"
 #import "EasyFXWindow.h"
+#import "EasyFXTextField.h"
 
 @implementation UIViewControllerTextDelegate
 
@@ -98,13 +99,21 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
 	currentTextField = textField;
-	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    if (textField.keyboardType == UIKeyboardTypeNumberPad)
+        [(EasyFXTextField*)textField addDecimal];
+    
+//	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
 	return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [textField resignFirstResponder];
+    [(EasyFXTextField*)textField removeDecimal];
+//    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:UIKeyboardWillHideNotification object:textField]];
+//    [(EasyFXTextField*)textField removeDecimal];
+//	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	return YES;
 }
 
@@ -112,7 +121,6 @@
     UITextField *txtField = currentTextField;
     [currentTextField resignFirstResponder];
     [[[txtField superview] viewWithTag:[txtField tag] + 1] becomeFirstResponder];
-//	[[NSNotificationCenter defaultCenter] addObserver:currentTextField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     currentTextField = (UITextField*)[[txtField superview] viewWithTag:[txtField tag] + 1];
 }
 

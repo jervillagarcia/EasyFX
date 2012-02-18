@@ -16,6 +16,7 @@
     EasyFXPreloader             *preloadView;
     UIBarButtonItem *backItem1;
     UIBarButtonItem *backItem2;
+    UIBarButtonItem *doneButton;
     UIButton *button1;
     UIButton *button2;
     UIImageView *logoImage;

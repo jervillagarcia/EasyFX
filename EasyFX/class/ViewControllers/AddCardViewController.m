@@ -205,8 +205,8 @@
     countryCode = [mCountry iso];
     [txtCountry setText:[mCountry name]];
     [txtCountry resignFirstResponder];
-    [txtIssueNo becomeFirstResponder];
-    [txtIssueNo resignFirstResponder];
+    [txtName becomeFirstResponder];
+    [txtName resignFirstResponder];
 }
 
 @end

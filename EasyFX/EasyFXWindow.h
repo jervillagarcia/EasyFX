@@ -19,7 +19,7 @@
 - (void)startTimer;
 - (void)stopTimer;
 
-- (void) keyboardWillShow;
-- (void) keyboardWillHide;
+//- (void) keyboardWillShow;
+//- (void) keyboardWillHide;
 
 @end

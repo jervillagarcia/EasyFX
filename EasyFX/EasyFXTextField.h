@@ -19,7 +19,10 @@
 @property (nonatomic, retain)	UIButton	*dot;
 
 - (void)keyboardWillShow:(NSNotification *)note;
+- (void)keyboardWillHide:(NSNotification *)notification;
 - (void)dismissKeyboard;
 - (void)decimalButtonClicked;
+- (void)removeDecimal;
+- (void)addDecimal;
 
 @end
