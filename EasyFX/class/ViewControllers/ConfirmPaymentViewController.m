@@ -127,13 +127,14 @@
         [self.navigationController pushViewController:viewController animated:YES];
         [self.navigationController setNavigationBarHidden:NO];
         [viewController release];
+        [preloadView removeFromSuperview];
     } else {
+        [preloadView removeFromSuperview];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[dealResult errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];	
         [alert release];
     }
     
-    [preloadView removeFromSuperview];
 
     [wsFactory release];
     [pool release];

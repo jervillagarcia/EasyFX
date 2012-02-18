@@ -353,7 +353,7 @@
         NSLog(@"Request: ----->  %@", sRequest);
         
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeADeal" isLogin:NO] fromURI:@"DealResult" toObject:@"DealResult" parseError:nil];
+		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeADeal" isLogin:NO] fromURI:@"MakeADealResult" toObject:@"DealResult" parseError:nil];
         
         //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
         //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);

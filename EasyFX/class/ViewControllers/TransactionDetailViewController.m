@@ -55,7 +55,7 @@ float amount = 0.00;
     [super viewDidLoad];
     
     [txtCurYouBuy 	setText:[priceRec getCurrencyYouBuy]];
-    [txtCalcRate    setText:[priceRec ask]];
+    [txtCalcRate    setText:[priceRec bid]];
     [txtCurYouSell  setText:[priceRec getCurrencyYouSell]];
     
 }

@@ -68,7 +68,7 @@
 	[curTo		setText:[currencyPair.pair substringWithRange:NSMakeRange(3,3)]];
     [imgTo		setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) curTo.text]]];
     
-	[lblPrice	setText:[NSString stringWithFormat:@"%.4f",[currencyPair.ask floatValue]]];
+	[lblPrice	setText:[NSString stringWithFormat:@"%.4f",[currencyPair.bid floatValue]]];
 
 }
 

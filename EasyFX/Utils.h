@@ -17,6 +17,5 @@
 + (void)getExpectedLabelSize:(UILabel*)label;
 + (void)setLabelSize:(UILabel*)previousLabelValue nextLabelValue:(UILabel*)nextLabelValue nextLabelName:(UILabel*)nextLabelName;
 + (void)setNavTitleImage:(id)mDelegate;
-+ (CGGradientRef*)createNormalGradient;
 
 @end

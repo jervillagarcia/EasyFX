@@ -64,24 +64,5 @@
     [(UIViewController*)mDelegate navigationController].navigationBar.topItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]] autorelease];
 }
 
-+ (CGGradientRef*)createNormalGradient
-{
-    CGFloat locations[3];
-    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-    NSMutableArray *colors = [NSMutableArray arrayWithCapacity:3];
-    UIColor *color = [UIColor colorWithRed:0.283 green:0.32 blue:0.414 alpha:1.0];
-    [colors addObject:(id)[color CGColor]];
-    locations[0] = 0.0;
-    color = [UIColor colorWithRed:0.82 green:0.834 blue:0.87 alpha:1.0];
-    [colors addObject:(id)[color CGColor]];
-    locations[1] = 1.0;
-    color = [UIColor colorWithRed:0.186 green:0.223 blue:0.326 alpha:1.0];
-    [colors addObject:(id)[color CGColor]];
-    locations[2] = 0.483;  
-    
-    CGGradientRef ret = CGGradientCreateWithColors(space, (CFArrayRef)colors, locations);
-    CGColorSpaceRelease(space);
-    return ret;
-}
 
 @end
