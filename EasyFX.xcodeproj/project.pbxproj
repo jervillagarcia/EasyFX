@@ -2275,7 +2275,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Apply Financial Ltd";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Apply Financial Ltd";
 				CURRENT_PROJECT_VERSION = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -2284,6 +2285,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = EasyFX;
+				PROVISIONING_PROFILE = "19E11F2C-0AD4-4E9C-BBCC-D8C720F067F8";
+				"PROVISIONING_PROFILE[sdk=*]" = "19E11F2C-0AD4-4E9C-BBCC-D8C720F067F8";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
