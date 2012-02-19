@@ -106,6 +106,10 @@
             [self.navigationController setNavigationBarHidden:NO];
             [viewController release];
         }
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
     }
     
     [wsFactory release];
