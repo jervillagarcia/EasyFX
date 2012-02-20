@@ -214,6 +214,7 @@
     
     [filteredList release];
     filteredList = [[NSMutableArray alloc] init];
+    NSLog(@"Preferred CCY Count: %@", [(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList]);
     for (PriceRec *price in currencyList) {
         [price setSelected:[[(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList] containsObject:price.pair]];
         if ([price isSelected]) {
@@ -269,6 +270,7 @@
 }
 
 - (IBAction) editAction:(id)sender {
+    [self filterSelectedCurrency];
     if (table.isEditing) {
         [table setEditing:NO animated:YES];
         [NSThread detachNewThreadSelector:@selector(updateCurrencyList) toTarget:self withObject:nil];
@@ -280,7 +282,6 @@
         [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:nil];
         [self.navigationController.navigationBar.topItem setRightBarButtonItem:doneButton];
     }
-    [self filterSelectedCurrency];
     [table reloadData];
 }
 
