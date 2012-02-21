@@ -202,7 +202,7 @@
 }
 
 -(void)setCountry:(Country *)mCountry {
-    countryCode = [mCountry iso];
+    countryCode = [mCountry countryCode];
     [txtCountry setText:[mCountry name]];
     [txtCountry resignFirstResponder];
     [txtName becomeFirstResponder];
