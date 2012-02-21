@@ -53,7 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [preloadView release];
     preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
     preloadView.tag = 1;
@@ -68,9 +68,14 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES];
+    [super viewDidAppear:animated];
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.isFromLogin = YES;
+    [txtCliendId becomeFirstResponder];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -41,7 +41,7 @@
     // Add the navigation controller's view to the window and display.
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
-    
+    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     [payment release];
     payment = [[Payment alloc] init];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];

@@ -112,13 +112,17 @@
     [dot addTarget:self action:@selector(decimalButtonClicked)  forControlEvents:UIControlEventTouchUpInside];
     
     NSArray *allWindows = [[UIApplication sharedApplication] windows];
-    int topWindow = [allWindows count] - 1;
+    int topWindow = 0;
+    if ([allWindows count] > 1) {
+        topWindow = [allWindows count] - 1;
+    }
+
     
     UIWindow *keyboardWindow = [allWindows objectAtIndex:topWindow];
     
     //Fixes Decimal Button Transition
     CATransition *applicationLoadViewIn =[CATransition animation];
-    [applicationLoadViewIn setDuration:1.5];
+//    [applicationLoadViewIn setDuration:1.0];
     [applicationLoadViewIn setType:kCATransitionReveal];
     [applicationLoadViewIn setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [[dot layer]addAnimation:applicationLoadViewIn forKey:kCATransitionReveal];

@@ -64,7 +64,7 @@
 
     [lblBeneficiaryName         setText:beneficiaryRec.beneficiaryName];
     [lblBeneficiaryAddress      setText:beneficiaryRec.getBankAddress];
-    [imgCountry                 setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) [beneficiaryRec countryCode]]]];
+    [imgCountry                 setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) [[beneficiaryRec countryCode] lowercaseString]]]];
     [lblCountry                 setText:beneficiaryRec.countryCode];
     [lblAcctNo                  setText:beneficiaryRec.accountNumber];
     [lblBankName                setText:beneficiaryRec.bankName];

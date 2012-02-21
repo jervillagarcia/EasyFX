@@ -53,7 +53,8 @@ float amount = 0.00;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [txtCurYouBuy becomeFirstResponder];
+    [txtCurYouBuy resignFirstResponder];
     [txtCurYouBuy 	setText:[priceRec getCurrencyYouBuy]];
     [txtCalcRate    setText:[priceRec bid]];
     [txtCurYouSell  setText:[priceRec getCurrencyYouSell]];
@@ -96,7 +97,8 @@ float amount = 0.00;
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
     [delegate.payment setBuyCCY:[txtCurYouBuy text]];
     [delegate.payment setBuyAmount:[txtAmtToBuy text]];
-    [delegate.payment setRate:[txtCalcRate text]];
+//    [delegate.payment setRate:[txtCalcRate text]];
+    [delegate.payment setRate:[priceRec bid]];
     [delegate.payment setSellCCY:[txtCurYouSell text]];
     [delegate.payment setSellAmount:[txtAmtToSell text]];
     

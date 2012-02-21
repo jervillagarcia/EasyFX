@@ -63,10 +63,9 @@
 	fromController = viewController;
 
 	[curFrom	setText:[currencyPair.pair substringWithRange:NSMakeRange(0,3)]];
-	[imgFrom	setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) curFrom.text]]];
-	
+    [imgFrom setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) [curFrom.text lowercaseString]]]];
 	[curTo		setText:[currencyPair.pair substringWithRange:NSMakeRange(3,3)]];
-    [imgTo		setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) curTo.text]]];
+    [imgTo		setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) [curTo.text lowercaseString]]]];
     
 	[lblPrice	setText:[NSString stringWithFormat:@"%.4f",[currencyPair.bid floatValue]]];
 

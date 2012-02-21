@@ -24,7 +24,7 @@
 
 -(IBAction)loginOnClick:(id)sender;
 -(void)loginAction;
--(void)applyFinancialOnClick:(id)sender;
+-(IBAction)applyFinancialOnClick:(id)sender;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isFromModal:(BOOL)isFromModal;

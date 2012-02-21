@@ -36,7 +36,7 @@
     
     [lblBeneficiaryName     setText:[mBeneficiaryRec beneficiaryName]];
     [lblBeneficiaryAddress  setText:[mBeneficiaryRec getBankAddress]];
-    [imgCountry             setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) [mBeneficiaryRec countryCode]]]];
+    [imgCountry             setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", (NSString*) [[mBeneficiaryRec countryCode] lowercaseString]]]];
     [lblCountry             setText:[mBeneficiaryRec countryCode]];
     
 }
