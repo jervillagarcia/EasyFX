@@ -20,6 +20,7 @@
     IBOutlet UITextField            *txtExpiryDate;
     IBOutlet UITextField            *txtStartDate;
     IBOutlet UITextField            *txtCVV;
+    IBOutlet UITextField            *txtRef;
     
     CardRec                         *cardRec;
 }
@@ -31,6 +32,7 @@
 @property(nonatomic,retain) UITextField            *txtExpiryDate;
 @property(nonatomic,retain) UITextField            *txtStartDate;
 @property(nonatomic,retain) UITextField            *txtCVV;
+@property(nonatomic,retain) UITextField            *txtRef;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil cardRec:(CardRec*)mCardRec;
 

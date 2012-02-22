@@ -376,6 +376,7 @@
 		D51AD08614D79E04000EB3BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51AD08514D79E04000EB3BF /* SystemConfiguration.framework */; };
 		D51AD08D14D7A824000EB3BF /* LogInResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD08C14D7A824000EB3BF /* LogInResult.m */; };
 		D51AD09014D7AB21000EB3BF /* LoginParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD08F14D7AB20000EB3BF /* LoginParser.m */; };
+		D5269CA314F52D6C00EC5E05 /* Fault.m in Sources */ = {isa = PBXBuildFile; fileRef = D5269CA214F52D6C00EC5E05 /* Fault.m */; };
 		D5791FBE147DC6B800005E85 /* 1_roundedgray.png in Resources */ = {isa = PBXBuildFile; fileRef = D5791DE9147DC6B800005E85 /* 1_roundedgray.png */; };
 		D5791FBF147DC6B800005E85 /* 2_roundedgray.png in Resources */ = {isa = PBXBuildFile; fileRef = D5791DEA147DC6B800005E85 /* 2_roundedgray.png */; };
 		D5791FC0147DC6B800005E85 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D5791DEB147DC6B800005E85 /* back_button.png */; };
@@ -857,6 +858,8 @@
 		D51AD08C14D7A824000EB3BF /* LogInResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogInResult.m; path = model_objects/LogInResult.m; sourceTree = "<group>"; };
 		D51AD08E14D7AB20000EB3BF /* LoginParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginParser.h; path = class/LoginParser.h; sourceTree = "<group>"; };
 		D51AD08F14D7AB20000EB3BF /* LoginParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginParser.m; path = class/LoginParser.m; sourceTree = "<group>"; };
+		D5269CA114F52D6C00EC5E05 /* Fault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fault.h; path = model_objects/Fault.h; sourceTree = "<group>"; };
+		D5269CA214F52D6C00EC5E05 /* Fault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fault.m; path = model_objects/Fault.m; sourceTree = "<group>"; };
 		D5791DE9147DC6B800005E85 /* 1_roundedgray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_roundedgray.png; path = images/1_roundedgray.png; sourceTree = "<group>"; };
 		D5791DEA147DC6B800005E85 /* 2_roundedgray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2_roundedgray.png; path = images/2_roundedgray.png; sourceTree = "<group>"; };
 		D5791DEB147DC6B800005E85 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_button.png; path = images/back_button.png; sourceTree = "<group>"; };
@@ -1367,6 +1370,8 @@
 				D5D2B4EB14EBE757003C7717 /* Payment.m */,
 				D5D2B4ED14EBF0BB003C7717 /* DealResult.h */,
 				D5D2B4EE14EBF0BC003C7717 /* DealResult.m */,
+				D5269CA114F52D6C00EC5E05 /* Fault.h */,
+				D5269CA214F52D6C00EC5E05 /* Fault.m */,
 			);
 			name = "model objects";
 			sourceTree = "<group>";
@@ -2172,6 +2177,7 @@
 				D0EE1FF114EF696100FB4067 /* EasyFXLookupTextFieldDelegate.m in Sources */,
 				D0EE1FF614EF6B0D00FB4067 /* CountryParser.m in Sources */,
 				D0EE1FF914EF6B4000FB4067 /* EasyFXCountryCell.m in Sources */,
+				D5269CA314F52D6C00EC5E05 /* Fault.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

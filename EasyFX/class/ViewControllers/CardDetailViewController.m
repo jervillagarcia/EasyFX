@@ -20,6 +20,7 @@
 @synthesize txtExpiryDate;
 @synthesize txtStartDate;
 @synthesize txtCVV;
+@synthesize txtRef;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil cardRec:(CardRec*)mCardRec
@@ -90,6 +91,7 @@
     EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     [delegate.payment setCardRec:cardRec];
     [delegate.payment setCvv:[txtCVV text]];
+    [delegate.payment setReference:[txtRef text]];
 
     
     ConfirmPaymentViewController *viewController = [[ConfirmPaymentViewController alloc] initWithNibName:@"ConfirmPaymentViewController" bundle:nil];

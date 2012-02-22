@@ -12,6 +12,7 @@
 #import "WebServiceFactory.h"
 #import "DealResult.h"
 #import "TransactionCompleteViewController.h"
+#import "Fault.h"
 
 @implementation ConfirmPaymentViewController
 
@@ -121,20 +122,27 @@
     EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
     [wsFactory makeDeal:[delegate payment]];
-    DealResult *dealResult = (DealResult*)[wsFactory.wsResponse objectAtIndex:0];
-    if ([[dealResult success] isEqualToString:@"true"]) {
-        TransactionCompleteViewController *viewController = [[TransactionCompleteViewController alloc] initWithNibName:@"TransactionCompleteViewController" bundle:nil dealNo:[dealResult dealNumber]];
-        [self.navigationController pushViewController:viewController animated:YES];
-        [self.navigationController setNavigationBarHidden:NO];
-        [viewController release];
+    
+    if ([[wsFactory.wsResponse objectAtIndex:0] isKindOfClass:[Fault class]]) {
         [preloadView removeFromSuperview];
-    } else {
-        [preloadView removeFromSuperview];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[dealResult errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[(Fault*)[wsFactory.wsResponse objectAtIndex:0] faultstring] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];	
         [alert release];
-    }
-    
+    } else {
+        DealResult *dealResult = (DealResult*)[wsFactory.wsResponse objectAtIndex:0];
+        if ([[dealResult success] isEqualToString:@"true"]) {
+            TransactionCompleteViewController *viewController = [[TransactionCompleteViewController alloc] initWithNibName:@"TransactionCompleteViewController" bundle:nil dealNo:[dealResult dealNumber]];
+            [self.navigationController pushViewController:viewController animated:YES];
+            [self.navigationController setNavigationBarHidden:NO];
+            [viewController release];
+            [preloadView removeFromSuperview];
+        } else {
+            [preloadView removeFromSuperview];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[dealResult errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];	
+            [alert release];
+        }
+    }    
 
     [wsFactory release];
     [pool release];
