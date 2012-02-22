@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by Errol on 2/1/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "CurrencyViewController.h"
@@ -204,27 +204,26 @@
 
 
 -(void)fetchCurrencies {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
-    
-    [ws getDealCurrencies];
-    
-    [currencyList release];
-    currencyList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
-    
-    [filteredList release];
-    filteredList = [[NSMutableArray alloc] init];
-    NSLog(@"Preferred CCY Count: %@", [(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList]);
-    for (PriceRec *price in currencyList) {
-        [price setSelected:[[(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList] containsObject:price.pair]];
-        if ([price isSelected]) {
-            [filteredList addObject:price];
+    @autoreleasepool {
+        WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+        
+        [ws getDealCurrencies];
+        
+        [currencyList release];
+        currencyList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+        
+        [filteredList release];
+        filteredList = [[NSMutableArray alloc] init];
+        NSLog(@"Preferred CCY Count: %@", [(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList]);
+        for (PriceRec *price in currencyList) {
+            [price setSelected:[[(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList] containsObject:price.pair]];
+            if ([price isSelected]) {
+                [filteredList addObject:price];
+            }
         }
+        
+        [ws release];
     }
-    
-    [ws release];
-    [pool release];
-
 }
 
 -(void)filterSelectedCurrency {
@@ -237,17 +236,17 @@
 }
 
 -(void)updateCurrencyList{
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
-    for (PriceRec *mPrice in filteredList) {
-        [arr addObject:mPrice.pair];
-    }
-    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
-    
-    [ws setCCYList:arr];
+    @autoreleasepool {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        for (PriceRec *mPrice in filteredList) {
+            [arr addObject:mPrice.pair];
+        }
+        WebServiceFactory *ws = [[WebServiceFactory alloc] init];
         
-    [ws release];
-    [pool release];
+        [ws setCCYList:arr];
+        
+        [ws release];
+    }
 }
 
 #pragma mark Actions (Button)
@@ -258,15 +257,15 @@
 }
 
 -(void)logoutAction {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
-    
-    [ws logOut];
-    
-    [preloadView removeFromSuperview];
-    [self.navigationController popViewControllerAnimated:YES];
-    [ws release];
-    [pool release];
+    @autoreleasepool {
+        WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+        
+        [ws logOut];
+        
+        [preloadView removeFromSuperview];
+        [self.navigationController popViewControllerAnimated:YES];
+        [ws release];
+    }
 }
 
 - (IBAction) editAction:(id)sender {

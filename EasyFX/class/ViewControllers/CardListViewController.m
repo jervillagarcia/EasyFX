@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by Errol on 2/9/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "CardListViewController.h"
@@ -169,20 +169,19 @@
 }
 
 -(void)fetchCards {
-    //    [NSThread detachNewThreadSelector:@selector(showActivity) toTarget:self withObject:nil];
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
-    
-    [ws getCardsList];
-    
-    [cardsList release];
-    cardsList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+    @autoreleasepool {
+        WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+        
+        [ws getCardsList];
+        
+        [cardsList release];
+        cardsList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
 	    
-    [table reloadData];
-    [preloadView removeFromSuperview];
-
-    [ws release];
-    [pool release];
+        [table reloadData];
+        [preloadView removeFromSuperview];
+        
+        [ws release];
+    }
 }
 
 #pragma mark Actions (Button)

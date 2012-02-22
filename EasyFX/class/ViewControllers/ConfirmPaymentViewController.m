@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by Errol on 2/15/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "ConfirmPaymentViewController.h"
@@ -118,34 +118,34 @@
 }
 
 - (void)confirmAction {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
-    [wsFactory makeDeal:[delegate payment]];
-    
-    if ([[wsFactory.wsResponse objectAtIndex:0] isKindOfClass:[Fault class]]) {
-        [preloadView removeFromSuperview];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[(Fault*)[wsFactory.wsResponse objectAtIndex:0] faultstring] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];	
-        [alert release];
-    } else {
-        DealResult *dealResult = (DealResult*)[wsFactory.wsResponse objectAtIndex:0];
-        if ([[dealResult success] isEqualToString:@"true"]) {
-            TransactionCompleteViewController *viewController = [[TransactionCompleteViewController alloc] initWithNibName:@"TransactionCompleteViewController" bundle:nil dealNo:[dealResult dealNumber]];
-            [self.navigationController pushViewController:viewController animated:YES];
-            [self.navigationController setNavigationBarHidden:NO];
-            [viewController release];
+    @autoreleasepool {
+        EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
+        [wsFactory makeDeal:[delegate payment]];
+        
+        if ([[wsFactory.wsResponse objectAtIndex:0] isKindOfClass:[Fault class]]) {
             [preloadView removeFromSuperview];
-        } else {
-            [preloadView removeFromSuperview];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[dealResult errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[(Fault*)[wsFactory.wsResponse objectAtIndex:0] faultstring] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];	
             [alert release];
-        }
-    }    
-
-    [wsFactory release];
-    [pool release];
+        } else {
+            DealResult *dealResult = (DealResult*)[wsFactory.wsResponse objectAtIndex:0];
+            if ([[dealResult success] isEqualToString:@"true"]) {
+                TransactionCompleteViewController *viewController = [[TransactionCompleteViewController alloc] initWithNibName:@"TransactionCompleteViewController" bundle:nil dealNo:[dealResult dealNumber]];
+                [self.navigationController pushViewController:viewController animated:YES];
+                [self.navigationController setNavigationBarHidden:NO];
+                [viewController release];
+                [preloadView removeFromSuperview];
+            } else {
+                [preloadView removeFromSuperview];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[dealResult errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];	
+                [alert release];
+            }
+        }    
+        
+        [wsFactory release];
+    }
 }
 
 - (IBAction)backAction:(id)sender {

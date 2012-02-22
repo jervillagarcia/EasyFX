@@ -3,11 +3,12 @@
 //  EasyFX
 //
 //  Created by Errol on 2/15/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "TransactionCompleteViewController.h"
 #import "Utils.h"
+#import "WebServiceFactory.h"
 
 @implementation TransactionCompleteViewController
 
@@ -56,6 +57,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
+    [self.navigationController setNavigationBarHidden:YES];
     
     [Utils setNavTitleImage:self];
     
@@ -66,5 +69,23 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (IBAction)newPayment:(id)sender {
+    [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1] animated:YES];
+}
+
+- (IBAction)logOut:(id)sender {
+	@autoreleasepool {
+        WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+        
+        [ws logOut];
+        
+        [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
+
+        [ws release];
+    }
+}
+
+
 
 @end

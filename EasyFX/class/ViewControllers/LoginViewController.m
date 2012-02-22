@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by Errol on 11/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "LoginViewController.h"
@@ -90,35 +90,35 @@
     
 }
 -(void)loginAction {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
-    [wsFactory logInWithUser:[txtUsername text] password:[txtPassword text] clientId:[txtCliendId text]];
-    
-    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.isFromLogin = NO;
-    
-    if ([[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] success] isEqualToString:@"true"]) {
-        //Store CCYPAIRS
-        [delegate setCcyPairList:[[wsFactory.wsResponse objectAtIndex:0] cCYPairs]];
-        [delegate setLimit:[[wsFactory.wsResponse objectAtIndex:0] limit]];
+    @autoreleasepool {
+        WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
+        [wsFactory logInWithUser:[txtUsername text] password:[txtPassword text] clientId:[txtCliendId text]];
         
-        if (isFromModal) {
-            [self dismissModalViewControllerAnimated:YES];
-            isFromModal = NO;
+        EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        delegate.isFromLogin = NO;
+        
+        if ([[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] success] isEqualToString:@"true"]) {
+            //Store CCYPAIRS
+            [delegate setCcyPairList:[[wsFactory.wsResponse objectAtIndex:0] cCYPairs]];
+            [delegate setLimit:[[wsFactory.wsResponse objectAtIndex:0] limit]];
+            
+            if (isFromModal) {
+                [self dismissModalViewControllerAnimated:YES];
+                isFromModal = NO;
+            } else {
+                CurrencyViewController *viewController = [[CurrencyViewController alloc] init];
+                [self.navigationController pushViewController:viewController animated:YES];
+                [self.navigationController setNavigationBarHidden:NO];
+                [viewController release];
+            }
         } else {
-            CurrencyViewController *viewController = [[CurrencyViewController alloc] init];
-            [self.navigationController pushViewController:viewController animated:YES];
-            [self.navigationController setNavigationBarHidden:NO];
-            [viewController release];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
         }
-    } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:[(LogInResult*)[wsFactory.wsResponse objectAtIndex:0] errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        [alertView release];
+        
+        [wsFactory release];
     }
-    
-    [wsFactory release];
-    [pool release];
     [preloadView removeFromSuperview];
 }
 -(IBAction)callHelpdesk:(id)sender{

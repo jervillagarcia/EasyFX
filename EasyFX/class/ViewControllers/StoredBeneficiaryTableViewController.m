@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by Errol on 2/7/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "StoredBeneficiaryTableViewController.h"
@@ -178,19 +178,19 @@
 }
 
 -(void)fetchBeneficiaries {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    WebServiceFactory *ws = [[WebServiceFactory alloc] init];
-    
-    [ws getBeneficiaries];
-    
-    [beneficiaryList release];
-    beneficiaryList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+    @autoreleasepool {
+        WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+        
+        [ws getBeneficiaries];
+        
+        [beneficiaryList release];
+        beneficiaryList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
 	    
-    [table reloadData];
-    [preloadView removeFromSuperview];
-
-    [ws release];
-    [pool release];
+        [table reloadData];
+        [preloadView removeFromSuperview];
+        
+        [ws release];
+    }
 }
 
 #pragma mark Actions (Button)

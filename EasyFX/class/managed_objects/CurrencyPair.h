@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by Errol on 11/16/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

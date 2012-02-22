@@ -1,9 +1,9 @@
 //
-//  UISwiftTextFieldDelegate.h
-//  Swift
+//  EasyFXTextFieldDelegate.h
+//  EasyFX
 //
 //  Created by James Errol Villagarcia on 8/18/11.
-//  Copyright 2011 ApplyFinancial. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

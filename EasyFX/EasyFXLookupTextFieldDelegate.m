@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by James Errol Villagarcia on 2/18/12.
-//  Copyright 2012 TELUS International Philippines. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "EasyFXLookupTextFieldDelegate.h"

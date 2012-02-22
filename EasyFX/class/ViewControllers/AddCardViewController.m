@@ -3,7 +3,7 @@
 //  EasyFX
 //
 //  Created by Errol on 2/16/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
 //
 
 #import "AddCardViewController.h"
@@ -119,10 +119,6 @@
 }
 
 - (void)save {
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Not yet available." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [alertView show];
-//    [alertView release];
-    
     [self.view addSubview:preloadView];
     
     CardRec *cardRec = [[CardRec alloc] init];
@@ -142,22 +138,22 @@
 }
 
 - (void)saveRecord:(CardRec*)cardRec {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
-    [wsFactory AddCard:cardRec];
-    Result *result = (Result*)[wsFactory.wsResponse objectAtIndex:0];
-    if ([[result success] isEqualToString:@"true"]) {
-        [preloadView removeFromSuperview];
-        [self cancel];
-    } else {
-        [preloadView removeFromSuperview];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[result errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];	
-        [alert release];
+	@autoreleasepool {
+        WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
+        [wsFactory AddCard:cardRec];
+        Result *result = (Result*)[wsFactory.wsResponse objectAtIndex:0];
+        if ([[result success] isEqualToString:@"true"]) {
+            [preloadView removeFromSuperview];
+            [self cancel];
+        } else {
+            [preloadView removeFromSuperview];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[result errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];	
+            [alert release];
+        }
+        
+        [wsFactory release];
     }
-    
-    [wsFactory release];
-    [pool release];
 }
 # pragma mark Action Sheet
 
