@@ -65,14 +65,14 @@
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
     [lblAccountName         setText:[delegate.payment.cardRec name]];
     [lblAccountNumber       setText:[delegate.payment.cardRec cardNumber]];
-    [lblCurrencyFrom        setText:[delegate.payment buyCCY]];
-    [lblDebit               setText:[delegate.payment buyAmount]];
+    [lblCurrencyFrom        setText:[delegate.payment sellCCY]];
+    [lblDebit               setText:[delegate.payment sellAmount]];
     [lblBeneficiaryName     setText:[delegate.payment.beneficiaryRec beneficiaryName]];
     [lblBeneficiaryBank     setText:[delegate.payment.beneficiaryRec bankName]];
     [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];
     [lblExchangeRate        setText:[delegate.payment rate]];
-    [lblCurrencyTo          setText:[delegate.payment sellCCY]];
-    [lblPaymentAmount       setText:[delegate.payment sellAmount]];
+    [lblCurrencyTo          setText:[delegate.payment buyCCY]];
+    [lblPaymentAmount       setText:[delegate.payment buyAmount]];
     
 }
 
@@ -87,17 +87,17 @@
     [super viewDidAppear:animated];
     
     [Utils setNavTitleImage:self];
-    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    [lblAccountName         setText:[delegate.payment.cardRec name]];
-    [lblAccountNumber       setText:[delegate.payment.cardRec cardNumber]];
-    [lblCurrencyFrom        setText:[delegate.payment buyCCY]];
-    [lblDebit               setText:[delegate.payment buyAmount]];
-    [lblBeneficiaryName     setText:[delegate.payment.beneficiaryRec beneficiaryName]];
-    [lblBeneficiaryBank     setText:[delegate.payment.beneficiaryRec bankName]];
-    [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];
-    [lblExchangeRate        setText:[delegate.payment rate]];
-    [lblCurrencyTo          setText:[delegate.payment sellCCY]];
-    [lblPaymentAmount       setText:[delegate.payment sellAmount]];
+//    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+//    [lblAccountName         setText:[delegate.payment.cardRec name]];
+//    [lblAccountNumber       setText:[delegate.payment.cardRec cardNumber]];
+//    [lblCurrencyFrom        setText:[delegate.payment buyCCY]];
+//    [lblDebit               setText:[delegate.payment buyAmount]];
+//    [lblBeneficiaryName     setText:[delegate.payment.beneficiaryRec beneficiaryName]];
+//    [lblBeneficiaryBank     setText:[delegate.payment.beneficiaryRec bankName]];
+//    [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];
+//    [lblExchangeRate        setText:[delegate.payment rate]];
+//    [lblCurrencyTo          setText:[delegate.payment sellCCY]];
+//    [lblPaymentAmount       setText:[delegate.payment sellAmount]];
 
 }
 
