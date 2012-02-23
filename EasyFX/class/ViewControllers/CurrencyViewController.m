@@ -135,8 +135,6 @@
     
     CurrencyTableViewCell *cell = (CurrencyTableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
-        NSLog(@"New Cell Made");
-        
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
         
         for(id currentObject in topLevelObjects)
@@ -214,7 +212,9 @@
         
         [filteredList release];
         filteredList = [[NSMutableArray alloc] init];
+#ifdef DEBUGGING
         NSLog(@"Preferred CCY Count: %@", [(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList]);
+#endif
         for (PriceRec *price in currencyList) {
             [price setSelected:[[(EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate] ccyPairList] containsObject:price.pair]];
             if ([price isSelected]) {

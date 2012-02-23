@@ -94,17 +94,22 @@ float amount = 0.00;
 
 #pragma Action Methods
 - (IBAction)next:(id)sender {
-    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
-    [delegate.payment setBuyCCY:[txtCurYouBuy text]];
-    [delegate.payment setBuyAmount:[txtAmtToBuy text]];
-//    [delegate.payment setRate:[txtCalcRate text]];
-    [delegate.payment setRate:[priceRec bid]];
-    [delegate.payment setSellCCY:[txtCurYouSell text]];
-    [delegate.payment setSellAmount:[txtAmtToSell text]];
-    
-    StoredBeneficiaryTableViewController *viewController = [[StoredBeneficiaryTableViewController alloc] initWithNibName:@"StoredBeneficiaryViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+    if ([txtAmtToBuy.text floatValue] > 0 || [txtAmtToSell.text floatValue]) {
+        EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+        [delegate.payment setBuyCCY:[txtCurYouBuy text]];
+        [delegate.payment setBuyAmount:[txtAmtToBuy text]];
+        [delegate.payment setRate:[priceRec bid]];
+        [delegate.payment setSellCCY:[txtCurYouSell text]];
+        [delegate.payment setSellAmount:[txtAmtToSell text]];
+        
+        StoredBeneficiaryTableViewController *viewController = [[StoredBeneficiaryTableViewController alloc] initWithNibName:@"StoredBeneficiaryViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+        [viewController release];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Amount" message:@"Amount to buy and amount to sell must be greater than 0." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+    }
 }
 
 - (IBAction)calculate:(id)sender {

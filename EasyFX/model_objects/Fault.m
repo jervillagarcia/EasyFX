@@ -12,5 +12,6 @@
 
 @synthesize faultcode;
 @synthesize faultstring;
+@synthesize detail;
 
 @end

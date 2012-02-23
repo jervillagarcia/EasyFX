@@ -14,5 +14,6 @@
 @synthesize name;
 @synthesize iso;
 @synthesize countryCode;
+@synthesize ccy;
 
 @end

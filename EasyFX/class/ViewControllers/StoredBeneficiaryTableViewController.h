@@ -12,12 +12,24 @@
 @interface StoredBeneficiaryTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *table;
     NSArray *beneficiaryList;
+    NSMutableArray *filteredBenList;
     
     EasyFXPreloader *preloadView;
+    NSMutableArray *countryList;
+    NSMutableArray *selCountryList;
+    NSArray *tempList;
+    
+    BOOL isSearching;
+    
+    NSString *filePath;
+    NSData *myData;
 }
 
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) NSArray *beneficiaryList;
+@property (nonatomic, retain) NSArray *countryList;
+@property (nonatomic, retain) NSString *filePath;
+@property (nonatomic, retain) NSData *myData;
 
 -(void)loadData;
 -(void)fetchBeneficiaries;

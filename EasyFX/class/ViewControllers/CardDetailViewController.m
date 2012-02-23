@@ -88,15 +88,21 @@
 }
 
 - (IBAction)nextClick:(id)sender {
-    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    [delegate.payment setCardRec:cardRec];
-    [delegate.payment setCvv:[txtCVV text]];
-    [delegate.payment setReference:[txtRef text]];
-
-    
-    ConfirmPaymentViewController *viewController = [[ConfirmPaymentViewController alloc] initWithNibName:@"ConfirmPaymentViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+    if ([txtCVV.text length] > 0) {
+        EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        [delegate.payment setCardRec:cardRec];
+        [delegate.payment setCvv:[txtCVV text]];
+        [delegate.payment setReference:[txtRef text]];
+        
+        
+        ConfirmPaymentViewController *viewController = [[ConfirmPaymentViewController alloc] initWithNibName:@"ConfirmPaymentViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+        [viewController release];
+    } else {
+        UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Invalid CVV value" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alerView show];
+        [alerView release];
+    }
 }
 
 - (IBAction)backAction:(id)sender {

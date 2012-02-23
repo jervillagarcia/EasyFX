@@ -2351,6 +2351,7 @@
 				GCC_PREFIX_HEADER = "EasyFX/EasyFX-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "EasyFX/EasyFX-Info.plist";
+				OTHER_CFLAGS = "-DDEBUGGING";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

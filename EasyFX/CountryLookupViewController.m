@@ -102,7 +102,6 @@
     EasyFXCountryCell *cell = (EasyFXCountryCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[EasyFXCountryCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier country:(Country*)[tempList objectAtIndex:[indexPath row]]];
-        NSLog(@"Row: %i", indexPath.row);
     } else {
         [(EasyFXCountryCell*)cell setMCountry:(Country*)[tempList objectAtIndex:[indexPath row]]];
     }

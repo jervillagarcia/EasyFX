@@ -58,6 +58,7 @@
             
             [item setValue:[attributeDict objectForKey:@"iso"] forKey:@"iso"];
             [item setValue:[attributeDict objectForKey:@"code"] forKey:@"countryCode"];
+            [item setValue:[attributeDict objectForKey:@"ccy"] forKey:@"ccy"];
 
             currentNodeName = [elementName copy];
             currentNodeContent = [[NSMutableString alloc] init];

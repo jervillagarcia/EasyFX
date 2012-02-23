@@ -100,7 +100,9 @@
         
 		NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self]; 
 		
+#ifdef DEBUGGING
 		NSLog(@"soapURL: %@", soapURL);
+#endif
 		
 		// Check the connection object [
 		//if(conn) { mData=[[NSMutableData data] retain]; } 
@@ -117,18 +119,10 @@
             
             [delegate setSessionCookie:[respDict objectForKey:@"Set-Cookie"]];
             
+#ifdef DEBUGGING
             NSLog(@"Cookie: %@", [delegate sessionCookie]);
+#endif
             
-            //        for (id key in respDict) {
-            //            id anObject = [respDict objectForKey:key];
-            //            
-            //            NSLog(@"KEY: %@   VALUE:%@", key, anObject);
-            //            
-            //            /* Do something with anObject. */
-            //        }
-            
-            
-            //        NSLog(@"Cookie Session: %@", cookie);
         }
         
         if (WSerror && !WSresponse) {
@@ -153,6 +147,11 @@
 
 - (void)logInWithUser:(NSString*)m_user password:(NSString*)m_password clientId:(NSString*)m_clientId
 {
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: logInWithUser");
+#endif
+
 	if ([self isConnectedToInternet:HOST withMessage:NO]) {
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
 		// Create the SOAP body 
@@ -172,24 +171,37 @@
 		[sRequest appendString:@"</sch:LogIn>"];
 		[sRequest appendString:[self getEndHeader]];
 		
+#ifdef DEBUGGING
 		NSLog(@"Request: %@", sRequest);
+#endif
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"ValidateUser"] fromURI:@"Table" toObject:@"UserDetail" parseError:nil];
 		LoginParser *xmlParser = [[LoginParser alloc] init];
 		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES] fromURI:@"LogInResult" toObject:@"LogInResult" parseError:nil];
         
-//        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES];
-//        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#ifdef DEBUGGING
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
 
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		[sRequest release];
 		[xmlParser release];
 	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: logIn");
+    NSLog(@"---------------------");
+#endif
 }
 
 - (void)getDealCurrencies
 {
+
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: getDealCurrencies");
+#endif
+
 	if ([self isConnectedToInternet:HOST]) {
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
 		// Create the SOAP body 
@@ -197,12 +209,19 @@
 		[sRequest appendString:@"<sch:GetCurrencyList/>"];
 		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
-		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO] fromURI:@"PriceRec" toObject:@"PriceRec" parseError:nil];
+
+#ifdef DEBUGGING
+		NSLog(@"Request: %@", sRequest);
+#endif
+
+		
+        XmlParser *xmlParser = [[XmlParser alloc] init];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"PriceRec" toObject:@"PriceRec" parseError:nil];
         
-        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
         
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
@@ -210,10 +229,18 @@
 		[sRequest release];	
 		[xmlParser release];
 	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: getDealCurrencies");
+    NSLog(@"---------------------");
+#endif
 }
 
 - (void)logOut
 {
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: logOut");
+#endif
 	if ([self isConnectedToInternet:HOST]) {
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
 		// Create the SOAP body 
@@ -221,19 +248,35 @@
 		[sRequest appendString:@"<sch:LogOut/>"];
 		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+#ifdef DEBUGGING
+		NSLog(@"Request: %@", sRequest);
+#endif
+
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogOut" isLogin:NO] fromURI:@"nil" toObject:@"" parseError:nil];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"LogOut" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"nil" toObject:@"" parseError:nil];
         
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
+
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		
 		[sRequest release];	
 		[xmlParser release];
 	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: logOut");
+    NSLog(@"---------------------");
+#endif
 }
 
 - (void)getBeneficiaries{
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: getBeneficiaries");
+#endif
 	if ([self isConnectedToInternet:HOST]) {
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
 		// Create the SOAP body 
@@ -241,22 +284,35 @@
 		[sRequest appendString:@"<sch:GetBeneficiaryList/>"];
 		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+#ifdef DEBUGGING
+		NSLog(@"Request: %@", sRequest);
+#endif
+
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetBeneficiaryList" isLogin:NO] fromURI:@"BeneficiaryRec" toObject:@"BeneficiaryRec" parseError:nil];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetBeneficiaryList" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"BeneficiaryRec" toObject:@"BeneficiaryRec" parseError:nil];
         
-        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
-        
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
+
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		
 		[sRequest release];	
 		[xmlParser release];
 	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: getBeneficiaries");
+    NSLog(@"---------------------");
+#endif
 }
 
 - (void)getCardsList{
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: getCardsList");
+#endif
 	if ([self isConnectedToInternet:HOST]) {
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
 		// Create the SOAP body 
@@ -264,12 +320,17 @@
 		[sRequest appendString:@"<sch:GetCardList/>"];
 		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+#ifdef DEBUGGING
+		NSLog(@"Request: %@", sRequest);
+#endif
+
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetCardList" isLogin:NO] fromURI:@"CardRec" toObject:@"CardRec" parseError:nil];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCardList" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"CardRec" toObject:@"CardRec" parseError:nil];
         
-        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
         
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
@@ -277,9 +338,17 @@
 		[sRequest release];	
 		[xmlParser release];
 	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: getCardsList");
+    NSLog(@"---------------------");
+#endif
 }
 
 - (void)setCCYList:(NSArray*)ccyList {
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: setCCYList");
+#endif
     if ([self isConnectedToInternet:HOST]) {
         
         // Skip Operation when list = 0
@@ -300,19 +369,35 @@
 		[sRequest appendString:@"</sch:SetCurrencyList>"];
 		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+#ifdef DEBUGGING
+		NSLog(@"Request: %@", sRequest);
+#endif
+
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"SetCurrencyList" isLogin:NO] fromURI:@"SetCurrencyListResult" toObject:@"Result" parseError:nil];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"SetCurrencyList" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"SetCurrencyListResult" toObject:@"Result" parseError:nil];
                 
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
+
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
 		
 		[sRequest release];	
 		[xmlParser release];
 	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: setCCYList");
+    NSLog(@"---------------------");
+#endif
 }
 
 - (void)makeDeal:(Payment*)payment {
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: makeDeal");
+#endif
     if ([self isConnectedToInternet:HOST]) {
         
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
@@ -349,14 +434,17 @@
 		[sRequest appendString:@"</sch:MakeADeal>"];
 		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+#ifdef DEBUGGING
         NSLog(@"Request: ----->  %@", sRequest);
+#endif
         
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"MakeADeal" isLogin:NO] fromURI:@"MakeADealResult" toObject:@"DealResult" parseError:nil];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"MakeADeal" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"MakeADealResult" toObject:@"DealResult" parseError:nil];
         
-        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
         
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
@@ -364,9 +452,17 @@
 		[sRequest release];	
 		[xmlParser release];
 	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: MakeDeal");
+    NSLog(@"---------------------");
+#endif
 }
 
 - (void)AddCard:(CardRec*)cardRec {
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: AddCard");
+#endif
     if ([self isConnectedToInternet:HOST]) {
         
 		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
@@ -409,14 +505,17 @@
 		[sRequest appendString:@"</sch:AddCard>"];
 		[sRequest appendString:[self getEndHeader]];
 		
-		//** MEMORY LEAK--> XmlParser *xmlParser = [[XmlParser alloc] parseXMLData:[self submitRequestToHost:sRequest soapAction:@"GetDealCurrencies"] fromURI:@"DealCurrency" toObject:@"DealCurrency" parseError:nil];
+#ifdef DEBUGGING
         NSLog(@"Request: ----->  %@", sRequest);
+#endif
         
 		XmlParser *xmlParser = [[XmlParser alloc] init];
-		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"AddCard" isLogin:NO] fromURI:@"AddCardResult" toObject:@"Result" parseError:nil];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"AddCard" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"AddCardResult" toObject:@"Result" parseError:nil];
         
-        //        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
-        //        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
         
 		[self.wsResponse release];
 		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
@@ -424,6 +523,12 @@
 		[sRequest release];	
 		[xmlParser release];
 	}
+
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: AddCard");
+    NSLog(@"---------------------");
+#endif
+
 }
 - (NSString*)getStartHeader {
 	return [NSString stringWithFormat:@"%@=\"%@\" xmlns:sch=\"http://voltrexfx.com/webservices/\"> <soapenv:Header/> <soapenv:Body>",@"<soapenv:Envelope xmlns:soapenv", SOAP_ENV];

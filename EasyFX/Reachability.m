@@ -56,7 +56,11 @@
 
 #import "Reachability.h"
 
+#ifdef DEBUGGING
 #define kShouldPrintReachabilityFlags 1
+#else
+#define kShouldPrintReachabilityFlags 0
+#endif
 
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags    flags, const char* comment)
 {

@@ -11,9 +11,11 @@
 @interface Fault : NSObject {
     NSString *faultcode;
     NSString *faultstring;
+    NSString *detail;
 }
 
 @property(nonatomic, retain) NSString *faultcode;
 @property(nonatomic, retain) NSString *faultstring;
+@property(nonatomic, retain) NSString *detail;
 
 @end

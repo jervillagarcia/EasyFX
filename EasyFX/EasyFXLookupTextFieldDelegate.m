@@ -36,7 +36,6 @@
 		curTxtField = textField;
 		
         CountryLookupViewController *viewController = [[CountryLookupViewController alloc] initWithNibName:@"CountryLookupViewController" bundle:nil delegate:fromController];
-//        [fromController.navigationController pushViewController:viewController animated:YES];
         [fromController presentModalViewController:viewController animated:YES];
         [viewController.searchBar setText:[textField text]];
         [viewController searchBar:viewController.searchBar textDidChange:[textField text]];

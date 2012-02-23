@@ -12,11 +12,18 @@
 #import "StoredBeneficiaryTableViewCell.h"
 #import "ExistingBeneficiaryViewController.h"
 #import "Utils.h"
+#import "CountryParser.h"
+#import "Country.h"
+#import "EasyFXAppDelegate.h"
+#import "Payment.h"
 
 @implementation StoredBeneficiaryTableViewController
 
 @synthesize table;
 @synthesize beneficiaryList;
+@synthesize countryList;
+@synthesize filePath;
+@synthesize myData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +34,22 @@
         preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
         [preloadView setMessage:@"Loading..."];
         preloadView.tag = 1;
+
+        filePath = [[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"];
+        myData = [NSData dataWithContentsOfFile:filePath];
+        
+        NSError *parseErr;
+        CountryParser *parser = [[CountryParser alloc] init];
+        [parser parseXMLData:myData fromURI:@"country" toObject:@"Country" parseError:&parseErr];
+        
+        [countryList release];
+        countryList = [[NSMutableArray alloc] initWithArray:[parser items]];
+
+        [selCountryList release];
+        selCountryList = [[NSMutableArray alloc] init];
+        
+        [filteredBenList release];
+        filteredBenList = [[NSMutableArray alloc] init];
 
     }
     return self;
@@ -77,6 +100,9 @@
 }
 
 - (void)dealloc {
+    [countryList release];
+    [selCountryList release];
+    [filteredBenList release];
     [beneficiaryList release];
     [preloadView release];
     [super dealloc];
@@ -107,8 +133,6 @@
     
     StoredBeneficiaryTableViewCell *cell = (StoredBeneficiaryTableViewCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
-        NSLog(@"New Cell Made");
-        
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
         
         for(id currentObject in topLevelObjects)
@@ -183,14 +207,46 @@
         
         [ws getBeneficiaries];
         
-        [beneficiaryList release];
-        beneficiaryList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+        [tempList release];
+        tempList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+        
 	    
-        [table reloadData];
         [preloadView removeFromSuperview];
         
         [ws release];
     }
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSString *ccy = delegate.payment.buyCCY;
+    
+    [selCountryList release];
+    selCountryList = [[NSMutableArray alloc] init];
+    for (Country *country in countryList) {
+        if ([country.ccy isEqualToString:ccy]) {
+            [selCountryList addObject:country];
+        }
+    }
+    
+    [filteredBenList release];
+    filteredBenList = [[NSMutableArray alloc] init];
+    for(BeneficiaryRec *benRec in tempList){
+        for (Country *country in selCountryList) {
+            if ([benRec.countryCode isEqualToString:country.countryCode]) {
+                [filteredBenList addObject:benRec];
+            }
+        }
+    }
+    
+    [beneficiaryList release];
+    beneficiaryList = [filteredBenList retain];
+    if ([beneficiaryList count] > 0) {
+        //do nothing
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"You do not have a beneficiary in the same currency – please register your beneficiary via your account through the website before trying again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+    }
+    
+    [table reloadData];
 }
 
 #pragma mark Actions (Button)

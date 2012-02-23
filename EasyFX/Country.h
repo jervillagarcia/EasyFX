@@ -13,10 +13,12 @@
     NSString *name;
     NSString *iso;
     NSString *countryCode;
+    NSString *ccy;
 }
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *iso;
 @property (nonatomic, retain) NSString *countryCode;
+@property (nonatomic, retain) NSString *ccy;
 
 @end
