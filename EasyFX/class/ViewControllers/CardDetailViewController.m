@@ -88,6 +88,7 @@
 }
 
 - (IBAction)nextClick:(id)sender {
+    [Utils dismissKeyBoard:self.view];
     if ([txtCVV.text length] > 0) {
         EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         [delegate.payment setCardRec:cardRec];
@@ -106,6 +107,7 @@
 }
 
 - (IBAction)backAction:(id)sender {
+    [Utils dismissKeyBoard:self.view];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

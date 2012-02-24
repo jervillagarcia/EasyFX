@@ -94,8 +94,16 @@ float amount = 0.00;
 
 #pragma Action Methods
 - (IBAction)next:(id)sender {
+    [Utils dismissKeyBoard:self.view];
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([txtAmtToSell.text floatValue] > [delegate.limit floatValue]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Amount" message:[NSString stringWithFormat:@"Sell amount must exceed %@ %@",txtCurYouSell.text, [@"" stringByAppendingFormat:@"%.2f", [delegate.limit floatValue]] ] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+        return;
+    }
+        
     if ([txtAmtToBuy.text floatValue] > 0 || [txtAmtToSell.text floatValue]) {
-        EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
         [delegate.payment setBuyCCY:[txtCurYouBuy text]];
         [delegate.payment setBuyAmount:[txtAmtToBuy text]];
         [delegate.payment setRate:[priceRec bid]];

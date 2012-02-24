@@ -88,7 +88,7 @@
         [items addObject:item];
         
     }
-    else if([elementName isEqualToString:currentNodeName] && [elementName isEqualToString:@"Header"] == NO) {
+    else if([elementName isEqualToString:currentNodeName] && [elementName isEqualToString:@"Header"] == NO && item) {
         if (![elementName isEqualToString:@"NULL"]){
             if ([elementName isEqualToString:@"country"]) {
                 [item setValue:currentNodeContent forKey:@"name"];
@@ -109,8 +109,13 @@
     [currentNodeContent release];
     [currentNodeName release];
 	[className release];
-	[item release];
-	[items release];
+//    int cnt = [item retainCount];
+//    for (int i = 0; i < cnt -1; i++) {
+        [item release];
+//    }
+
+	
+    [items release];
     [uri release];
 	[super dealloc];
 }

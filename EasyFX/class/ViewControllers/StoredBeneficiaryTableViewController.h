@@ -15,22 +15,20 @@
     NSMutableArray *filteredBenList;
     
     EasyFXPreloader *preloadView;
-    NSArray *countryList;
+    NSMutableArray *countryList;
     NSArray *testList;
     NSMutableArray *selCountryList;
     NSArray *tempList;
     
     BOOL isSearching;
     
-    NSData *myData;
 }
 
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) NSArray *beneficiaryList;
-@property (nonatomic, retain) NSArray *countryList;
+@property (nonatomic, retain) NSMutableArray *countryList;
 @property (nonatomic, retain) NSArray *testList;
 @property (nonatomic, retain) NSString *filePath;
-@property (nonatomic, retain) NSData *myData;
 
 -(void)loadData;
 -(void)fetchBeneficiaries;

@@ -24,7 +24,6 @@
 @synthesize countryList;
 @synthesize testList;
 @synthesize filePath;
-@synthesize myData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,16 +37,14 @@
 
         NSError *parseErr;
         @autoreleasepool {
-            myData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"]];
             CountryParser *parser = [[CountryParser alloc] init];
-            [parser parseXMLData:myData fromURI:@"country" toObject:@"Country" parseError:&parseErr];
+            [parser parseXMLData:[[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"]] fromURI:@"country" toObject:@"Country" parseError:&parseErr];
             
-            [testList release];
-            testList = [[[NSMutableArray alloc] initWithArray:[parser items]] autorelease];
+//            [testList release];
+//            testList = [[[NSMutableArray alloc] initWithArray:[parser items]] autorelease];
             [countryList release];
-            countryList = [[NSArray alloc] initWithArray:testList];
+            countryList = [[NSMutableArray alloc] initWithArray:[[parser items] copy]];
             [parser release];
-            [myData release];
         }
         
         [selCountryList release];

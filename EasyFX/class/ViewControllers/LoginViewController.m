@@ -11,6 +11,7 @@
 #import "LogInResult.h"
 #import "CurrencyViewController.h"
 #import "EasyFXAppDelegate.h"
+#import "Utils.h"
 
 @implementation LoginViewController
 
@@ -85,6 +86,7 @@
 }
 
 -(IBAction)loginOnClick:(id)sender{
+    [Utils dismissKeyBoard:self.view];
 	[self.view addSubview:preloadView];
     [NSThread detachNewThreadSelector:@selector(loginAction) toTarget:self withObject:nil];
     

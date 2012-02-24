@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "EasyFX/class/ViewControllers/AddCardViewController.m"
-         timestampString = "351655093.31229"
+         timestampString = "351771638.403354"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "180"
-         endingLineNumber = "180"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "-actionSheet:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -49,11 +49,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyFX/class/ViewControllers/StoredBeneficiaryTableViewController.m"
-         timestampString = "351765868.795601"
+         timestampString = "351769437.601642"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "221"
-         endingLineNumber = "221"
+         startingLineNumber = "218"
+         endingLineNumber = "218"
          landmarkName = "-fetchBeneficiaries"
          landmarkType = "5">
       </FileBreakpoint>
@@ -61,13 +61,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "EasyFX/CountryParser.m"
-         timestampString = "351761431.936029"
+         filePath = "EasyFX/class/ViewControllers/StoredBeneficiaryTableViewController.m"
+         timestampString = "351768951.695246"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
-         landmarkName = "-dealloc"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
+         landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

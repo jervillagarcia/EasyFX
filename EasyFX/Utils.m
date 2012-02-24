@@ -40,6 +40,15 @@
 	nextLabelName.frame = CGRectMake(nextLabelName.frame.origin.x, newY, nextLabelName.frame.size.width , nextLabelName.frame.size.height);
 }
 
++ (void)dismissKeyBoard:(UIView*)view {
+    for (id subView in view.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            UITextField *txtField = subView;
+            [txtField resignFirstResponder];
+        }
+    }
+}
+    
 + (void)setNavTitleImage:(id)mDelegate {
 //    UIImage  *buttonImage = [UIImage imageNamed:@"back_button.png"];
 //    UIImage  *editImage = [UIImage imageNamed:@"edit_currency_icon.png"];

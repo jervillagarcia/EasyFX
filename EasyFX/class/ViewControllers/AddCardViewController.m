@@ -116,6 +116,7 @@
 }
 
 - (void)save {
+    [Utils dismissKeyBoard:self.view];
     [self.view addSubview:preloadView];
     
     CardRec *cardRec = [[CardRec alloc] init];
