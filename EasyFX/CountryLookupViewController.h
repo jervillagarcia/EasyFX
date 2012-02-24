@@ -1,6 +1,6 @@
 //
 //  CountryLookupViewController.h
-//  Swift
+//  EasyFX
 //
 //  Created by James Errol Villagarcia on 9/3/11.
 //  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.

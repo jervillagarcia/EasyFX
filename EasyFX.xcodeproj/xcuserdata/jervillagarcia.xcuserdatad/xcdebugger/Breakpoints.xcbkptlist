@@ -35,20 +35,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "EasyFX/CountryLookupViewController.m"
-         timestampString = "351243642.694844"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "EasyFX/class/UIViewControllerTextDelegate.m"
          timestampString = "351500589.828163"
          startingColumnNumber = "9223372036854775807"
@@ -63,12 +49,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyFX/class/ViewControllers/StoredBeneficiaryTableViewController.m"
-         timestampString = "351655093.31229"
+         timestampString = "351765868.795601"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "223"
-         endingLineNumber = "223"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "-fetchBeneficiaries"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "EasyFX/CountryParser.m"
+         timestampString = "351761431.936029"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "109"
+         endingLineNumber = "109"
+         landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

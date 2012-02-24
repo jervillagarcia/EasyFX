@@ -45,6 +45,28 @@
 {
     [super viewDidLoad];
 
+    buttonImage = [UIImage imageNamed:@"back_button.png"];
+    editImage = [UIImage imageNamed:@"edit_currency_icon.png"];
+    
+    button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button1 setImage:buttonImage forState:UIControlStateNormal];
+    [button1 addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [button1 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
+    
+    button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button2 setImage:editImage forState:UIControlStateNormal];
+    [button2 addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
+    [button2 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
+    
+    //Logout Button
+    backItem1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
+    
+    backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
+    logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]];
+    
+    doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(editAction:)];
+    
+
     [self performSelector:@selector(fetchCurrencies)];
     
     // Do any additional setup after loading the view from its nib.
@@ -60,40 +82,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
-
-    buttonImage = [[UIImage imageNamed:@"back_button.png"] retain];
-    editImage = [[UIImage imageNamed:@"edit_currency_icon.png"] retain];
-    
-    button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button1 setImage:buttonImage forState:UIControlStateNormal];
-    [button1 addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    [button1 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
-    
-    button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button2 setImage:editImage forState:UIControlStateNormal];
-    [button2 addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
-    [button2 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
-
-    //Logout Button
-    backItem1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
     [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:backItem1];
-
-    backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
     [self.navigationController.navigationBar.topItem     setRightBarButtonItem:backItem2];
-    logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]];
-    
-    doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(editAction:)];
-    
     self.navigationController.navigationBar.topItem.titleView = logoImage;
+
 
 }
 
 - (void)dealloc {
-//    [buttonImage release];
-//    [editImage release];
     [logoImage release];
     [backItem1 release];
     [backItem2 release];
+    [doneButton release];
     [currencyList release];
     [filteredList release];
     [preloadView release];
@@ -208,7 +208,7 @@
         [ws getDealCurrencies];
         
         [currencyList release];
-        currencyList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+        currencyList = [[NSArray alloc] initWithArray:ws.wsResponse];
         
         [filteredList release];
         filteredList = [[NSMutableArray alloc] init];

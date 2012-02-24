@@ -175,7 +175,7 @@
         [ws getCardsList];
         
         [cardsList release];
-        cardsList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
+        cardsList = [[NSArray alloc] initWithArray:ws.wsResponse];
 	    
         [table reloadData];
         [preloadView removeFromSuperview];
@@ -193,10 +193,7 @@
 - (IBAction)addCardAction:(id)sender {
 	CATransition *animation = [CATransition animation];
 	animation.type = kCATransitionFromBottom;
-	animation.duration = 0.5;  //Or whatever
-//	animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]; //Or whatever
-//	animation.startProgress = 0;  //Set this as needed
-//	animation.endProgress = 0.66;  //Set this as needed
+	animation.duration = 0.5;
 	animation.fillMode = kCAFillModeBoth;
 	[[self.navigationController.view layer] addAnimation:animation forKey:kCATransition];
 

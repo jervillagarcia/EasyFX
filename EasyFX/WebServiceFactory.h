@@ -1,9 +1,9 @@
 //
 //  WebServiceFactory.h
-//  CaxtonFX
+//  EasyFX
 //
-//  Created by Reg on 11/20/09.
-//  Copyright 2009 Petra Financial Ltd. All rights reserved.
+//  Created by Errol Villagarcia on 11/16.
+//  Copyright 2011 Apply Financial, Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

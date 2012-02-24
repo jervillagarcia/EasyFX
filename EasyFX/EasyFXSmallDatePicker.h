@@ -1,9 +1,9 @@
 //
-//  UIObiSmallDatePicker.h
-//  iCG
+//  EasyFXSmallDatePicker.h
+//  EasyFX
 //
-//  Created by James Errol Villagarcia on 6/19/11.
-//  Copyright 2011 iCG. All rights reserved.
+//  Created by Errol Villagarcia on 11/16.
+//  Copyright 2011 Apply Financial, Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

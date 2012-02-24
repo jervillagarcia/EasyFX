@@ -22,6 +22,7 @@
 @synthesize table;
 @synthesize beneficiaryList;
 @synthesize countryList;
+@synthesize testList;
 @synthesize filePath;
 @synthesize myData;
 
@@ -35,21 +36,26 @@
         [preloadView setMessage:@"Loading..."];
         preloadView.tag = 1;
 
-        filePath = [[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"];
-        myData = [NSData dataWithContentsOfFile:filePath];
-        
         NSError *parseErr;
-        CountryParser *parser = [[CountryParser alloc] init];
-        [parser parseXMLData:myData fromURI:@"country" toObject:@"Country" parseError:&parseErr];
+        @autoreleasepool {
+            myData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"]];
+            CountryParser *parser = [[CountryParser alloc] init];
+            [parser parseXMLData:myData fromURI:@"country" toObject:@"Country" parseError:&parseErr];
+            
+            [testList release];
+            testList = [[[NSMutableArray alloc] initWithArray:[parser items]] autorelease];
+            [countryList release];
+            countryList = [[NSArray alloc] initWithArray:testList];
+            [parser release];
+            [myData release];
+        }
         
-        [countryList release];
-        countryList = [[NSMutableArray alloc] initWithArray:[parser items]];
-
         [selCountryList release];
         selCountryList = [[NSMutableArray alloc] init];
         
         [filteredBenList release];
         filteredBenList = [[NSMutableArray alloc] init];
+        
 
     }
     return self;
@@ -101,6 +107,7 @@
 
 - (void)dealloc {
     [countryList release];
+    [tempList release];
     [selCountryList release];
     [filteredBenList release];
     [beneficiaryList release];
@@ -208,13 +215,12 @@
         [ws getBeneficiaries];
         
         [tempList release];
-        tempList = [[[NSArray alloc] initWithArray:ws.wsResponse] retain];
-        
-	    
-        [preloadView removeFromSuperview];
+        tempList = [[NSArray alloc] initWithArray:ws.wsResponse];
         
         [ws release];
     }
+    [preloadView removeFromSuperview];
+    
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
     NSString *ccy = delegate.payment.buyCCY;
     

@@ -1,9 +1,9 @@
 //
 //  XmlParser.m
-//  CaxtonFX
+//  EasyFX
 //
-//  Created by Reg on 11/20/09.
-//  Copyright 2009 Petra Financial Ltd. All rights reserved.
+//  Created by Errol Villagarcia on 11/16.
+//  Copyright 2011 Apply Financial, Ltd. All rights reserved.
 //
 
 #import "XmlParser.h"
@@ -70,16 +70,20 @@
 	 *error = [parser parserError];
 	 }
 	 */
-	return [self retain];
+//	return [self retain];
+    return self;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
 	if([elementName isEqualToString:uri] || [elementName isEqualToString:@"Fault"]) {
+        [item release];
 		item = [[NSClassFromString([elementName isEqualToString:uri]?className:@"Fault") alloc] init];
 	}
 	else {
 		if (![elementName isEqualToString:@"NULL"]){
+            [currentNodeName release];
+            [currentNodeContent release];
 			currentNodeName = [elementName copy];
 			currentNodeContent = [[NSMutableString alloc] init];
 		}
@@ -120,6 +124,7 @@
 	[currentNodeName release];
 	[currentNodeContent release];
 	[items release];
+    [uri release];
 	[super dealloc];
 }
 

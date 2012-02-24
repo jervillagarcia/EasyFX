@@ -1,7 +1,7 @@
 /*
  *  Constants.h
  *
- *  Copyright 2008 Petra Financial, Ltd. All rights reserved.
+ *  Copyright 2011 Apply Financial, Ltd. All rights reserved.
  *
  */
 

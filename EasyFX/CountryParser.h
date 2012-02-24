@@ -1,6 +1,6 @@
 //
 //  CountryParser.h
-//  Swift
+//  EasyFX
 //
 //  Created by James Errol Villagarcia on 9/2/11.
 //  Copyright 2011 ApplyFinancial. All rights reserved.
@@ -16,7 +16,6 @@
 	NSObject *item;
 	NSString *currentNodeName;
 	NSMutableString *currentNodeContent;
-
 }
 
 @property (retain) NSString *className;
@@ -26,7 +25,7 @@
 @property (retain) NSString *currentNodeName;
 @property (retain) NSMutableString *currentNodeContent;
 
-//- (NSArray *)items;
+- (NSArray *)getItems;
 - (id)parseXMLData:(NSData *)data fromURI:(NSString*)fromURI toObject:(NSString *)aClassName parseError:(NSError **)error;
 
 @end

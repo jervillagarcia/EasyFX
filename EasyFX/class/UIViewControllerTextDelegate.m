@@ -103,17 +103,12 @@
     if (textField.keyboardType == UIKeyboardTypeNumberPad)
         [(EasyFXTextField*)textField addDecimal];
     
-//	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-
 	return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     [textField resignFirstResponder];
     [(EasyFXTextField*)textField removeDecimal];
-//    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:UIKeyboardWillHideNotification object:textField]];
-//    [(EasyFXTextField*)textField removeDecimal];
-//	[[NSNotificationCenter defaultCenter] addObserver:textField selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	return YES;
 }
 

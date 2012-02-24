@@ -1,6 +1,6 @@
 //
 //  CountryLookupViewController.m
-//  Swift
+//  EasyFX
 //
 //  Created by James Errol Villagarcia on 9/3/11.
 //  Copyright (c) 2012 Apply Financial Ltd. All rights reserved.
@@ -27,12 +27,16 @@
         filePath = [[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"];
         myData = [NSData dataWithContentsOfFile:filePath];
 
-        NSError *parseErr;
-        CountryParser *parser = [[CountryParser alloc] init];
-        [parser parseXMLData:myData fromURI:@"country" toObject:@"Country" parseError:&parseErr];
-        
-        [countryList release];
-        countryList = [[NSMutableArray alloc] initWithArray:[parser items]];
+        @autoreleasepool {
+            NSError *parseErr;
+            CountryParser *parser = [[CountryParser alloc] init];
+            [parser parseXMLData:myData fromURI:@"country" toObject:@"Country" parseError:&parseErr];
+            
+            [countryList release];
+            countryList = [[NSMutableArray alloc] initWithArray:[parser items]];
+            
+            [parser release];
+        }
         
         aDelegate = mDelegate;
         
@@ -43,10 +47,9 @@
 
 - (void)dealloc
 {
-//    [filePath release];
-//    [myData release];
     [filteredList release];
     [countryList release]; 
+    [tempList release];
     [super dealloc];
 }
 
@@ -119,9 +122,6 @@
         [searchBar resignFirstResponder];
         isSearching = NO;
     }
-    
-//    [(AddCardViewController*)[[self.navigationController viewControllers] objectAtIndex:[self.navigationController.viewControllers count] - 1] setCountry:[(EasyFXCountryCell*)[tableView cellForRowAtIndexPath:indexPath] country]];
-    
     
     [(AddCardViewController*)aDelegate setCountry:[(EasyFXCountryCell*)[tableView cellForRowAtIndexPath:indexPath] country]];
     [self dismissModalViewControllerAnimated:YES];

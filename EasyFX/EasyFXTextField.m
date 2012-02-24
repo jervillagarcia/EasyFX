@@ -2,8 +2,8 @@
 //  EasyFXTextField.m
 //  EasyFX
 //
-//  Created by Errol Villagarcia on 3/4/10.
-//  Copyright 2010 Petra Financial Ltd.. All rights reserved.
+//  Created by Errol Villagarcia on 11/16.
+//  Copyright 2011 Apply Financial, Ltd. All rights reserved.
 //
 
 #import "EasyFXTextField.h"
@@ -20,12 +20,6 @@
 		
 		[self setBackground:[UIImage imageNamed:@"textfieldblue.png"]];
 		[self setDisabledBackground:[UIImage imageNamed:@"textfieldgrey.png"]];
-		
-//		if (self.enabled) {
-//			[self setTextColor:[UIColor blackColor]];
-//		} else {
-//			[self setTextColor:[UIColor whiteColor]];
-//		}
 		
 		numberPadShowing = YES;
     }
@@ -49,6 +43,7 @@
 - (void)keyboardWillShow:(NSNotification *)notification 
 {  
     if (self.keyboardType == UIKeyboardTypeNumberPad) {
+        [dot release];
         dot = [[UIButton alloc] init];
         dot.frame = CGRectMake(0, 428, 106, 53);
         dot.tag = 123;
@@ -68,7 +63,7 @@
         [applicationLoadViewIn setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
         [[dot layer]addAnimation:applicationLoadViewIn forKey:kCATransitionReveal];
         [keyboardWindow addSubview:dot];
-
+        
     } else {
         [dot removeFromSuperview];
         [dot release];
@@ -122,11 +117,11 @@
     
     //Fixes Decimal Button Transition
     CATransition *applicationLoadViewIn =[CATransition animation];
-//    [applicationLoadViewIn setDuration:1.0];
     [applicationLoadViewIn setType:kCATransitionReveal];
     [applicationLoadViewIn setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     [[dot layer]addAnimation:applicationLoadViewIn forKey:kCATransitionReveal];
     [keyboardWindow addSubview:dot];
+    
 }
 
 - (void)dismissKeyboard {
@@ -134,6 +129,7 @@
 }
 
 - (void)dealloc {
+    [dot release];
     [super dealloc];
 }
 

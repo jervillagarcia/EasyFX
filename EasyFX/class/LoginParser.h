@@ -2,8 +2,8 @@
 //  LoginParser.h
 //  EasyFX
 //
-//  Created by Errol on 1/31/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Errol Villagarcia on 11/16.
+//  Copyright 2011 Apply Financial, Ltd. All rights reserved.
 //
 
 #import "XmlParser.h"

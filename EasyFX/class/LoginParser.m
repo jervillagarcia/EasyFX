@@ -2,8 +2,8 @@
 //  LoginParser.m
 //  EasyFX
 //
-//  Created by Errol on 1/31/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Errol Villagarcia on 11/16.
+//  Copyright 2011 Apply Financial, Ltd. All rights reserved.
 //
 
 #import "LoginParser.h"
@@ -73,12 +73,14 @@
 	 *error = [parser parserError];
 	 }
 	 */
-	return [self retain];
+//	return [self retain];
+    return self;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
 	if([elementName isEqualToString:uri] || [elementName isEqualToString:@"Fault"]) {
+        [item release];
 		item = [[NSClassFromString([elementName isEqualToString:uri]?className:@"Fault") alloc] init];
         isCCYPair = NO;
 	}else if ([elementName isEqualToString:@"CCYPairs"]) {
@@ -88,6 +90,8 @@
 //        currentNodeContent = [[NSMutableString alloc] init];
     }else {
 		if (![elementName isEqualToString:@"NULL"]){
+            [currentNodeContent release];
+            [currentNodeName release];
 			currentNodeName = [elementName copy];
 			currentNodeContent = [[NSMutableString alloc] init];
 		}
@@ -140,6 +144,8 @@
 	[currentNodeName release];
 	[currentNodeContent release];
 	[items release];
+    [arr release];
+    [uri release];
 	[super dealloc];
 }
 

@@ -1,9 +1,9 @@
 //
 //  Utils.h
-//  CaxtonFX
+//  EasyFX
 //
-//  Created by Errol Villagarcia on 3/2/10.
-//  Copyright 2010 Petra Financial Ltd.. All rights reserved.
+//  Created by Errol Villagarcia on 11/16.
+//  Copyright 2011 Apply Financial, Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

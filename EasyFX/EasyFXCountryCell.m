@@ -1,6 +1,6 @@
 //
-//  SwiftCountryCell.m
-//  Swift
+//  EasyFXCountryCell.m
+//  EasyFX
 //
 //  Created by Errol on 9/5/11.
 //  Copyright 2011 ApplyFinancial. All rights reserved.

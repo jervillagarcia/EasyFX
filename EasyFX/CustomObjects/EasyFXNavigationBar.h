@@ -1,6 +1,6 @@
 //
-//  SwiftNavigationBar.h
-//  Swift
+//  EasyFXNavigationBar.h
+//  EasyFX
 //
 //  Created by Errol on 8/17/11.
 //  Copyright 2011 ApplyFinancial. All rights reserved.
