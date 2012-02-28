@@ -82,7 +82,7 @@
     [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];
     [lblExchangeRate        setText:[delegate.payment rate]];
     [lblCurrencyTo          setText:[delegate.payment buyCCY]];
-    [_currencyFormatter     setCurrencyCode:[delegate.payment buyCCY]];
+    [_currencyFormatter     setCurrencyCode:[delegate.payment buyAmount]];
     [lblPaymentAmount       setText:[_currencyFormatter stringFromNumber:buyAmount]];
     
     [sellAmount release];
