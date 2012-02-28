@@ -65,12 +65,15 @@
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
 
     NSNumber *sellAmount = [[NSNumber alloc] initWithFloat:[delegate.payment.sellAmount floatValue]];
-    NSNumber *buyAmount = [[NSNumber alloc] initWithFloat:[delegate.payment.buyCCY floatValue]];
+    NSNumber *buyAmount = [[NSNumber alloc] initWithFloat:[delegate.payment.buyAmount floatValue]];
 
     NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
     [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [_currencyFormatter setNegativeFormat:@"-¤#,##0.00"];
     
+    NSNumberFormatter *_currencyFormatterTo = [[NSNumberFormatter alloc] init];
+    [_currencyFormatterTo setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [_currencyFormatterTo setNegativeFormat:@"-¤#,##0.00"];
     
     [lblAccountName         setText:[delegate.payment.cardRec name]];
     [lblAccountNumber       setText:[delegate.payment.cardRec cardNumber]];
@@ -82,8 +85,8 @@
     [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];
     [lblExchangeRate        setText:[delegate.payment rate]];
     [lblCurrencyTo          setText:[delegate.payment buyCCY]];
-    [_currencyFormatter     setCurrencyCode:[delegate.payment buyAmount]];
-    [lblPaymentAmount       setText:[_currencyFormatter stringFromNumber:buyAmount]];
+    [_currencyFormatterTo     setCurrencyCode:[delegate.payment buyCCY]];
+    [lblPaymentAmount       setText:[_currencyFormatterTo stringFromNumber:buyAmount]];
     
     [sellAmount release];
     [buyAmount release];
