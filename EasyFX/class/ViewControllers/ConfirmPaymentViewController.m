@@ -63,16 +63,31 @@
     [super viewDidLoad];
 
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    NSNumber *sellAmount = [[NSNumber alloc] initWithFloat:[delegate.payment.sellAmount floatValue]];
+    NSNumber *buyAmount = [[NSNumber alloc] initWithFloat:[delegate.payment.buyCCY floatValue]];
+
+    NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
+    [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [_currencyFormatter setNegativeFormat:@"-¤#,##0.00"];
+    
+    
     [lblAccountName         setText:[delegate.payment.cardRec name]];
     [lblAccountNumber       setText:[delegate.payment.cardRec cardNumber]];
     [lblCurrencyFrom        setText:[delegate.payment sellCCY]];
-    [lblDebit               setText:[delegate.payment sellAmount]];
+    [_currencyFormatter     setCurrencyCode:[delegate.payment sellCCY]];
+    [lblDebit               setText:[_currencyFormatter stringFromNumber:sellAmount]];
     [lblBeneficiaryName     setText:[delegate.payment.beneficiaryRec beneficiaryName]];
     [lblBeneficiaryBank     setText:[delegate.payment.beneficiaryRec bankName]];
     [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];
     [lblExchangeRate        setText:[delegate.payment rate]];
     [lblCurrencyTo          setText:[delegate.payment buyCCY]];
-    [lblPaymentAmount       setText:[delegate.payment buyAmount]];
+    [_currencyFormatter     setCurrencyCode:[delegate.payment buyCCY]];
+    [lblPaymentAmount       setText:[_currencyFormatter stringFromNumber:buyAmount]];
+    
+    [sellAmount release];
+    [buyAmount release];
+    [_currencyFormatter release];
     
 }
 
@@ -87,17 +102,6 @@
     [super viewDidAppear:animated];
     
     [Utils setNavTitleImage:self];
-//    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-//    [lblAccountName         setText:[delegate.payment.cardRec name]];
-//    [lblAccountNumber       setText:[delegate.payment.cardRec cardNumber]];
-//    [lblCurrencyFrom        setText:[delegate.payment buyCCY]];
-//    [lblDebit               setText:[delegate.payment buyAmount]];
-//    [lblBeneficiaryName     setText:[delegate.payment.beneficiaryRec beneficiaryName]];
-//    [lblBeneficiaryBank     setText:[delegate.payment.beneficiaryRec bankName]];
-//    [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];
-//    [lblExchangeRate        setText:[delegate.payment rate]];
-//    [lblCurrencyTo          setText:[delegate.payment sellCCY]];
-//    [lblPaymentAmount       setText:[delegate.payment sellAmount]];
 
 }
 
@@ -131,6 +135,7 @@
         } else {
             DealResult *dealResult = (DealResult*)[wsFactory.wsResponse objectAtIndex:0];
             if ([[dealResult success] isEqualToString:@"true"]) {
+                [delegate setLimit:dealResult.limit];
                 TransactionCompleteViewController *viewController = [[TransactionCompleteViewController alloc] initWithNibName:@"TransactionCompleteViewController" bundle:nil dealNo:[dealResult dealNumber]];
                 [self.navigationController pushViewController:viewController animated:YES];
                 [self.navigationController setNavigationBarHidden:NO];

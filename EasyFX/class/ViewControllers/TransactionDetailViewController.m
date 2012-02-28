@@ -97,9 +97,18 @@ float amount = 0.00;
     [Utils dismissKeyBoard:self.view];
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([txtAmtToSell.text floatValue] > [delegate.limit floatValue]) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Amount" message:[NSString stringWithFormat:@"Sell amount must exceed %@ %@",txtCurYouSell.text, [@"" stringByAppendingFormat:@"%.2f", [delegate.limit floatValue]] ] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        NSNumber *_amount = [[NSNumber alloc] initWithFloat:[delegate.limit floatValue]];
+        NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
+        [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [_currencyFormatter setCurrencyCode:txtCurYouSell.text];
+        [_currencyFormatter setNegativeFormat:@"-¤#,##0.00"];
+
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Amount" message:[NSString stringWithFormat:@"Sell amount must not exceed %@ ",[_currencyFormatter stringFromNumber:_amount]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
         [alertView release];
+        
+        [_amount release];
+        [_currencyFormatter release];
         return;
     }
         

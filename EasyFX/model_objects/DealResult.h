@@ -14,6 +14,7 @@
     NSString    *errorID;
     NSString    *errorMsg;
     NSString    *dealNumber;
+    NSString    *limit;
     
 }
 
@@ -21,5 +22,6 @@
 @property(nonatomic, retain) NSString    *errorID;
 @property(nonatomic, retain) NSString    *errorMsg;
 @property(nonatomic, retain) NSString    *dealNumber;
+@property(nonatomic, retain) NSString    *limit;
 
 @end

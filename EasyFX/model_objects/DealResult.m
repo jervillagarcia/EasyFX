@@ -14,5 +14,6 @@
 @synthesize errorID;
 @synthesize errorMsg;
 @synthesize dealNumber;
+@synthesize limit;
 
 @end
