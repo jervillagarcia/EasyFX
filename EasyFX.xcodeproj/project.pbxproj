@@ -354,6 +354,11 @@
 		D0890C1A14E1F42F0068AFA4 /* iphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0890C1914E1F42F0068AFA4 /* iphone4.png */; };
 		D0890C1C14E1F4A50068AFA4 /* splash_screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0890C1B14E1F4A50068AFA4 /* splash_screen2.png */; };
 		D0890C2214E1F4EC0068AFA4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0890C2114E1F4EC0068AFA4 /* Default.png */; };
+		D0EA4F8C14FFA66E00958A9B /* jmd.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8714FFA66E00958A9B /* jmd.png */; };
+		D0EA4F8D14FFA66E00958A9B /* kes.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8814FFA66E00958A9B /* kes.png */; };
+		D0EA4F8E14FFA66E00958A9B /* lkr.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8914FFA66E00958A9B /* lkr.png */; };
+		D0EA4F8F14FFA66E00958A9B /* lvl.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8A14FFA66E00958A9B /* lvl.png */; };
+		D0EA4F9014FFA66E00958A9B /* omr.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8B14FFA66E00958A9B /* omr.png */; };
 		D0EE1FB614EF366600FB4067 /* EasyFXSmallDateFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FB514EF366600FB4067 /* EasyFXSmallDateFieldDelegate.m */; };
 		D0EE1FBD14EF36CA00FB4067 /* EasyFXSmallDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FBC14EF36CA00FB4067 /* EasyFXSmallDatePicker.m */; };
 		D0EE1FD914EF681F00FB4067 /* CountryLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0EE1FD814EF681F00FB4067 /* CountryLookupViewController.m */; };
@@ -816,6 +821,11 @@
 		D0890C1914E1F42F0068AFA4 /* iphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone4.png; sourceTree = "<group>"; };
 		D0890C1B14E1F4A50068AFA4 /* splash_screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen2.png; sourceTree = "<group>"; };
 		D0890C2114E1F4EC0068AFA4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D0EA4F8714FFA66E00958A9B /* jmd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jmd.png; path = images/flagcurrency/jmd.png; sourceTree = "<group>"; };
+		D0EA4F8814FFA66E00958A9B /* kes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kes.png; path = images/flagcurrency/kes.png; sourceTree = "<group>"; };
+		D0EA4F8914FFA66E00958A9B /* lkr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lkr.png; path = images/flagcurrency/lkr.png; sourceTree = "<group>"; };
+		D0EA4F8A14FFA66E00958A9B /* lvl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lvl.png; path = images/flagcurrency/lvl.png; sourceTree = "<group>"; };
+		D0EA4F8B14FFA66E00958A9B /* omr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = omr.png; path = images/flagcurrency/omr.png; sourceTree = "<group>"; };
 		D0EE1FB414EF366600FB4067 /* EasyFXSmallDateFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXSmallDateFieldDelegate.h; sourceTree = "<group>"; };
 		D0EE1FB514EF366600FB4067 /* EasyFXSmallDateFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyFXSmallDateFieldDelegate.m; sourceTree = "<group>"; };
 		D0EE1FBB14EF36CA00FB4067 /* EasyFXSmallDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyFXSmallDatePicker.h; sourceTree = "<group>"; };
@@ -996,6 +1006,11 @@
 		D00CCE3814F362C100D227B1 /* flags */ = {
 			isa = PBXGroup;
 			children = (
+				D0EA4F8714FFA66E00958A9B /* jmd.png */,
+				D0EA4F8814FFA66E00958A9B /* kes.png */,
+				D0EA4F8914FFA66E00958A9B /* lkr.png */,
+				D0EA4F8A14FFA66E00958A9B /* lvl.png */,
+				D0EA4F8B14FFA66E00958A9B /* omr.png */,
 				D05BDBDE14F3683500D177B3 /* gbp@2x.png */,
 				D05BDB0A14F366E300D177B3 /* aed.png */,
 				D05BDB0B14F366E300D177B3 /* amd.png */,
@@ -2099,6 +2114,11 @@
 				D05BDBDC14F366E300D177B3 /* yer.png in Resources */,
 				D05BDBDD14F366E300D177B3 /* zar.png in Resources */,
 				D05BDBDF14F3683500D177B3 /* gbp@2x.png in Resources */,
+				D0EA4F8C14FFA66E00958A9B /* jmd.png in Resources */,
+				D0EA4F8D14FFA66E00958A9B /* kes.png in Resources */,
+				D0EA4F8E14FFA66E00958A9B /* lkr.png in Resources */,
+				D0EA4F8F14FFA66E00958A9B /* lvl.png in Resources */,
+				D0EA4F9014FFA66E00958A9B /* omr.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
