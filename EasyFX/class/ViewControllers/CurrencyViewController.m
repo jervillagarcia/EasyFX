@@ -11,6 +11,7 @@
 #import "CurrencyTableViewCell.h"
 #import "TransactionDetailViewController.h"
 #import "EasyFXAppDelegate.h"
+#import "Utils.h"
 
 @implementation CurrencyViewController
 
@@ -62,7 +63,8 @@
     backItem1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
     
     backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
-    logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]];
+    
+    [Utils setNavTitleImage:self];
     
     doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(editAction:)];
     

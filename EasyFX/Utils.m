@@ -50,27 +50,14 @@
 }
     
 + (void)setNavTitleImage:(id)mDelegate {
-//    UIImage  *buttonImage = [UIImage imageNamed:@"back_button.png"];
-//    UIImage  *editImage = [UIImage imageNamed:@"edit_currency_icon.png"];
-//    
-//    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button1 setImage:buttonImage forState:UIControlStateNormal];
-//    [button1 addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [button1 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
-//    
-//    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button2 setImage:editImage forState:UIControlStateNormal];
-//    [button2 addTarget:self action:@selector(editAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [button2 setFrame:CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height)];    
-//    
-//    //Logout Button
-//    UIBarButtonItem *backItem1 = [[UIBarButtonItem alloc] initWithCustomView:button1];
-//    [mDelegate.navigationController.navigationBar.topItem     setLeftBarButtonItem:backItem1];
-//    
-//    UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
-//    [mDelegate.navigationController.navigationBar.topItem     setRightBarButtonItem:backItem2];
+
+    UIImageView *imageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]] autorelease];
     
-    [(UIViewController*)mDelegate navigationController].navigationBar.topItem.titleView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topbar_logo.png"]] autorelease];
+    //set contentMode to scale aspect to fit
+    imageView.contentMode = UIViewContentModeCenter;
+    
+    [(UIViewController*)mDelegate navigationController].navigationBar.topItem.titleView = imageView;
+    
 }
 
 
