@@ -19,7 +19,6 @@
     UIBarButtonItem *doneButton;
     UIButton *button1;
     UIButton *button2;
-    UIImageView *logoImage;
     UIImage  *buttonImage;
     UIImage  *editImage;
 }

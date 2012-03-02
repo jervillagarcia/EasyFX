@@ -64,8 +64,6 @@
     
     backItem2 = [[UIBarButtonItem alloc] initWithCustomView:button2];
     
-    [Utils setNavTitleImage:self];
-    
     doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(editAction:)];
     
 
@@ -86,13 +84,12 @@
     [self.navigationController setNavigationBarHidden:NO];
     [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:backItem1];
     [self.navigationController.navigationBar.topItem     setRightBarButtonItem:backItem2];
-    self.navigationController.navigationBar.topItem.titleView = logoImage;
 
+    [Utils setNavTitleImage:self];
 
 }
 
 - (void)dealloc {
-    [logoImage release];
     [backItem1 release];
     [backItem2 release];
     [doneButton release];
