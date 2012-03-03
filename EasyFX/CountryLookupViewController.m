@@ -15,7 +15,7 @@
 
 @implementation CountryLookupViewController
 
-@synthesize countryList;
+@synthesize list;
 @synthesize countryTable;
 @synthesize searchBar;
 
@@ -23,22 +23,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        filePath = [[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"];
-        myData = [NSData dataWithContentsOfFile:filePath];
-
-        @autoreleasepool {
-            NSError *parseErr;
-            CountryParser *parser = [[CountryParser alloc] init];
-            [parser parseXMLData:myData fromURI:@"country" toObject:@"Country" parseError:&parseErr];
-            
-            [countryList release];
-            countryList = [[NSMutableArray alloc] initWithArray:[parser items]];
-            
-            [parser release];
-        }
         
-        aDelegate = mDelegate;
+        aDelegate = mDelegate;        
         
         isSearching = NO;
     }
@@ -48,7 +34,6 @@
 - (void)dealloc
 {
     [filteredList release];
-    [countryList release]; 
     [tempList release];
     [super dealloc];
 }
@@ -68,7 +53,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     filteredList = [[NSMutableArray alloc] init];
-    tempList = [[NSMutableArray alloc] init];
+    tempList = [[NSArray  alloc] init];
+
+    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    
+//    [list release];
+//    list = nil;
+    list = [[NSArray alloc] initWithArray:[delegate countries]];
 }
 
 - (void)viewDidUnload
@@ -91,23 +82,23 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
     [tempList release];
-    tempList = isSearching ? [filteredList retain] : [(NSMutableArray*) countryList retain];
+    tempList = isSearching ? [filteredList retain] : [list retain];
     
     return [tempList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tempList release];
-    tempList = isSearching ? [filteredList retain] : [(NSMutableArray*) countryList retain];
-
+    tempList = isSearching ? [filteredList retain] : [list retain];
+    
     static NSString *cellIdentifier = @"cell";
     
     EasyFXCountryCell *cell = (EasyFXCountryCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[EasyFXCountryCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier country:(Country*)[tempList objectAtIndex:[indexPath row]]];
-    } else {
-        [(EasyFXCountryCell*)cell setMCountry:(Country*)[tempList objectAtIndex:[indexPath row]]];
-    }
+        cell = [[EasyFXCountryCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }   
+    
+    [(EasyFXCountryCell*)cell setMCountry:(Country*)[tempList objectAtIndex:[indexPath row]]];
      
     return cell;
 }
@@ -123,7 +114,7 @@
         isSearching = NO;
     }
     
-    [(AddCardViewController*)aDelegate setCountry:[(EasyFXCountryCell*)[tableView cellForRowAtIndexPath:indexPath] country]];
+    [(AddCardViewController*)aDelegate setCountry:[(EasyFXCountryCell*)[tableView cellForRowAtIndexPath:indexPath] getCountry]];
     [self dismissModalViewControllerAnimated:YES];
     
 }
@@ -137,7 +128,7 @@
     if (isSearching) {
         [filteredList removeAllObjects];
         isSearching = YES;
-        for (Country *model in countryList)
+        for (Country *model in list)
         {
             NSRange titleResultsRange = [[NSString stringWithFormat:@"%@ %@", [model countryCode], [model name]] rangeOfString:searchText options:NSCaseInsensitiveSearch];
             if (titleResultsRange.length > 0)

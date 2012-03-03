@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Payment.h"
+#import "CountryParser.h"
 
 @interface EasyFXAppDelegate : NSObject <UIApplicationDelegate> {
     NSString    *sessionCookie;
     NSArray     *ccyPairList;
     NSString    *limit;
     Payment     *payment;
+
+    CountryParser *countryParser;
+    
+    NSArray     *countries;
     
     BOOL        isFromLogin;
 }
@@ -26,6 +31,7 @@
 
 @property (nonatomic, retain) NSString *sessionCookie;
 @property (nonatomic, retain) NSArray *ccyPairList;
+@property (nonatomic, retain) NSArray *countries;
 @property (nonatomic, retain) NSString *limit;
 @property (nonatomic, retain) Payment *payment;
 @property (nonatomic) BOOL        isFromLogin;

@@ -1,4 +1,4 @@
-//
+    //
 //  EasyFXCountryCell.m
 //  EasyFX
 //
@@ -11,17 +11,10 @@
 
 @implementation EasyFXCountryCell
 
-@synthesize country;
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier country:(Country *)mCountry;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
-        self.country = mCountry;
-
-        [self.textLabel         setText:[country name]];
-        [self.detailTextLabel   setText:[country countryCode]];
     }
     return self;
 }
@@ -33,18 +26,16 @@
     // Configure the view for the selected state
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 - (void)setMCountry:(Country*)mCountry {
-    [country release];
-    country = nil;
-    self.country = mCountry;
+    country = mCountry;
     
     [self.textLabel         setText:[country name]];
     [self.detailTextLabel   setText:[country countryCode]];
 }
+
+- (Country*)getCountry {
+    return country;
+}
+
 
 @end

@@ -15,7 +15,6 @@
     NSMutableArray *filteredBenList;
     
     EasyFXPreloader *preloadView;
-    NSMutableArray *countryList;
     NSArray *testList;
     NSMutableArray *selCountryList;
     NSArray *tempList;
@@ -26,7 +25,6 @@
 
 @property (nonatomic, retain) UITableView *table;
 @property (nonatomic, retain) NSArray *beneficiaryList;
-@property (nonatomic, retain) NSMutableArray *countryList;
 @property (nonatomic, retain) NSArray *testList;
 @property (nonatomic, retain) NSString *filePath;
 

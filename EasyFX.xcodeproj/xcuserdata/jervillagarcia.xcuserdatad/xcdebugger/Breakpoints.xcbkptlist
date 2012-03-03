@@ -21,20 +21,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "EasyFX/CountryLookupViewController.m"
-         timestampString = "351655093.31229"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "EasyFX/class/UIViewControllerTextDelegate.m"
          timestampString = "351500589.828163"
          startingColumnNumber = "9223372036854775807"
@@ -49,11 +35,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyFX/class/ViewControllers/StoredBeneficiaryTableViewController.m"
-         timestampString = "352378711.891977"
+         timestampString = "352462716.083602"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -62,11 +48,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyFX/class/ViewControllers/StoredBeneficiaryTableViewController.m"
-         timestampString = "352378940.741196"
+         timestampString = "352462716.083602"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "238"
-         endingLineNumber = "238"
+         startingLineNumber = "224"
+         endingLineNumber = "224"
          landmarkName = "-fetchBeneficiaries"
          landmarkType = "5">
       </FileBreakpoint>
@@ -75,11 +61,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyFX/class/ViewControllers/StoredBeneficiaryTableViewController.m"
-         timestampString = "352378953.342019"
+         timestampString = "352462716.083602"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
+         startingLineNumber = "215"
+         endingLineNumber = "215"
          landmarkName = "-fetchBeneficiaries"
          landmarkType = "5">
       </FileBreakpoint>

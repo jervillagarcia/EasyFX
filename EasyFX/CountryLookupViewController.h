@@ -13,20 +13,18 @@
     IBOutlet UISearchBar *searchBar;
     IBOutlet UITableView *countryTable;
 
-    NSArray *countryList;
+    NSArray *list;
     NSMutableArray *filteredList;
-    NSMutableArray *tempList;
+    NSArray *tempList;
     
     BOOL isSearching;
     
-    NSString *filePath;
-    NSData *myData;
     id aDelegate;
 }
 
 @property (nonatomic, retain) UISearchBar *searchBar;
 @property (nonatomic, retain) UITableView *countryTable;
-@property (nonatomic, retain) NSArray *countryList;
+@property (nonatomic, retain) NSArray *list;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil delegate:(id)mDelegate;

@@ -25,22 +25,22 @@
 
 - (id)parseXMLData:(NSData *)data fromURI:(NSString*)fromURI toObject:(NSString *)aClassName parseError:(NSError **)error
 {
-	
+    
 	[items release];
 	items = [[NSMutableArray alloc] init];
-	
+    
 	[className release];
-	className = [aClassName copy];
-	
-	[uri release];
+	className = [aClassName copy];//[[NSString alloc] initWithString:aClassName];
+    
+	//[uri release];
 	uri = [fromURI copy];
-	
+    
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
 	[parser setDelegate:self];
 	[parser setShouldProcessNamespaces:YES];
 	[parser setShouldReportNamespacePrefixes:YES];
 	[parser setShouldResolveExternalEntities:YES];
-	
+    
 	[parser parse];
 	[parser release];
 	/*
@@ -48,29 +48,26 @@
 	 *error = [parser parserError];
 	 }
 	 */
-	return self;
+	return [self retain];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-
     if([[elementName uppercaseString] isEqualToString:[uri uppercaseString]] || [elementName isEqualToString:@"Fault"]) {
-        
-        if (item)
-            [item release], item = nil;
         item = [[NSClassFromString([[elementName uppercaseString] isEqualToString:[uri uppercaseString]]?className:@"Fault") alloc] init];
-                
+        
         [item setValue:[attributeDict objectForKey:@"iso"] forKey:@"iso"];
         [item setValue:[attributeDict objectForKey:@"code"] forKey:@"countryCode"];
         [item setValue:[attributeDict objectForKey:@"ccy"] forKey:@"ccy"];
         
-        if (currentNodeName)
-            [currentNodeName release], currentNodeName = nil;
         currentNodeName = [elementName copy];
-        
-        if (currentNodeName)
-            [currentNodeContent release], currentNodeContent = nil;
-        currentNodeContent = [NSMutableString string];
+        currentNodeContent = [[NSMutableString alloc] init];
+    }
+    else {
+        if (![elementName isEqualToString:@"NULL"]){
+            currentNodeName = [elementName copy];
+            currentNodeContent = [[NSMutableString alloc] init];
+        }
     }
 }
 
@@ -82,41 +79,41 @@
         
         [currentNodeContent release];
         currentNodeContent = nil;
+        
         [currentNodeName release];
         currentNodeName = nil;
         
         [items addObject:item];
-        
+        [item release];
+        item = nil;
     }
-    else if([elementName isEqualToString:currentNodeName] && [elementName isEqualToString:@"Header"] == NO && item) {
+    else if([elementName isEqualToString:currentNodeName] && [elementName isEqualToString:@"Header"] == NO) {
         if (![elementName isEqualToString:@"NULL"]){
             if ([elementName isEqualToString:@"country"]) {
                 [item setValue:currentNodeContent forKey:@"name"];
+                
             }
+            [currentNodeContent release];
+            currentNodeContent = nil;
+            
+            [currentNodeName release];
+            currentNodeName = nil;
         }
     }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {   
-    if (currentNodeName)
-        [currentNodeContent appendString:[[string copy] autorelease]];
-    
+	[currentNodeContent appendString:string];
 }
 
 - (void)dealloc
 {
-    [currentNodeContent release];
-    [currentNodeName release];
 	[className release];
-//    int cnt = [item retainCount];
-//    for (int i = 0; i < cnt -1; i++) {
-        [item release];
-//    }
-
-	
-    [items release];
-    [uri release];
+	[item release];
+	[currentNodeName release];
+	[currentNodeContent release];
+	[items release];
 	[super dealloc];
 }
 

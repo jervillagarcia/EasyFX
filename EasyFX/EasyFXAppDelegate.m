@@ -12,6 +12,8 @@
 
 #import "WebServiceFactory.h"
 
+#import "CountryParser.h"
+
 @implementation EasyFXAppDelegate
 
 
@@ -29,6 +31,8 @@
 
 @synthesize ccyPairList;
 
+@synthesize countries;
+
 @synthesize limit;
 
 @synthesize payment;
@@ -44,7 +48,16 @@
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     [payment release];
     payment = [[Payment alloc] init];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    NSError *parseErr;
+    countryParser = [[CountryParser alloc] init];
+    [countryParser parseXMLData:[[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"]] fromURI:@"country" toObject:@"Country" parseError:&parseErr];
+    
+    [countries release];
+    countries = [[NSMutableArray alloc] initWithArray:[countryParser items]];
+    
+    
+    
     return YES;
 }
 
@@ -102,6 +115,8 @@
 
 - (void)dealloc
 {
+    [countryParser release];
+    [countries release];
     [_window release];
     [__managedObjectContext release];
     [__managedObjectModel release];

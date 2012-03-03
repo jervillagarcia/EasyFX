@@ -6,7 +6,7 @@
   <country code="AD" iso="20" ccy="EUR">Andorra</country>
   <country code="AO" iso="24" ccy="AON">Angola</country>
   <country code="AI" iso="660" ccy="XCD">Anguilla</country>
-  <country code="AQ" iso="10" ccy="">Antarctica</country>
+  <country code="AQ" iso="10" ccy="ANT">Antarctica</country>
   <country code="AG" iso="28" ccy="XCD">Antigua And Barbuda</country>
   <country code="AR" iso="32" ccy="ARS">Argentina</country>
   <country code="AM" iso="51" ccy="AMD">Armenia</country>
@@ -134,7 +134,7 @@
   <country code="MQ" iso="474" ccy="FRF">Martinique</country>
   <country code="MR" iso="478" ccy="MRO">Mauritania</country>
   <country code="MU" iso="480" ccy="MUR">Mauritius</country>
-  <country code="YT" iso="175" ccy="">Mayotte</country>
+  <country code="YT" iso="175" ccy="MYT">Mayotte</country>
   <country code="MX" iso="484" ccy="MXN">Mexico</country>
   <country code="FM" iso="583" ccy="USD">Micronesia, Federated States Of</country>
   <country code="MD" iso="498" ccy="MDL">Moldova, Republic Of</country>

@@ -21,7 +21,6 @@
 
 @synthesize table;
 @synthesize beneficiaryList;
-@synthesize countryList;
 @synthesize testList;
 @synthesize filePath;
 
@@ -34,18 +33,6 @@
         preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
         [preloadView setMessage:@"Loading..."];
         preloadView.tag = 1;
-
-        NSError *parseErr;
-        @autoreleasepool {
-            CountryParser *parser = [[CountryParser alloc] init];
-            [parser parseXMLData:[[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"]] fromURI:@"country" toObject:@"Country" parseError:&parseErr];
-            
-//            [testList release];
-//            testList = [[[NSMutableArray alloc] initWithArray:[parser items]] autorelease];
-            [countryList release];
-            countryList = [[NSMutableArray alloc] initWithArray:[[parser items] copy]];
-            [parser release];
-        }
         
         [selCountryList release];
         selCountryList = [[NSMutableArray alloc] init];
@@ -103,7 +90,6 @@
 }
 
 - (void)dealloc {
-    [countryList release];
     [tempList release];
     [selCountryList release];
     [filteredBenList release];
@@ -223,7 +209,7 @@
     
     [selCountryList release];
     selCountryList = [[NSMutableArray alloc] init];
-    for (Country *country in countryList) {
+    for (Country *country in [delegate countries]) {
         if ([country.ccy isEqualToString:ccy]) {
             [selCountryList addObject:country];
         }
