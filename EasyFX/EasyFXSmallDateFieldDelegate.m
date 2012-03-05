@@ -147,6 +147,16 @@
 	
 }
 
+-(NSString*)getPickerValue:(UIPickerView*)pickerView withFormat:(NSString*)format{
+	NSInteger slctdRow	= [pickerView selectedRowInComponent:0];
+	NSInteger slctdRow2 = [pickerView selectedRowInComponent:1];
+	NSString *choice	= [col1Arr objectAtIndex:slctdRow];
+	NSString *choice1	= [col2Arr objectAtIndex:slctdRow2];
+	
+	return [NSString stringWithFormat:format, choice,choice1];
+	
+}
+
 -(void)dealloc {
 	[col1Arr release];
 	[col2Arr release];

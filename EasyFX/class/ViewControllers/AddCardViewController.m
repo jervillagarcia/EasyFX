@@ -119,20 +119,67 @@
     [Utils dismissKeyBoard:self.view];
     [self.view addSubview:preloadView];
     
-    CardRec *cardRec = [[CardRec alloc] init];
-    [cardRec        setCardNumber:[txtCardNo text]];
-    [cardRec        setCountryCode:countryCode];
-    [cardRec        setAddress1:[txtAddress1 text]];
-    [cardRec        setAddress2:[txtAddress2 text]];
-    [cardRec        setAddress3:[txtAddress3 text]];
-    [cardRec        setCvv:[txtCVV text]];
-    [cardRec        setExpiryDate:[txtExpiryDate text]];
-    [cardRec        setIssueNumber:[txtIssueNo text]];
-    [cardRec        setName:[txtName text]];
-    [cardRec        setPostCode:[txtPostalCode text]];
-    [cardRec        setStartDate:[txtStartDate text]];
+    bool isValid = YES;
+    NSString *fieldName;
+
+    if ([txtAddress1.text length] == 0) {
+        fieldName = @"Address 1";
+        isValid = NO;
+    }
+
+    if ([txtName.text length] == 0) {
+        fieldName = @"Name";
+        isValid = NO;
+    }
+
+    if ([txtIssueNo.text length] == 0) {
+        fieldName = @"Issue No.";
+        isValid = NO;
+    }
+
+    if ([txtExpiryDate.text length] == 0) {
+        fieldName = @"Expiry Date";
+        isValid = NO;
+    }
+
+    if ([txtStartDate.text length] == 0) {
+        fieldName = @"Start Date";
+        isValid = NO;
+    }
+
+    if ([txtCVV.text length] == 0) {
+        fieldName = @"CVV";
+        isValid = NO;
+    }
+
+    if ([txtCardNo.text length] == 0){
+        fieldName = @"Card No.";
+        isValid = NO;
+    }
     
-    [NSThread detachNewThreadSelector:@selector(saveRecord:) toTarget:self withObject:cardRec];
+    
+    if (isValid) {
+        CardRec *cardRec = [[CardRec alloc] init];
+        [cardRec        setCardNumber:[txtCardNo text]];
+        [cardRec        setCountryCode:countryCode];
+        [cardRec        setAddress1:[txtAddress1 text]];
+        [cardRec        setAddress2:[txtAddress2 text]];
+        [cardRec        setAddress3:[txtAddress3 text]];
+        [cardRec        setCvv:[txtCVV text]];
+        [cardRec        setExpiryDate:[txtExpiryDate text]];
+        [cardRec        setIssueNumber:[txtIssueNo text]];
+        [cardRec        setName:[txtName text]];
+        [cardRec        setPostCode:[txtPostalCode text]];
+        [cardRec        setStartDate:[txtStartDate text]];
+        
+        [NSThread detachNewThreadSelector:@selector(saveRecord:) toTarget:self withObject:cardRec];
+    } else {
+        [preloadView removeFromSuperview];
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:[NSString stringWithFormat:@"%@ field is mandatory", fieldName] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+    }
 }
 
 - (void)saveRecord:(CardRec*)cardRec {
@@ -164,8 +211,7 @@
 					id aDelegate = [(UIPickerView*)subview delegate];
 					UITextField *txtField = [aDelegate curTxtField];
 					int fieldTag = [txtField tag];
-					[((UITextField*)[self.view viewWithTag:fieldTag]) setText:[aDelegate getPickerValue:(UIPickerView*)subview]];
-//					[self goToNextField:fieldTag];
+					[((UITextField*)[self.view viewWithTag:fieldTag]) setText:[aDelegate getPickerValue:(UIPickerView*)subview withFormat:@"%@%@"]];
 				}
 			}
 			break;

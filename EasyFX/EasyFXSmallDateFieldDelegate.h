@@ -36,6 +36,7 @@
 
 -(NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView;
 -(NSString*)getPickerValue:(UIPickerView*)pickerView;
+-(NSString*)getPickerValue:(UIPickerView*)pickerView withFormat:(NSString*)format;
 -(void)dealloc;
 
 @end
