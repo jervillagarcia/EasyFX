@@ -16,6 +16,11 @@
     NSString *fee;
     NSString *count;
     NSArray *cCYPairs;
+    NSString *address1;
+    NSString *address2;
+    NSString *address3;
+    NSString *postCode;
+    NSString *country;
 }
 
 
@@ -26,5 +31,10 @@
 @property(nonatomic, retain) NSString *fee;
 @property(nonatomic, retain) NSString *count;
 @property(nonatomic, retain) NSArray *cCYPairs;
+@property(nonatomic, retain) NSString *address1;
+@property(nonatomic, retain) NSString *address2;
+@property(nonatomic, retain) NSString *address3;
+@property(nonatomic, retain) NSString *postCode;
+@property(nonatomic, retain) NSString *country;
 
 @end

@@ -9,6 +9,7 @@
 #import "TransactionCompleteViewController.h"
 #import "Utils.h"
 #import "WebServiceFactory.h"
+#import "EasyFXAppDelegate.h"
 
 @implementation TransactionCompleteViewController
 
@@ -50,6 +51,9 @@
 
 - (void)viewDidUnload
 {
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.isLastPage = NO;
+
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -62,6 +66,8 @@
     
     [Utils setNavTitleImage:self];
     
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    delegate.isLastPage = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

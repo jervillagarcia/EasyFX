@@ -20,6 +20,7 @@
 @synthesize lblAccountNumber;
 @synthesize lblCurrencyFrom;
 @synthesize lblDebit;
+@synthesize lblFee;
 @synthesize lblBeneficiaryName;
 @synthesize lblBeneficiaryBank;
 @synthesize lblBeneficiaryAccountNo;
@@ -65,6 +66,7 @@
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
 
     NSNumber *sellAmount = [[NSNumber alloc] initWithFloat:[delegate.payment.sellAmount floatValue]];
+    NSNumber *transactionFee = [[NSNumber alloc] initWithFloat:[delegate.fee floatValue]];
     NSNumber *buyAmount = [[NSNumber alloc] initWithFloat:[delegate.payment.buyAmount floatValue]];
 
     NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
@@ -80,6 +82,7 @@
     [lblCurrencyFrom        setText:[delegate.payment sellCCY]];
     [_currencyFormatter     setCurrencyCode:[delegate.payment sellCCY]];
     [lblDebit               setText:[_currencyFormatter stringFromNumber:sellAmount]];
+    [lblFee                 setText:[_currencyFormatter stringFromNumber:transactionFee]];
     [lblBeneficiaryName     setText:[delegate.payment.beneficiaryRec beneficiaryName]];
     [lblBeneficiaryBank     setText:[delegate.payment.beneficiaryRec bankName]];
     [lblBeneficiaryAccountNo setText:[delegate.payment.beneficiaryRec accountNumber]];

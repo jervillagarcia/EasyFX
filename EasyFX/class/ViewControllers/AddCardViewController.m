@@ -12,6 +12,7 @@
 #import "EasyFXAppDelegate.h"
 #import "WebServiceFactory.h"
 #import "Result.h"
+#import "CheckPostcodeResult.h"
 
 @implementation AddCardViewController
 
@@ -68,6 +69,18 @@
     [txtStartDate setDelegate:smallDateFieldDelegate];
     [txtCountry setDelegate:countryFieldDelegate];
     
+    EasyFXAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [txtAddress1    setText:[delegate address1]];
+    [txtAddress2    setText:[delegate address2]];
+    [txtAddress3 	setText:[delegate address3]];
+    [txtPostalCode  setText:[delegate postCode]];
+    
+    for (Country *mCountry in [delegate countries]) {
+        if ([[delegate countryCode] isEqualToString:[mCountry iso]]) {
+            countryCode = [delegate countryCode];
+            [txtCountry setText:[mCountry name]];
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -80,15 +93,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //Logout Button
+    [backItem1 release];
+    backItem1 = nil;
     backItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
     [self.navigationController.navigationBar.topItem     setLeftBarButtonItem:backItem1];
     
+    [backItem2 release];
+    backItem2 = nil;
     backItem2 = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(save)];
     [self.navigationController.navigationBar.topItem     setRightBarButtonItem:backItem2];
-
-    [Utils setNavTitleImage:self];
     
+    [Utils setNavTitleImage:self];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -98,6 +114,8 @@
 }
 
 - (void) dealloc {
+    [backItem1 release];
+    [backItem2 release];
     [country release];
     [preloadView release];
     [super dealloc];
@@ -156,6 +174,11 @@
         fieldName = @"Card No.";
         isValid = NO;
     }
+
+    if ([txtCountry.text length] == 0){
+        fieldName = @"Country";
+        isValid = NO;
+    }
     
     
     if (isValid) {
@@ -183,6 +206,27 @@
 }
 
 - (void)saveRecord:(CardRec*)cardRec {
+    bool isValid = NO;
+	@autoreleasepool {
+        WebServiceFactory *wsFactoryValidate = [[WebServiceFactory alloc] init];
+        [wsFactoryValidate checkPostCode:cardRec.postCode];
+        CheckPostcodeResult *result = (CheckPostcodeResult*)[wsFactoryValidate.wsResponse objectAtIndex:0];
+        if ([[result success] isEqualToString:@"true"]) {
+            isValid = YES;
+        } else {
+            [preloadView removeFromSuperview];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:[result errorMsg] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];	
+            [alert release];
+        }
+        
+        [wsFactoryValidate release];
+    }
+
+    if (!isValid) {
+        return;
+    }
+    
 	@autoreleasepool {
         WebServiceFactory *wsFactory = [[WebServiceFactory alloc] init];
         [wsFactory AddCard:cardRec];
@@ -200,6 +244,7 @@
         [wsFactory release];
     }
 }
+
 # pragma mark Action Sheet
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

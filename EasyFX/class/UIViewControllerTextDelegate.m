@@ -47,6 +47,12 @@
 	* viewRect.size.height;
     CGFloat heightFraction = numerator / denominator;	
 	
+#ifdef DEBUGGING
+    NSLog(@"heightFraction = numerator / denominator [%f / %f]", numerator, denominator);
+    NSLog(@"midline = %f", midline);
+    NSLog(@"viewRect = %f", viewRect.size.height);
+#endif
+
 	if (heightFraction < 0.0)
     {
         heightFraction = 0.0;

@@ -9,6 +9,10 @@
 #import "CurrencyTableViewCell.h"
 #import "TransactionDetailViewController.h"
 #import "Utils.h"
+#import "WebServiceFactory.h"
+#import "EasyFXAppDelegate.h"
+#import "Country.h"
+
 @implementation CurrencyTableViewCell
 
 @synthesize curFrom;
@@ -75,9 +79,21 @@
     if ([self isEditing]) {
         return;
     }
-    TransactionDetailViewController *viewController = [[TransactionDetailViewController alloc] initWithNibName:@"TransactionDetailViewController" bundle:nil price:currencyPair];
-    [fromController.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+
+    [preloadView release];
+    preloadView = [[EasyFXPreloader alloc] initWithFrame:[fromController.view frame]];
+    [preloadView setMessage:@"Loading..."];
+    preloadView.tag = 1;
+
+    [selCountryList release];
+    selCountryList = [[NSMutableArray alloc] init];
+    
+    [filteredBenList release];
+    filteredBenList = [[NSMutableArray alloc] init];
+    
+    [fromController.view addSubview:preloadView];
+    [NSThread detachNewThreadSelector:@selector(fetchBeneficiaries) toTarget:self withObject:nil];
+    
 }
 
 - (IBAction)btnAdd:(id)sender {
@@ -94,6 +110,63 @@
             [currencyPair setSelected:YES];
         }
     }
+}
+
+-(void)fetchBeneficiaries {
+    @autoreleasepool {
+        WebServiceFactory *ws = [[WebServiceFactory alloc] init];
+        
+        [ws getBeneficiaries];
+        
+        [tempList release];
+        tempList = [[NSArray alloc] initWithArray:ws.wsResponse];
+        
+        [ws release];
+    }
+    [preloadView removeFromSuperview];
+    
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSString *ccy = [curTo text];
+    
+    [selCountryList release];
+    selCountryList = [[NSMutableArray alloc] init];
+    for (Country *country in [delegate countries]) {
+        if ([country.ccy isEqualToString:ccy]) {
+            [selCountryList addObject:country];
+        }
+    }
+    
+    [filteredBenList release];
+    filteredBenList = [[NSMutableArray alloc] init];
+    for(BeneficiaryRec *benRec in tempList){
+        for (Country *country in selCountryList) {
+            if ([benRec.countryCode isEqualToString:country.countryCode]) {
+                [filteredBenList addObject:benRec];
+            }
+        }
+    }
+    
+    [beneficiaryList release];
+    beneficiaryList = [filteredBenList retain];
+
+    if ([beneficiaryList count] > 0) {
+        TransactionDetailViewController *viewController = [[TransactionDetailViewController alloc] initWithNibName:@"TransactionDetailViewController" bundle:nil price:currencyPair];
+        [fromController.navigationController pushViewController:viewController animated:YES];
+        [viewController release];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"You do not have a beneficiary in the same currency – please register your beneficiary via your account through the website before trying again." delegate:fromController cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+    }
+}
+
+- (void)dealloc {
+    [preloadView release];
+    [filteredBenList release];
+    [selCountryList release];
+    [beneficiaryList release];
+    [tempList release];
+    [super dealloc];
 }
 
 @end

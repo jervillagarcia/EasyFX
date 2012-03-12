@@ -25,6 +25,7 @@
 - (void)setCCYList:(NSArray*)ccyList;
 - (void)makeDeal:(Payment*)payment;
 - (void)AddCard:(CardRec*)cardRec;
+- (void)checkPostCode:(NSString*)postCode;
 
 - (NSString*)getStartHeader;
 - (NSString*)getEndHeader;

@@ -103,6 +103,12 @@
             //Store CCYPAIRS
             [delegate setCcyPairList:[[wsFactory.wsResponse objectAtIndex:0] cCYPairs]];
             [delegate setLimit:[[wsFactory.wsResponse objectAtIndex:0] limit]];
+            [delegate setFee:[[wsFactory.wsResponse objectAtIndex:0] fee]];
+            [delegate setAddress1:[[wsFactory.wsResponse objectAtIndex:0] address1]];
+            [delegate setAddress2:[[wsFactory.wsResponse objectAtIndex:0] address2]];
+            [delegate setAddress3:[[wsFactory.wsResponse objectAtIndex:0] address3]];
+            [delegate setPostCode:[[wsFactory.wsResponse objectAtIndex:0] postCode]];
+            [delegate setCountryCode:[[wsFactory.wsResponse objectAtIndex:0] country]];
             
             if (isFromModal) {
                 [self dismissModalViewControllerAnimated:YES];
@@ -124,7 +130,7 @@
     [preloadView removeFromSuperview];
 }
 -(IBAction)callHelpdesk:(id)sender{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", @"08000961234"]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", @"08003584919"]]];
 }
 -(IBAction)applyFinancialOnClick:(id)sender{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.applyfinancial.co.uk"]];

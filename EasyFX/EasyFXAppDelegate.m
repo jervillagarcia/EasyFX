@@ -35,9 +35,24 @@
 
 @synthesize limit;
 
+@synthesize fee;
+
+@synthesize address1;
+
+@synthesize address2;
+
+@synthesize address3;
+
+@synthesize postCode;
+
+@synthesize countryCode;
+
 @synthesize payment;
 
 @synthesize isFromLogin;
+
+@synthesize isLastPage;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -67,6 +82,15 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+    if (isFromLogin) {
+        return;
+    }
+    
+    
+//    if (isLastPage) {
+        [_navigationController popToViewController:[[_navigationController viewControllers] objectAtIndex:0] animated:NO];
+//    }
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -94,10 +118,13 @@
     if (isFromLogin) {
         return;
     }
-
+    
+/*
     LoginViewController *viewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil isFromModal:YES];
     [self.navigationController presentModalViewController:viewController animated:YES];
     [viewController release];
+ */
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

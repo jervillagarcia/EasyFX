@@ -13,6 +13,7 @@
     IBOutlet UILabel *lblAccountName;
     IBOutlet UILabel *lblAccountNumber;
     IBOutlet UILabel *lblCurrencyFrom;
+    IBOutlet UILabel *lblFee;
     IBOutlet UILabel *lblDebit;
     IBOutlet UILabel *lblBeneficiaryName;
     IBOutlet UILabel *lblBeneficiaryBank;
@@ -28,6 +29,7 @@
 @property(nonatomic, retain) UILabel *lblAccountNumber;
 @property(nonatomic, retain) UILabel *lblCurrencyFrom;
 @property(nonatomic, retain) UILabel *lblDebit;
+@property(nonatomic, retain) UILabel *lblFee;
 @property(nonatomic, retain) UILabel *lblBeneficiaryName;
 @property(nonatomic, retain) UILabel *lblBeneficiaryBank;
 @property(nonatomic, retain) UILabel *lblBeneficiaryAccountNo;

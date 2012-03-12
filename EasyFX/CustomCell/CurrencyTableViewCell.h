@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PriceRec.h"
+#import "EasyFXPreloader.h"
 
 @interface CurrencyTableViewCell : UITableViewCell {
     PriceRec *currencyPair;
@@ -20,6 +21,14 @@
     IBOutlet UIButton *btnAdd;
     UIViewController *fromController;
     UIColor *blueGradient;
+
+    NSArray *beneficiaryList;
+    NSMutableArray *filteredBenList;
+    
+    EasyFXPreloader *preloadView;
+    NSMutableArray *selCountryList;
+    NSArray *tempList;
+
 }
 
 @property(nonatomic, retain) UIButton *btnBuy;

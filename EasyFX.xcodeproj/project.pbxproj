@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02B72C0150DD32900A17430 /* CheckPostcodeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B72BF150DD32800A17430 /* CheckPostcodeResult.m */; };
 		D05BDA2214F366DA00D177B3 /* ad.png in Resources */ = {isa = PBXBuildFile; fileRef = D05BD93B14F366DA00D177B3 /* ad.png */; };
 		D05BDA2314F366DA00D177B3 /* ae.png in Resources */ = {isa = PBXBuildFile; fileRef = D05BD93C14F366DA00D177B3 /* ae.png */; };
 		D05BDA2414F366DA00D177B3 /* af.png in Resources */ = {isa = PBXBuildFile; fileRef = D05BD93D14F366DA00D177B3 /* af.png */; };
@@ -474,6 +475,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D02B72BE150DD32700A17430 /* CheckPostcodeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckPostcodeResult.h; path = model_objects/CheckPostcodeResult.h; sourceTree = "<group>"; };
+		D02B72BF150DD32800A17430 /* CheckPostcodeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckPostcodeResult.m; path = model_objects/CheckPostcodeResult.m; sourceTree = "<group>"; };
 		D05BD93B14F366DA00D177B3 /* ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ad.png; path = images/roundedflag/ad.png; sourceTree = "<group>"; };
 		D05BD93C14F366DA00D177B3 /* ae.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ae.png; path = images/roundedflag/ae.png; sourceTree = "<group>"; };
 		D05BD93D14F366DA00D177B3 /* af.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = af.png; path = images/roundedflag/af.png; sourceTree = "<group>"; };
@@ -1387,6 +1390,8 @@
 				D5D2B4EE14EBF0BC003C7717 /* DealResult.m */,
 				D5269CA114F52D6C00EC5E05 /* Fault.h */,
 				D5269CA214F52D6C00EC5E05 /* Fault.m */,
+				D02B72BE150DD32700A17430 /* CheckPostcodeResult.h */,
+				D02B72BF150DD32800A17430 /* CheckPostcodeResult.m */,
 			);
 			name = "model objects";
 			sourceTree = "<group>";
@@ -2198,6 +2203,7 @@
 				D0EE1FF614EF6B0D00FB4067 /* CountryParser.m in Sources */,
 				D0EE1FF914EF6B4000FB4067 /* EasyFXCountryCell.m in Sources */,
 				D5269CA314F52D6C00EC5E05 /* Fault.m in Sources */,
+				D02B72C0150DD32900A17430 /* CheckPostcodeResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -530,6 +530,48 @@
 #endif
 
 }
+
+- (void)checkPostCode:(NSString*)postCode{
+#ifdef DEBUGGING
+    NSLog(@"-------WEBSERVICE FACTORY--------");
+    NSLog(@"START METHOD: checkPostCode");
+#endif
+	if ([self isConnectedToInternet:HOST]) {
+		NSMutableString *sRequest = [[NSMutableString alloc] init]; 
+		// Create the SOAP body 
+		[sRequest appendFormat:[self getStartHeader]];
+		[sRequest appendString:@"<sch:CheckPostcode>"];
+		[sRequest appendString:@"<sch:PostCode>"];
+		[sRequest appendString:postCode];
+		[sRequest appendString:@"</sch:PostCode>"];
+		[sRequest appendString:@"</sch:CheckPostcode>"];
+		[sRequest appendString:[self getEndHeader]];
+		
+#ifdef DEBUGGING
+		NSLog(@"Request: %@", sRequest);
+#endif
+        
+		XmlParser *xmlParser = [[XmlParser alloc] init];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"CheckPostcode" isLogin:NO];
+		[xmlParser parseXMLData:mData fromURI:@"CheckPostcodeResult" toObject:@"CheckPostcodeResult" parseError:nil];
+        
+#ifdef DEBUGGING
+        NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
+#endif
+        
+		[self.wsResponse release];
+		self.wsResponse = [[[NSMutableArray alloc] initWithArray:[xmlParser items]] autorelease];
+		
+		[sRequest release];	
+		[xmlParser release];
+	}
+#ifdef DEBUGGING
+    NSLog(@"END METHOD: checkPostCode");
+    NSLog(@"---------------------");
+#endif
+}
+
+
 - (NSString*)getStartHeader {
 	return [NSString stringWithFormat:@"%@=\"%@\" xmlns:sch=\"http://voltrexfx.com/webservices/\"> <soapenv:Header/> <soapenv:Body>",@"<soapenv:Envelope xmlns:soapenv", SOAP_ENV];
 }

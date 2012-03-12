@@ -16,4 +16,9 @@
     @synthesize fee;
     @synthesize count;
     @synthesize cCYPairs;
+    @synthesize address1;
+    @synthesize address2;
+    @synthesize address3;
+    @synthesize postCode;
+    @synthesize country;
 @end
