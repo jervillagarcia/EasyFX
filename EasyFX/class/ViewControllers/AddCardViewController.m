@@ -76,7 +76,7 @@
     [txtPostalCode  setText:[delegate postCode]];
     
     for (Country *mCountry in [delegate countries]) {
-        if ([[delegate countryCode] isEqualToString:[mCountry iso]]) {
+        if ([[delegate countryCode] isEqualToString:[mCountry countryCode]]) {
             countryCode = [delegate countryCode];
             [txtCountry setText:[mCountry name]];
         }

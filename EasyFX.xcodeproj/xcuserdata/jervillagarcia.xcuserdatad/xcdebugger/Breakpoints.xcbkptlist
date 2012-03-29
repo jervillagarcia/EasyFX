@@ -47,13 +47,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "EasyFX/EasyFXAppDelegate.m"
-         timestampString = "353229737.635908"
+         filePath = "EasyFX/WebServiceFactory.m"
+         timestampString = "353441711.738842"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "122"
-         endingLineNumber = "122"
-         landmarkName = "-applicationWillEnterForeground:"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
+         landmarkName = "-submitRequestToHost:soapAction:isLogin:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

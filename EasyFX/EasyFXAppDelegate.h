@@ -53,6 +53,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+-(void)fetchCountries;
+
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end

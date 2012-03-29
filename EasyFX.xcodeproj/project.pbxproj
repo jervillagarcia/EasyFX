@@ -355,6 +355,7 @@
 		D0890C1A14E1F42F0068AFA4 /* iphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = D0890C1914E1F42F0068AFA4 /* iphone4.png */; };
 		D0890C1C14E1F4A50068AFA4 /* splash_screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0890C1B14E1F4A50068AFA4 /* splash_screen2.png */; };
 		D0890C2214E1F4EC0068AFA4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0890C2114E1F4EC0068AFA4 /* Default.png */; };
+		D0D4B90E1511205D00C65DB7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0D4B90D1511205D00C65DB7 /* Settings.bundle */; };
 		D0EA4F8C14FFA66E00958A9B /* jmd.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8714FFA66E00958A9B /* jmd.png */; };
 		D0EA4F8D14FFA66E00958A9B /* kes.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8814FFA66E00958A9B /* kes.png */; };
 		D0EA4F8E14FFA66E00958A9B /* lkr.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EA4F8914FFA66E00958A9B /* lkr.png */; };
@@ -824,6 +825,8 @@
 		D0890C1914E1F42F0068AFA4 /* iphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone4.png; sourceTree = "<group>"; };
 		D0890C1B14E1F4A50068AFA4 /* splash_screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen2.png; sourceTree = "<group>"; };
 		D0890C2114E1F4EC0068AFA4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D0D4B90D1511205D00C65DB7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
+		D0D4B915151137E300C65DB7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pl; path = pl.lproj/LoginViewController.xib; sourceTree = "<group>"; };
 		D0EA4F8714FFA66E00958A9B /* jmd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jmd.png; path = images/flagcurrency/jmd.png; sourceTree = "<group>"; };
 		D0EA4F8814FFA66E00958A9B /* kes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kes.png; path = images/flagcurrency/kes.png; sourceTree = "<group>"; };
 		D0EA4F8914FFA66E00958A9B /* lkr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lkr.png; path = images/flagcurrency/lkr.png; sourceTree = "<group>"; };
@@ -1457,6 +1460,7 @@
 		D59F1573147353B3006946EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0D4B90D1511205D00C65DB7 /* Settings.bundle */,
 				D59F1574147353B3006946EE /* EasyFX-Info.plist */,
 				D59F1575147353B3006946EE /* InfoPlist.strings */,
 				D59F1578147353B3006946EE /* EasyFX-Prefix.pch */,
@@ -1710,6 +1714,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				pl,
 			);
 			mainGroup = D59F155B147353B3006946EE;
 			productRefGroup = D59F1567147353B3006946EE /* Products */;
@@ -2124,6 +2129,7 @@
 				D0EA4F8E14FFA66E00958A9B /* lkr.png in Resources */,
 				D0EA4F8F14FFA66E00958A9B /* lvl.png in Resources */,
 				D0EA4F9014FFA66E00958A9B /* omr.png in Resources */,
+				D0D4B90E1511205D00C65DB7 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2270,6 +2276,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D59F15BB14735B58006946EE /* en */,
+				D0D4B915151137E300C65DB7 /* pl */,
 			);
 			name = LoginViewController.xib;
 			sourceTree = "<group>";

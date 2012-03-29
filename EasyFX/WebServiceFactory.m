@@ -26,7 +26,7 @@
 
 #define SOAP_ENV @"http://schemas.xmlsoap.org/soap/envelope/"
 #define HOST @"www.voltrexfx.com"
-#define URL_STRING @"http://www.voltrexfx.com/easyws/ews.asmx"
+#define URL_STRING @"http://www.voltrexfx.com/ews_live/ews.asmx"
 
 
 - (NSData*)giveErrorDomainNotFound
@@ -179,7 +179,7 @@
 		[xmlParser parseXMLData:[self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:YES] fromURI:@"LogInResult" toObject:@"LogInResult" parseError:nil];
         
 #ifdef DEBUGGING
-        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"GetCurrencyList" isLogin:NO];
+        NSData *mData = [self submitRequestToHost:sRequest soapAction:@"LogIn" isLogin:NO];
         NSLog(@"Response: %@", [[NSString alloc] initWithData:mData encoding:NSUTF8StringEncoding]);
 #endif
 

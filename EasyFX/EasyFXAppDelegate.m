@@ -64,16 +64,32 @@
     [payment release];
     payment = [[Payment alloc] init];
     
+    [self fetchCountries];
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    // Get user preference
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:version forKey:@"version_preference"];
+    [defaults registerDefaults:appDefaults];
+    [defaults setObject:[NSString stringWithFormat:@"%@.%@", shortVersion, version] forKey:@"version_preference"];
+    [defaults setObject:@"pl" forKey:@"CFBundleDevelopmentRegion"];
+    [defaults synchronize];
+    
+    return YES;
+}
+
+-(void)fetchCountries {
     NSError *parseErr;
+    [countryParser release];
+    countryParser = nil;
     countryParser = [[CountryParser alloc] init];
     [countryParser parseXMLData:[[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"countries" ofType:@"xml"]] fromURI:@"country" toObject:@"Country" parseError:&parseErr];
     
     [countries release];
     countries = [[NSMutableArray alloc] initWithArray:[countryParser items]];
     
-    
-    
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

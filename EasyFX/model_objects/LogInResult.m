@@ -13,6 +13,7 @@
     @synthesize errorID;
     @synthesize errorMsg;
     @synthesize limit;
+    @synthesize bankLimit;
     @synthesize fee;
     @synthesize count;
     @synthesize cCYPairs;

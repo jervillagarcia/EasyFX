@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">1179</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -76,7 +76,7 @@
 					<object class="IBUILabel" id="487342137">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 168}, {78, 21}}</string>
+						<string key="NSFrame">{{20, 161}, {83, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="934900235"/>
@@ -85,7 +85,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Username</string>
+						<string key="IBUIText">nazwa użytkownika</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MC4wNzg0MzEzNzUzMiAwLjQyMzUyOTQ0NjEgMC42MTE3NjQ3MjkAA</bytes>
@@ -93,6 +93,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUINumberOfLines">2</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="1070785268">
 							<string key="name">Helvetica</string>
 							<string key="family">Helvetica</string>
@@ -117,7 +118,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Password</string>
+						<string key="IBUIText">hasło</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MC4wNzg0MzEzNzUzMiAwLjQyMzUyOTQ0NjEgMC42MTE3NjQ3MjkAA</bytes>
@@ -140,7 +141,7 @@
 						<int key="IBUITag">2</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUIText"/>
+						<string key="IBUIText">test</string>
 						<int key="IBUIBorderStyle">3</int>
 						<string key="IBUIPlaceholder">Enter username</string>
 						<object class="NSColor" key="IBUITextColor">
@@ -178,7 +179,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Client ID</string>
+						<string key="IBUIText">ID klienta</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MC4wNzg0MzEzNzUzMiAwLjQyMzUyOTQ0NjEgMC42MTE3NjQ3MjkAA</bytes>
@@ -201,7 +202,7 @@
 						<int key="IBUITag">1</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUIText"/>
+						<string key="IBUIText">EFX901140</string>
 						<int key="IBUIBorderStyle">3</int>
 						<string key="IBUIPlaceholder">Enter client ID</string>
 						<object class="NSColor" key="IBUITextColor">
@@ -231,7 +232,7 @@
 						<int key="IBUITag">3</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUIText"/>
+						<string key="IBUIText">welcome</string>
 						<int key="IBUIBorderStyle">3</int>
 						<string key="IBUIPlaceholder">Enter password</string>
 						<object class="NSColor" key="IBUITextColor">
@@ -255,7 +256,7 @@
 						<string key="NSFrame">{{106, 240}, {194, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="604186679"/>
+						<reference key="NSNextKeyView" ref="670695628"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -290,16 +291,16 @@
 					<object class="IBUILabel" id="604186679">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{38, 282}, {244, 63}}</string>
+						<string key="NSFrame">{{12, 282}, {297, 63}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="670695628"/>
+						<reference key="NSNextKeyView" ref="403119868"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">5</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Important: You need to have set up your beneficiary and payment details online before you can use this service.</string>
+						<string key="IBUIText">Ważne: Musisz mieć skonfigurować beneficjenta i dane dotyczące płatności online, zanim będzie można skorzystać z tej usługi.</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MC41NTI5NDEyMDMxIDAuNTUyOTQxMjAzMSAwLjU1Mjk0MTIwMzEAA</bytes>
@@ -325,16 +326,16 @@
 					<object class="IBUILabel" id="670695628">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{38, 335}, {244, 27}}</string>
+						<string key="NSFrame">{{12, 335}, {297, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="403119868"/>
+						<reference key="NSNextKeyView" ref="604186679"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">5</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">For any queries please call helpdesk on</string>
+						<string key="IBUIText">W razie jakichkolwiek pytań proszę dzwonić na helpdesk</string>
 						<object class="NSColor" key="IBUITextColor" id="908681881">
 							<int key="NSColorSpace">2</int>
 							<bytes key="NSRGB">MC40NjY2NjY2OTg1IDAuNTQ1MDk4MDY2MyAwLjExNzY0NzA2NjcAA</bytes>
@@ -372,7 +373,6 @@
 						<string key="NSFrame">{{129, 388}, {62, 41}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -410,12 +410,9 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIToolbar" id="782572814">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">266</int>
 				<string key="NSFrameSize">{320, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -584,18 +581,18 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="934900235"/>
-							<reference ref="487342137"/>
 							<reference ref="557503536"/>
 							<reference ref="670695628"/>
 							<reference ref="1045889017"/>
 							<reference ref="158798809"/>
 							<reference ref="403119868"/>
-							<reference ref="604186679"/>
 							<reference ref="877273363"/>
 							<reference ref="443062696"/>
 							<reference ref="192126807"/>
 							<reference ref="301745590"/>
 							<reference ref="8265682"/>
+							<reference ref="487342137"/>
+							<reference ref="604186679"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -924,6 +921,6 @@
 				<string>{51, 41}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>
 </archive>

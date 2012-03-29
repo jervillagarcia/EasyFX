@@ -188,6 +188,8 @@
 
 -(void)loadData {
     [self.view addSubview:preloadView];
+    EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [delegate fetchCountries];
     [NSThread detachNewThreadSelector:@selector(fetchBeneficiaries) toTarget:self withObject:nil];
 }
 
