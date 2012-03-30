@@ -58,6 +58,7 @@
     [preloadView release];
     preloadView = [[EasyFXPreloader alloc] initWithFrame:[self.view frame]];
     preloadView.tag = 1;
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -73,8 +74,11 @@
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.isFromLogin = YES;
     
-    [txtCliendId setText:@""];
-    [txtUsername setText:@""];
+#if DEBUGGING
+    NSLog(@"Default ClientID: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"client_id"]);
+    NSLog(@"Default ClientID: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"client_id"]);
+#endif
+    [txtClientId setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"client_id"]];
     [txtPassword setText:@""];
     
     [txtCliendId becomeFirstResponder];
@@ -93,6 +97,11 @@
 -(IBAction)loginOnClick:(id)sender{
     [Utils dismissKeyBoard:self.view];
 	[self.view addSubview:preloadView];
+    //SET DEFAULT VALUE FOR ClientID
+    [[NSUserDefaults standardUserDefaults] setValue:[txtClientId text] forKey:@"client_id"];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [NSThread detachNewThreadSelector:@selector(loginAction) toTarget:self withObject:nil];
     
 }
