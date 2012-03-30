@@ -72,6 +72,11 @@
     [super viewDidAppear:animated];
     EasyFXAppDelegate *delegate = (EasyFXAppDelegate*)[[UIApplication sharedApplication] delegate];
     delegate.isFromLogin = YES;
+    
+    [txtCliendId setText:@""];
+    [txtUsername setText:@""];
+    [txtPassword setText:@""];
+    
     [txtCliendId becomeFirstResponder];
 }
 
